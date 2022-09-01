@@ -1,0 +1,37 @@
+.wrapper {
+  @apply max-w-[37.5rem] mx-auto pt-4;
+}
+
+.container{
+  @apply w-[100%] py-0 px-[1.25rem] box-border;
+}
+.title{
+  @apply text-[1rem] font-bold pb-2;
+}
+
+.content {
+  @apply w-[100%] border-b-[1px] border-solid border-[#e3e3e3] py-2;
+}
+.company{
+  @apply m-0 text-[0.875rem] mb-1;
+}
+.time{
+  @apply text-[0.875rem] mb-1;
+}
+
+.experience{
+  @apply pl-[1.125rem] list-disc;
+}
+.experience-item{
+  @apply text-[0.875rem] py-0.5;
+}
+.experience-item a{
+  @apply text-[#59B2DC] underline;
+}
+
+.skills-list {
+  @apply flex justify-start mt-2;
+}
+.skill {
+  @apply float-left mr-[0.625rem] border-r-[0.25rem] p-[0.125rem] text-[0.875rem] border-[1px] border-transparent border-solid bg-[#5DAC81] text-[#fff] rounded-[2px] shadow-2xl;
+}

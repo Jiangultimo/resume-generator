@@ -1,0 +1,39 @@
+[resume]
+# personal profile
+intros = [
+    { name = "" },
+    { email = "" },
+    { graduate = "" },
+    { github = "", url = "" },
+    { site = "", url = "" }
+]
+# personal skills
+[resume.skills]
+title = ""
+data = [
+    "" # Your mastery of skills
+]
+# self-evaluation
+[resume.evaluations]
+title = ""
+data = [
+    ""
+]
+
+# ------work experience------
+[[resume.experiences]]
+company = ""
+time = ""
+skills = [""] # the skills that were used in your projects
+projects = [ # `content` must be specify, `links` is optional
+    { content = "content test{links.0}", links = [
+        { name = "url name", url = "https://www.something.com" }
+    ]},
+]
+
+
+
+
+
+
+

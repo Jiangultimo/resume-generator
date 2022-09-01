@@ -1,0 +1,38 @@
+.wrapper{
+  @apply flex flex-col justify-center items-center;
+  position: relative;
+  width: 100%;
+  background-color: #5DAC81;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.intro {
+  @apply mt-[10px] relative z-10;
+  max-width: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dl__group {
+  margin: 0;
+  width: 100%;
+}
+
+.dd__item {
+  text-align: center;
+  font-size: 14px;
+  color: #FCFAF2;
+  margin: 0;
+}
+
+.dd__item a {
+  text-decoration: underline;
+  color: #fff;
+  /*text-shadow: 2px 0 #555555;*/
+}

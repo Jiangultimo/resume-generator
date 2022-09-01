@@ -1,0 +1,12 @@
+.skills {
+  @apply w-[100%] pt-0 pb-0 pl-[1.25rem] pr-[1.25rem] box-border;
+}
+.title{
+  @apply resume-title;
+}
+.list{
+  @apply pl-[1.125rem] list-disc;
+}
+.list-item{
+  @apply text-[0.875rem];
+}
