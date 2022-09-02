@@ -1,5 +1,9 @@
 [resume]
 # personal profile
+# you can add anything you want here,
+# but must keep `{ key = value, [url] = url value }` format, up to two fields
+# if there are two fields, one of them must be the `url`
+# this part is the header of the resume
 intros = [
     { name = "" },
     { email = "" },
@@ -8,12 +12,14 @@ intros = [
     { site = "", url = "" }
 ]
 # personal skills
+# only simple string arrays with `title` field which is to descrip the `data` field,
 [resume.skills]
 title = ""
 data = [
     "" # Your mastery of skills
 ]
 # self-evaluation
+# Ditto - `[resume.skills]`
 [resume.evaluations]
 title = ""
 data = [
@@ -21,6 +27,12 @@ data = [
 ]
 
 # ------work experience------
+# in one of the experiences:
+# `company`: company worked for in the past
+# `time`: working time
+# `skills`: the skills used in projects(it's just like a kind of label, so it would be a string array)
+# `projects`: the `links` field is optional, if it appears, the `content` must be include a string template just like `{links.0}`,
+# the `links` field indexed by the `links` array so that when parsing the `content` the generator can convert it to the corresponding url
 [[resume.experiences]]
 company = ""
 time = ""
