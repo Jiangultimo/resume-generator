@@ -9,13 +9,17 @@
   },
   "dependencies": {
     "@ltd/j-toml": "^1.35.0",
+    "blob-stream": "^0.1.3",
     "next": "12.2.5",
+    "pdfkit": "^0.13.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "wordcloud": "^1.2.2"
   },
   "devDependencies": {
+    "@types/blob-stream": "^0.1.30",
     "@types/node": "18.7.14",
+    "@types/pdfkit": "^0.12.6",
     "@types/react": "18.0.18",
     "@types/react-dom": "18.0.6",
     "@types/wordcloud": "^1.1.3",

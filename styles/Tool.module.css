@@ -1,0 +1,9 @@
+.tool{
+  @apply fixed left-0 top-[50%] translate-y-[-50%] bg-white w-auto h-auto shadow-2xl;
+}
+.tool-group{
+  @apply flex flex-col justify-center items-center;
+}
+.tool-item{
+  @apply w-7 h-7 cursor-pointer;
+}
