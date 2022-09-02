@@ -1,5 +1,5 @@
 .resume{
-  @apply py-[2.5rem] px-[3.75rem];
+  @apply py-[2.5rem] px-[3.75rem] min-h-[100%];
   color: #555;
   background: url("/texture.png") 0 0 repeat;
 }

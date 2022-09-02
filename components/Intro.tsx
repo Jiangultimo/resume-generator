@@ -1,35 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import Image from 'next/image';
 import styles from '@/styles/Intro.module.css'
 import avatar from '@/public/avatar.jpg';
 import { SimpleLink } from '@/components/ResumeLink'
 
 type Props = {
-  intros: Intro[],
-  data: string[]
+  intros: Intro[]
 }
 
 const Header:React.FC<Props> = props => {
-  const { intros = [], data } = props;
-  const boxRef = useRef<HTMLDivElement>(null)
-  const [rectInfo, setRectInfo] = useState({
-    width: 0,
-    height: 0
-  })
-
-  useEffect(() => {
-    const box = boxRef.current
-    if (box) {
-      setRectInfo({
-        width: box.offsetWidth,
-        height: box.offsetHeight
-      })
-    }
-  }, [])
+  const { intros = [] } = props;
 
   return (
     <header className="relative">
-      <div className={styles['wrapper']} ref={boxRef}>
+      <div className={styles['wrapper']}>
         <Image
           src={avatar}
           className={styles['avatar']}

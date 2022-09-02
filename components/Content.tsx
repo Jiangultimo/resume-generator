@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from '@/styles/Skill.module.css';
+import styles from '@/styles/Content.module.css'
 
 const nilSkills: string[] = []
 const Skill: React.FC<StringContent> = props => {
   const { title, data = nilSkills } = props
   return (
-    <div className={styles['skills']}>
+    <div className={styles['content']}>
       <h4 className={styles['title']}>{title}</h4>
       <ul className={styles['list']}>
         {
@@ -18,4 +18,4 @@ const Skill: React.FC<StringContent> = props => {
   );
 };
 
-export default Skill;
+export default Skill
