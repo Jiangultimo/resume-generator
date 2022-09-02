@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, memo } from 'react'
+import React, { useEffect, useState, memo } from 'react'
 
 interface Props {
   links?: ContentUrl[],
@@ -15,7 +15,7 @@ const urlTemplate = (props: ContentUrl): string => {
 const ContentLink: React.FC<Props> = props => {
   const { links = nilLinks, content } = props;
   const [renderContent, setRenderContent] = useState(content)
-  useLayoutEffect(() => {
+  useEffect(() => {
     const reg = /{(.*?)}/g
     const linkContents = content.match(reg)
     let urlContent = content

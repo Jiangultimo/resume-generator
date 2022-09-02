@@ -3,7 +3,6 @@ import Image from 'next/image';
 import styles from '@/styles/Intro.module.css'
 import avatar from '@/public/avatar.jpg';
 import { SimpleLink } from '@/components/ResumeLink'
-import WordCloud from '@/components/WordCloud'
 
 type Props = {
   intros: Intro[],
@@ -31,7 +30,6 @@ const Header:React.FC<Props> = props => {
   return (
     <header className="relative">
       <div className={styles['wrapper']} ref={boxRef}>
-        {/*<WordCloud rectInfo={rectInfo} words={data} />*/}
         <Image
           src={avatar}
           className={styles['avatar']}
