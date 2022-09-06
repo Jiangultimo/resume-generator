@@ -10,7 +10,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    plugin(function ({ addComponents, theme }) {
+    plugin(({ addComponents }) => {
       addComponents({
         '.resume-title': {
           fontSize: '1rem',

@@ -1,2 +1,1 @@
-export { default } from './Tool'
-export * from './Tool'
+export { default as ExportPDF } from './ExportPDF'

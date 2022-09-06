@@ -1,29 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo } from 'react'
 import Image from 'next/image';
 import styles from '@/styles/Intro.module.css'
 import avatar from '@/public/avatar.jpg';
 import { SimpleLink } from '@/components/ResumeLink'
 
 type Props = {
-  intros: Intro[]
+  intros: Intro[],
+  infos?: Intro
 }
 
-const Header:React.FC<Props> = props => {
-  const { intros = [] } = props;
-  const [infos, setInfos] = useState<Intro>()
+const nilIntros: Intro[] = []
+const nilInfos: Intro = {}
 
-  useEffect(() => {
-    if (intros.length !== 0) {
-      setInfos(
-        intros.reduce((prev, cur) => {
-          return {
-            ...prev,
-            ...cur
-          }
-        }, {})
-      )
-    }
-  }, [intros])
+const Header:React.FC<Props> = props => {
+  const { intros = nilIntros, infos = nilInfos } = props;
 
   return (
     <header className="relative">
@@ -33,7 +23,7 @@ const Header:React.FC<Props> = props => {
           className={styles['avatar']}
           width="150px"
           height="150px"
-          alt={infos?.name}
+          alt={infos.name}
         />
         <div className={styles['intro']}>
           <dl className={styles['dl__group']}>
@@ -57,4 +47,4 @@ const Header:React.FC<Props> = props => {
   );
 };
 
-export default Header;
+export default memo(Header)
