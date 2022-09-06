@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import styles from '@/styles/Intro.module.css'
 import avatar from '@/public/avatar.jpg';
@@ -10,6 +10,20 @@ type Props = {
 
 const Header:React.FC<Props> = props => {
   const { intros = [] } = props;
+  const [infos, setInfos] = useState<Intro>()
+
+  useEffect(() => {
+    if (intros.length !== 0) {
+      setInfos(
+        intros.reduce((prev, cur) => {
+          return {
+            ...prev,
+            ...cur
+          }
+        }, {})
+      )
+    }
+  }, [intros])
 
   return (
     <header className="relative">
@@ -19,7 +33,7 @@ const Header:React.FC<Props> = props => {
           className={styles['avatar']}
           width="150px"
           height="150px"
-          alt="Zhengxing Jiang"
+          alt={infos?.name}
         />
         <div className={styles['intro']}>
           <dl className={styles['dl__group']}>
