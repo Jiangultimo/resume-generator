@@ -1,11 +1,18 @@
 {
   "name": "generate-resume",
   "version": "0.0.1",
+  "description": "a resume generator",
+  "keywords": ["generate", "generator", "resume", "nextjs"],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EtaJx/generate-resume"
   },
   "dependencies": {
     "@ltd/j-toml": "^1.35.0",
