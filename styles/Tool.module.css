@@ -1,5 +1,5 @@
 .tool{
-  @apply fixed left-0 top-[50%] translate-y-[-50%] bg-white w-auto h-auto shadow-2xl;
+  @apply fixed left-[calc(50%-14px)] top-[0.5rem] bg-white w-auto h-auto animate-bounce;
 }
 .tool-group{
   @apply flex flex-col justify-center items-center;
