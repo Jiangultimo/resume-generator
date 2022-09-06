@@ -1,5 +1,5 @@
 .content {
-  @apply w-[100%]  px-[1.25rem] py-[0.5rem] box-border;
+  @apply w-[100%] px-[1.25rem] py-[0.5rem] box-border;
 }
 .title{
   @apply resume-title pb-1;

@@ -30,8 +30,8 @@
 }
 
 .skills-list {
-  @apply flex justify-start mt-2;
+  @apply flex justify-start flex-wrap;
 }
 .skill {
-  @apply float-left mr-[0.625rem] border-r-[0.25rem] p-[0.125rem] text-[0.875rem] border-[1px] border-transparent border-solid bg-[#5DAC81] text-[#fff] rounded-[2px] shadow-2xl;
+  @apply mr-[0.625rem] mt-2 border-r-[0.25rem] p-[0.125rem] text-[0.875rem] border-[1px] border-transparent border-solid bg-[#5DAC81] text-[#fff] rounded-[2px] shadow-2xl;
 }

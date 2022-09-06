@@ -17,7 +17,13 @@ const Experience: React.FC<Props> = (props) => {
             const { skills, projects } = experience
             return (
               <div className={styles['content']} key={index}>
-                <h4 className={styles['company']}><b>{experience.company}</b></h4>
+                <h4 className={styles['company']}>
+                  <b>{experience.company}</b>
+                  {experience.position  && (
+                    <b> - {experience.position}</b>
+                  )}
+                </h4>
+                { experience.companyDes && <p className={styles['company']}>{experience.companyDes}</p> }
                 <p className={styles['time']}>{experience.time}</p>
                 <ul className={styles['experience']}>
                   {

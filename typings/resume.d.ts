@@ -13,6 +13,8 @@ declare interface Experience {
   time: string,
   company: string,
   projects: Project[],
+  position?: string
+  companyDes?: string
 }
 
 declare interface Intro {
