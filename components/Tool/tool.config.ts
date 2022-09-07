@@ -1,7 +1,6 @@
 import type { StaticImageData } from 'next/image'
 
 import { localTime } from '@/utils/time'
-import { getEnv } from '@/utils/env'
 import pdfIcon from '@/public/icons/pdf.png'
 
 export interface Tool {
@@ -16,9 +15,9 @@ export const exportPDF: Tool = {
   icon: pdfIcon,
   des: 'Export PDF',
   click: async ({ name }) => {
-    const host = getEnv('HOST')
-    const port = getEnv('PORT')
-    const route = getEnv('ROUTE')
+    const host = process.env.NEXT_PUBLIC_HOST;
+    const port = process.env.NEXT_PUBLIC_PORT;
+    const route = process.env.NEXT_PUBLIC_ROUTE;
     const res = await fetch(`${host}:${port}${route}/api/pdf`)
     const resBlob = await res.blob() // get response blob
     const blob = new Blob([resBlob])
