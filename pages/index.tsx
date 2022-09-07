@@ -1,5 +1,6 @@
 import type { NextPage, GetServerSideProps } from 'next'
 import { useEffect, useState, memo, useContext } from 'react'
+import { getEnv } from '@/utils/env'
 import LoadingContext from '@/context/loading'
 import styles from '@/styles/Resume.module.css'
 import Head from 'next/head'
@@ -59,7 +60,10 @@ const Resume: NextPage<Props, {}> = (props: Props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch('http://localhost:3000/api/resume')
+  const host = getEnv('HOST')
+  const port = getEnv('PORT')
+  const route = getEnv('ROUTE')
+  const res = await fetch(`${host}:${port}${route}/api/resume`)
   const resume = await res.json()
   return {
     props: {

@@ -2,7 +2,12 @@
   "name": "generate-resume",
   "version": "0.0.1",
   "description": "a resume generator",
-  "keywords": ["generate", "generator", "resume", "nextjs"],
+  "keywords": [
+    "generate",
+    "generator",
+    "resume",
+    "nextjs"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
