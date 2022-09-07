@@ -1,7 +1,7 @@
 .resume{
   @apply py-[2.5rem] px-[3.75rem] min-h-[100%];
   color: #555;
-  background: url("/source/texture.png") 0 0 repeat;
+  background: url("/resume/source/texture.png") 0 0 repeat;
 }
 .resume-wrapper{
   @apply w-[100%] box-border overflow-hidden flex justify-center flex-col max-w-7xl mx-auto;
