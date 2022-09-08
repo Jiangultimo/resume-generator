@@ -18,7 +18,7 @@ export const exportPDF: Tool = {
     const res = await fetch('http://localhost:3000/api/pdf')
     const resBlob = await res.blob() // get response blob
     const blob = new Blob([resBlob])
-    const blobUrl = await window.URL.createObjectURL(blob)
+    const blobUrl = window.URL.createObjectURL(blob)
 
     const aEle = document.createElement('a')
     aEle.setAttribute('download', `${name}-${localTime()}.pdf`)
