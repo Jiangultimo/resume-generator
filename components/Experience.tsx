@@ -1,20 +1,21 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { ContentLink } from '@/components/ResumeLink'
 import styles from '@/styles/Experience.module.css'
 
 interface Props {
-  experiences: Experience[]
+  experience: ExperienceObject
 }
 
 const Experience: React.FC<Props> = (props) => {
-  const { experiences } = props
+  const { experience } = props
+  const { data, title } = experience
   return (
     <div className={styles['wrapper']}>
       <div className={styles['container']}>
-        <h4 className={styles['title']}>工作经历</h4>
+        <h4 className={styles['title']}>{title}</h4>
         {
-          experiences.map((experience, index) => {
-            const { skills, projects } = experience
+          data.map((experience, index) => {
+            const { labels, projects } = experience
             return (
               <div className={styles['content']} key={index}>
                 <h4 className={styles['company']}>
@@ -38,7 +39,7 @@ const Experience: React.FC<Props> = (props) => {
                   }</ul>
                 <div className={styles['skills-list']}>
                   {
-                    skills?.map((item, index) => {
+                    labels.map((item, index) => {
                       return (<span className={styles['skill']} key={index}>{item}</span>);
                     })
                   }
@@ -52,4 +53,4 @@ const Experience: React.FC<Props> = (props) => {
   );
 };
 
-export default Experience;
+export default memo(Experience)

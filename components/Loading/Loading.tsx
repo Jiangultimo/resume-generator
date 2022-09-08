@@ -1,5 +1,5 @@
 import styles from '@/styles/Loading.module.css'
-import loadingImg from '@/public/source/loading.svg';
+import loadingImg from '@/public/source/loading.svg'
 
 const Loading = () => {
   return (
@@ -13,4 +13,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default Loading

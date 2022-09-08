@@ -1,4 +1,7 @@
 [resume]
+# page tile
+title = ""
+
 # personal profile
 # you can add anything you want here,
 # but must keep `{ key = value, [url] = url value }` format, up to two fields
@@ -11,6 +14,7 @@ intros = [
     { github = "", url = "" },
     { site = "", url = "" }
 ]
+
 # personal skills
 # only simple string arrays with `title` field which is to descrip the `data` field,
 [resume.skills]
@@ -18,6 +22,7 @@ title = ""
 data = [
     "" # Your mastery of skills
 ]
+
 # self-evaluation
 # Ditto - `[resume.skills]`
 [resume.evaluations]
@@ -26,22 +31,25 @@ data = [
     ""
 ]
 
+[resume.experience]
+title = ''
+
 # ------work experience------
 # in one of the experiences:
 # `company`: company worked for in the past
 # `time`: working time
-# `position`: position in company(optional)
-# `companDes`: descrip what the company is doing(optional)
-# `skills`: the skills used in projects(it's just like a kind of label, so it would be a string array)
+# `position`: (optional)position in company
+# `companDes`: (optional)descrip what the company is doing
+# `labels`: labels that just could be anything can simply describe your abilities in your works(it's a string array).
 # `projects`: the `links` field is optional, if it appears, the `content` must be include a string template just like `{links.0}`,
 # the `links` field indexed by the `links` array so that when parsing the `content` the generator can convert it to the corresponding url
-[[resume.experiences]]
+[[resume.experience.data]]
 company = ""
 time = ""
 position = ""
 companyDes = ""
-skills = [""] # the skills that were used in your projects
-projects = [ # `content` must be specify, `links` is optional
+labels = [""]
+projects = [
     { content = "content test{links.0}", links = [
         { name = "url name", url = "https://www.something.com" }
     ]},
