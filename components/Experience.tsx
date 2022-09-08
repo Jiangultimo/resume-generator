@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { ContentLink } from '@/components/ResumeLink'
 import styles from '@/styles/Experience.module.css'
 
@@ -52,4 +52,4 @@ const Experience: React.FC<Props> = (props) => {
   );
 };
 
-export default Experience;
+export default memo(Experience)
