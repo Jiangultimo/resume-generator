@@ -18,7 +18,7 @@ const Loading: React.FC<LoadingProps> = props => {
         alt="loading"
       />
     </div>
-  );
-};
+  )
+}
 
 export default memo(Loading)

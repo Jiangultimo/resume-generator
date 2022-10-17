@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import styles from '@/styles/Content.module.css'
 
 const nilSkills: string[] = []
@@ -10,12 +10,12 @@ const Skill: React.FC<StringContent> = props => {
       <ul className={styles['list']}>
         {
           data.map((val: string, index: number) => {
-            return (<li className={styles['list-item']} key={index}>{val}</li>);
+            return (<li className={styles['list-item']} key={index}>{val}</li>)
           })
         }
       </ul>
     </div>
-  );
-};
+  )
+}
 
 export default Skill

@@ -13,7 +13,7 @@ const urlTemplate = (props: ContentUrl): string => {
 }
 
 const ContentLink: React.FC<Props> = props => {
-  const { links = nilLinks, content } = props;
+  const { links = nilLinks, content } = props
   const [renderContent, setRenderContent] = useState(content)
   useEffect(() => {
     const reg = /{(.*?)}/g

@@ -8,13 +8,13 @@ import UploadAvatar from '@/components/pages/index/UploadAvatar'
 type Props = {
   intros: Intro[]
   infos?: Intro
-};
+}
 
 const nilIntros: Intro[] = []
 const nilInfos: Intro = {}
 
 const Header: React.FC<Props> = (props) => {
-  const { intros = nilIntros, infos = nilInfos } = props;
+  const { intros = nilIntros, infos = nilInfos } = props
 
   return (
     <header className="relative">
@@ -32,21 +32,21 @@ const Header: React.FC<Props> = (props) => {
         <div className={styles["intro"]}>
           <dl className={styles["dl__group"]}>
             {intros.map((item) => {
-              const [key] = Object.keys(item);
+              const [key] = Object.keys(item)
               if (key === "email") {
-                item.url = `mailto:${item[key]}`;
+                item.url = `mailto:${item[key]}`
               }
               return (
                 <dd key={key} className={styles["dd__item"]}>
                   <SimpleLink {...item}>{item[key]}</SimpleLink>
                 </dd>
-              );
+              )
             })}
           </dl>
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default memo(Header);
+export default memo(Header)

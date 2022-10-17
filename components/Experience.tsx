@@ -34,13 +34,13 @@ const Experience: React.FC<Props> = (props) => {
                         <li key={index} className={styles['experience-item']}>
                           <ContentLink links={links} content={content} />
                         </li>
-                      );
+                      )
                     })
                   }</ul>
                 <div className={styles['skills-list']}>
                   {
                     labels.map((item, index) => {
-                      return (<span className={styles['label']} key={index}>{item}</span>);
+                      return (<span className={styles['label']} key={index}>{item}</span>)
                     })
                   }
                 </div>
