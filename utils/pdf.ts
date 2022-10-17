@@ -9,6 +9,7 @@ const defaultPuppeteerLaunchOptions: PuppeteerLaunchOptions = {
   args: [
     '--disable-setuid-sandbox',
     '--no-sandbox',
+    '--font-render-hinting=none'
   ]
 }
 

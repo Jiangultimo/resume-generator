@@ -37,10 +37,10 @@ const Experience: React.FC<Props> = (props) => {
                       );
                     })
                   }</ul>
-                <div className={styles['skills-list']}>
+                <div className={styles['labels-list']}>
                   {
                     labels.map((item, index) => {
-                      return (<span className={styles['skill']} key={index}>{item}</span>);
+                      return (<span className={styles['label']} key={index}>{item}</span>);
                     })
                   }
                 </div>
