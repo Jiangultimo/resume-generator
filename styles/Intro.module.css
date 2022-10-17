@@ -36,3 +36,7 @@
   color: #fff;
   /*text-shadow: 2px 0 #555555;*/
 }
+
+.image-wrapper{
+  @apply relative cursor-pointer;
+}

@@ -1,0 +1,23 @@
+.image-input-group{
+  @apply absolute flex justify-center items-center top-0 left-0 w-[100%] h-[150px] bg-[#000]/30 rounded-[50%] opacity-0;
+  transition: ease-in-out all .3s;
+}
+.image-input-group:hover{
+  @apply opacity-100;
+}
+.image-input-group:hover .image-input-icon{
+  @apply opacity-100;
+}
+.image-input-icon{
+  @apply text-[4rem] text-white font-light opacity-0;
+  transition: ease-in-out all .3s;
+}
+.image-input{
+  @apply opacity-0 w-[100%] h-[150px] absolute top-0 left-0 z-10 cursor-pointer;
+}
+.image-upload-loading{
+  @apply absolute h-[150px] rounded-[50%];
+}
+.image-upload-loading img{
+  @apply top-[50%] translate-y-[-50%];
+}

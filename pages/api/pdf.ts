@@ -4,9 +4,7 @@ import { getEnv } from '@/utils/env'
 import to from 'await-to-js'
 
 const exportPDF = async (req: NextApiRequest, res: NextApiResponse) => {
-  const host = getEnv('HOST')
-  const port = getEnv('PORT')
-  const route = getEnv('ROUTE')
+  const [host, port, route] = ['HOST', 'PORT', 'ROUTE'].reduce((prev: string[], cur: string): string[] => [...prev, getEnv(cur)] as string[], [])
   const [pdfErr, pdfBuffer] = await to<Buffer>(generatePDF(`${host}:${port}${route}`))
   // response pdf errors
   if (pdfErr) {

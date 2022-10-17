@@ -40,7 +40,7 @@ const Experience: React.FC<Props> = (props) => {
                 <div className={styles['skills-list']}>
                   {
                     labels.map((item, index) => {
-                      return (<span className={styles['skill']} key={index}>{item}</span>);
+                      return (<span className={styles['label']} key={index}>{item}</span>);
                     })
                   }
                 </div>
@@ -50,7 +50,7 @@ const Experience: React.FC<Props> = (props) => {
         }
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default memo(Experience)
