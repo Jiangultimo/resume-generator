@@ -41,13 +41,13 @@ const Header: React.FC<Props> = (props) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Card className="max-w-4xl mx-auto bg-white/95 backdrop-blur-sm shadow-sm border-0 hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+          <Card className="max-w-4xl mx-auto bg-[var(--chart-2)] backdrop-blur-sm shadow-sm border-0 hover:shadow-xl transition-shadow duration-300 overflow-hidden">
             <CardContent className="p-4 sm:p-6 lg:p-8">
               <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 w-full">
                 {/* Avatar Section */}
@@ -81,7 +81,7 @@ const Header: React.FC<Props> = (props) => {
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
                   <motion.h1 
-                    className="text-3xl md:text-4xl font-bold text-gray-900 mb-2"
+                    className="text-3xl md:text-4xl font-bold text-white mb-2"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.8 }}

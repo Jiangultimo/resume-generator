@@ -3,7 +3,7 @@
 .wrapper{
   @apply flex flex-col justify-center items-center;
   @apply py-4 px-4 sm:py-6 sm:px-6 lg:py-8 lg:px-8;
-  @apply max-w-full sm:max-w-2xl lg:max-w-4xl mx-auto;
+  @apply max-w-4xl xl:max-w-6xl mx-auto;
   position: relative;
   width: 100%;
   background-color: rgba(93, 172, 129, 0.7);
@@ -46,4 +46,39 @@
 .image-wrapper{
   @apply relative cursor-pointer;
   @apply transition-transform duration-300 hover:scale-105;
+}
+
+/* Responsive Design */
+@media (min-width: 1024px) {
+  .wrapper {
+    @apply max-w-4xl xl:max-w-6xl;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    @apply py-3 px-3;
+  }
+  
+  .intro {
+    @apply mt-3 px-3;
+  }
+  
+  .avatar {
+    @apply w-20 h-20;
+  }
+}
+
+@media (max-width: 640px) {
+  .wrapper {
+    @apply py-2 px-2;
+  }
+  
+  .intro {
+    @apply mt-2 px-2 max-w-xs;
+  }
+  
+  .dd__item {
+    @apply text-xs;
+  }
 }

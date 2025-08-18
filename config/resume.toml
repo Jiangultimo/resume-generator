@@ -5,10 +5,10 @@ title = "过去几年我都干了什么"
 intros = [
     { name = "蒋正兴" },
     { email = "medianeras57@gmail.com" },
-    { phone = "18203096625" },
+    # { phone = "18203096625" },
     { graduate = "重庆邮电大学，软件工程(2016年本科毕业)" },
     { github = "Github地址：github/Jiangultimo", url = "https://github.com/Jiangultimo" },
-    { intro = "拥有9年前后端开发经验的全栈工程师，曾任AI创业公司合伙人兼技术VP，擅长React与Node.js生态，具备从0到1打造产品与团队的实战能力。" }
+    { intro = "拥有9年前后端开发经验的全栈工程师，曾任AI创业公司技术负责人，擅长React与Node.js生态，具备从0到1打造产品与团队的实战能力。" }
     # { site = "https://starxx.me", url = "https://starxx.me/resume" }
 ]
 
@@ -16,11 +16,10 @@ intros = [
 [resume.skills]
 title = "掌握技能"
 data = [
-    "熟悉HTML, CSS, JavaScript, TypeScript, Nodejs",
-    "熟悉React, Nextjs, Antd, tailwindcss, git",
-    "熟悉Linux操作与shell脚本的编写",
-    "了解Golang, Python, Rust开发，并有具体的项目经验",
-    "了解DevOps, 从0到1实现完整的CI/CD，同时有Nginx，Caddy，Traefik，Docker，Kubernetes等项目经验",
+    "前端: 熟悉HTML/CSS/JavaScript/TypeScript，熟悉React生态(包括但不限于Next.js/Hooks/shadcn/ui)与Vue(Vue3/Nuxt)生态",
+    "后端: 熟练使用Node.js(Express/Koa)与Python(Flask/FastAPI)进行开发，了解Golang与Rust",
+    "工程化: 熟悉Linux/Shell脚本，具备DevOps实践经验，能独立搭建CI/CD流程",
+    "基础设施: 有Azure、腾讯云等云服务使用经验，熟悉容器化部署"
 ]
 
 # self-evaluation
@@ -42,7 +41,7 @@ company = "苏州拉普拉斯人工智能科技有限公司"
 time = "2022年11月 - 至今"
 position = "技术负责人"
 companyDes = "专注于企业级AI解决方案研发与落地的科技公司，致力于通过AI技术赋能企业数字化转型"
-labels = ["React", "Nodejs", "TypeScript", "Nextjs", "antd", "tailwindcss", "Shell", "React Native", "Python", "Golang", "Vue", "Rust", "shadcn/ui", "..."]
+labels = ["LLM", "RAG", "Agentic", "Langchain", "OpenAI", "React", "Nodejs", "TypeScript", "Nextjs", "tailwindcss", "Shell", "Python", "Golang", "Vue", "Rust", "shadcn/ui", "..."]
 projects = [
     { content = "技术战略与团队管理：制定技术发展路线图，带领团队完成技术架构升级。建立标准化开发流程，优化团队协作效率，提升产品交付质量" },
     { content = "AI产品架构设计：主导企业级AI解决方案的技术架构设计，包括大语言模型应用、智能流程自动化、数据分析平台等核心系统的规划与落地" },

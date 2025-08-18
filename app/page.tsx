@@ -73,9 +73,9 @@ const Resume = () => {
               <Content {...dataSkills} />
             </div>
             {/* 自我评价部分 - 移到技能部分之后 */}
-            <div id="evaluations" className={styles['evaluations']}>
+            {/* <div id="evaluations" className={styles['evaluations']}>
               <Content {...dataEvaluations} />
-            </div>
+            </div> */}
           </div>
           <div className={styles['resume-content']}>
             {/* 工作经验部分 */}

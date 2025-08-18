@@ -27,14 +27,14 @@
 
 /* 技能和评价容器 - 桌面端并排，移动端上下 */
 .skills-evaluations-container {
-  @apply flex flex-col lg:flex-row gap-3 sm:gap-4 lg:gap-5;
+  @apply flex flex-col lg:flex-row gap-3 sm:gap-4 lg:gap-5 shadow-lg;
   @apply max-w-full sm:max-w-2xl lg:max-w-4xl mx-auto;
   @apply px-2 sm:px-4 lg:px-0;
 }
 
 /* 技能部分样式 - 应用工作经历背景样式 */
 .skills {
-  @apply w-1/2 sm:w-full flex-1 bg-white/50 backdrop-blur-sm rounded-lg shadow-sm;
+  @apply w-full flex-1 bg-white/50 backdrop-blur-sm rounded-lg shadow-sm;
   @apply py-3 px-3 sm:px-4 lg:px-6 box-border;
 }
 

@@ -10,6 +10,16 @@ html {
   scroll-behavior: smooth;
 }
 
+/* 技能关键词高亮样式 */
+.skill-highlight {
+  @apply font-semibold text-emerald-700 px-1 py-0.5 rounded;
+  @apply transition-all duration-200;
+}
+
+.skill-highlight:hover {
+  @apply bg-emerald-100 border-emerald-300;
+}
+
 html,
 body {
   width: 100%;
