@@ -41,7 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 # config
-config/resume.toml
+# config/resume.toml
 
 # avatar
-public/avatar.jpg
+# public/avatar.jpg

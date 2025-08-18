@@ -1,0 +1,158 @@
+[resume]
+title = "过去几年我都干了什么"
+
+# personal profile
+intros = [
+    { name = "蒋正兴" },
+    { email = "medianeras57@gmail.com" },
+    { phone = "18203096625" },
+    { graduate = "重庆邮电大学，软件工程(2016年本科毕业)" },
+    { github = "Github地址：github/Jiangultimo", url = "https://github.com/Jiangultimo" },
+    { intro = "拥有9年前后端开发经验的全栈工程师，曾任AI创业公司合伙人兼技术VP，擅长React与Node.js生态，具备从0到1打造产品与团队的实战能力。" }
+    # { site = "https://starxx.me", url = "https://starxx.me/resume" }
+]
+
+# personal skills
+[resume.skills]
+title = "掌握技能"
+data = [
+    "熟悉HTML, CSS, JavaScript, TypeScript, Nodejs",
+    "熟悉React, Nextjs, Antd, tailwindcss, git",
+    "熟悉Linux操作与shell脚本的编写",
+    "了解Golang, Python, Rust开发，并有具体的项目经验",
+    "了解DevOps, 从0到1实现完整的CI/CD，同时有Nginx，Caddy，Traefik，Docker，Kubernetes等项目经验",
+]
+
+# self-evaluation
+[resume.evaluations]
+title = "自我评价"
+data = [
+    "热爱探索，相信未知的世界总有令人惊喜的发现",
+    "持续学习，在技术的广度与深度上保持同步成长",
+    "拥抱前沿，新技术往往蕴含着意想不到的创新机遇",
+]
+
+
+[resume.experience]
+title = '工作经历'
+# ------work experience------
+
+[[resume.experience.data]]
+company = "苏州拉普拉斯人工智能科技有限公司"
+time = "2022年11月 - 至今"
+position = "技术负责人"
+companyDes = "专注于企业级AI解决方案研发与落地的科技公司，致力于通过AI技术赋能企业数字化转型"
+labels = ["React", "Nodejs", "TypeScript", "Nextjs", "antd", "tailwindcss", "Shell", "React Native", "Python", "Golang", "Vue", "Rust", "shadcn/ui", "..."]
+projects = [
+    { content = "技术战略与团队管理：制定技术发展路线图，带领团队完成技术架构升级。建立标准化开发流程，优化团队协作效率，提升产品交付质量" },
+    { content = "AI产品架构设计：主导企业级AI解决方案的技术架构设计，包括大语言模型应用、智能流程自动化、数据分析平台等核心系统的规划与落地" },
+    { content = "全栈技术实践：统筹Web前端、后端服务、云原生架构等技术领域，建立完整的技术体系，确保产品的高可用性与可扩展性" },
+]
+
+[[resume.experience.data]]
+company = "Deeper Network, Inc."
+time = "2021年5月 - 2022年11月"
+position = "JavaScript全栈工程师(全职远程)"
+companyDes = "致力构建WEB3.0，使用区块链技术通过硬件设备实现真正私有，安全，公平的分布式网络"
+labels = ["React", "Nodejs", "TypeScript", "Nextjs", "antd", "tailwindcss", "Shell", "React Native", "Web3js", "wordpress"]
+projects = [
+    { content = "维护/重构主站: {links.0}", links = [
+        { name = "deeper.network", url = "https://deeper.network" }
+    ]},
+    { content = "独立构建产品售卖站点：{links.0}", links = [
+        { name = "shop.deeper.network", url = "https://shop.deeper.network" }
+    ]},
+    { content = "维护由wordpress搭建的订单后台" },
+    { content = "独立维护设备的后台管理系统，同时对老代码进行优化/重构/抽离工具函数、组件" },
+    { content = "与硬件工程师协作，完成与硬件相关的网页需求（蓝牙和wifi），同时编写一些必要的脚本（shell工具）" },
+    { content = "入驻{links.0}(Helium 网络是由去中心化的全球设备网络提供支持的区块链)，独立完成与公司设备交互的web需求，包括但不限于UI与接口", links = [
+        { name = "Helium", url = "https://www.helium.com" }
+    ]},
+    { content = "入驻{links.0}，独立调试编译{links.0}/{links.1}，分析入驻协议与要求，提交入驻PR", links = [
+        { name = 'Helium App', url = "https://github.com/helium/hotspot-app" },
+        { name = 'maker-start-app', url = "https://github.com/helium/maker-starter-app" }
+    ]}
+]
+
+# ------work experience------
+[[resume.experience.data]]
+company = "美间"
+time = "2019年7月 - 2020年11月"
+position = "前端工程师"
+companyDes = "杭州美间科技有限公司 - 酷家乐旗下创意内容云设计工具"
+labels = ["React", "React Hooks", "Nodejs", "TypeScript", "fabricjs", "bulljs"]
+projects = [
+    { content = "使用React开发维护主站{links.0}，包括但不限于日常需求以及公共组件的开发", links = [
+        { name = "美间官网", url = "https://www.meijian.io" }
+    ]},
+    { content = "开发并维护面向软装设计师使用的{links.0}", links = [
+        { name = "工具项目", url = "https://www.meijian.io/board/5fe5428be4b022446d24a3f8" }
+    ]},
+    { content = "使用React + TypeScript开发主站公共组件：主站登录后右上角通知功能；公共编辑弹窗组件重构等" },
+    { content = "主导使用Nodejs，基于prerender.js库，并使用{links.0}，对接Java，二次开发并自建公司内部使用的prerender服务，优化搜索引擎的爬去，提升SEO", links = [
+        { name = "bulljs", url = "https://starxx.me/article/1PIkVyzL_SokcSYS1LKutG3cpoBI0tYzm" }
+    ]}
+]
+
+# ------work experience------
+[[resume.experience.data]]
+company = "婚礼纪（杭州火烧云科技有限公司）"
+position = "前端工程师"
+time = "2018年5月-2019年6月"
+labels = ["React", "mobx", "Vue", "Nodejs", "Nuxtjs", "Nextjs"]
+projects = [
+    { content = "使用React + mobx和antd维护、开发公司后台管理系统" },
+    { content = "使用React + mobx开发面向用户的{links.0}", links = [
+        { name = "商家后台", url = "https://www.hunliji.com/p/wedding/Public/admin/local_merchant_react/dist/index.html#/localMerchant/home" }
+    ]},
+    { content = "使用React + mobx开发面向商家的{links.0}", links = [
+        { name = "水镜系统：可视化配置月面", url = "https://www.hunliji.com/p/wedding/Public/admin/desktop_app_set/dist/index.html#/index" }
+    ]},
+    { content = "使用Nextjs重构{links.0}，{links.1}，{links.2}相关页面，抽离可复用的相关的公共组件", links = [
+        { name = "商家", url = "https://www.hunliji.com/merchant/list_2/" },
+        { name = "案例", url = "https://www.hunliji.com/example/list_2/" },
+        { name = "套餐", url = "https://www.hunliji.com/package/list_2/" }
+    ]},
+    { content = "使用Vue开发维护App内嵌页面，使用Nuxtjs重构移动端首页" },
+    { content = "在重构移动端首页时，使用Nuxtjs开发脚手架wap_vue，通用于移动端SSR或编译静态页面" },
+    { content = "使用verdaccio搭建内部私有npm仓库" }
+]
+
+# ------work experience------
+[[resume.experience.data]]
+company = "你今天真好看APP（杭州以息互联网科技有限公司）"
+position = "前端工程师"
+time = "2017年6月-2018年3月"
+labels = ["Nodejs", "React", "Nextjs", "Vue", "jQuery"]
+projects = [
+    { content = "使用Vue构建从APP中抽离的{links.0}", links = [
+        { name = "人脸检测功能", url = "https://open.c2h4.org/c2h42baidu/#/" }
+    ]},
+    { content = "使用Nextjs重构APP内嵌{links.0}", links =[
+        { name = "文章页面", url = "https://api.c2h4.org/show/article/579" }
+    ]},
+    { content = "使用Element UI重构公司后台管理系统" },
+    { content = "为满足公司运营人员文章编辑的需求，二次封装开发wangEditor富文本编辑器" }
+]
+
+# ------work experience------
+[[resume.experience.data]]
+company = "猪八戒网（猪八戒股份有限公司）"
+position = "前端工程师"
+time = "2016年6月-2017年6月"
+labels = ["Nodejs", "Vue", "nunjucks", "lite", "jQuery", "smarty"]
+projects = [
+    { content = "面向商家向站内投放广告的工具开发: {links.0}, {links.1}，使用Nodejs作为中间层，与Java接口对接", links = [
+        { name = "八戒仙位", url = "https://xw.zbj.com" },
+        { name = "品牌宝", url = "https://ppb.zbj.com" }
+    ]},
+    { content = "参与部门系统公共组件的开发和维护，以及部门后台管理系统开发" },
+    { content = "广告活动专题页面开发以及老页面维护" }
+]
+
+
+
+
+
+
+
