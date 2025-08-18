@@ -62,7 +62,7 @@ const Resume = () => {
         }}>
           { loading && <Loading /> }
 
-          <ExportPDF infos={formattedInfos} />
+          {/* <ExportPDF infos={formattedInfos} /> */}
           <div id="intro">
             <Intro intros={dataIntros} infos={formattedInfos} />
           </div>
