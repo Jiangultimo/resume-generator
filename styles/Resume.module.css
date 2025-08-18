@@ -1,11 +1,54 @@
+@reference "./globals.css";
+
 .resume{
-  @apply py-[2.5rem] px-[3.75rem] min-h-[100%];
+  @apply py-4 px-4 sm:py-8 sm:px-6 lg:py-10 lg:px-8;
   color: #555;
   background: url("/source/texture.png") 0 0 repeat;
+  min-height: 100vh;
 }
+
 .resume-wrapper{
-  @apply w-[100%] box-border overflow-hidden flex justify-center flex-col max-w-7xl mx-auto;
+  @apply w-full box-border overflow-hidden flex justify-center flex-col max-w-4xl xl:max-w-6xl mx-auto;
+  @apply space-y-4 sm:space-y-5 lg:space-y-6;
 }
+
 .resume-content{
-  @apply max-w-[37.5rem] mx-auto;
+  @apply max-w-full sm:max-w-2xl lg:max-w-4xl mx-auto;
+  @apply space-y-4 sm:space-y-5 lg:space-y-6;
+  @apply flex flex-col gap-3 sm:gap-4 lg:gap-5;
+  /* 移动端优化 */
+  @apply px-2 sm:px-4 lg:px-0;
+}
+
+/* 为不同部分添加视觉分隔 */
+.resume-content > div {
+  @apply relative;
+}
+
+/* 技能和评价容器 - 桌面端并排，移动端上下 */
+.skills-evaluations-container {
+  @apply flex flex-col lg:flex-row gap-3 sm:gap-4 lg:gap-5;
+  @apply max-w-full sm:max-w-2xl lg:max-w-4xl mx-auto;
+  @apply px-2 sm:px-4 lg:px-0;
+}
+
+/* 技能部分样式 - 应用工作经历背景样式 */
+.skills {
+  @apply w-1/2 sm:w-full flex-1 bg-white/50 backdrop-blur-sm rounded-lg shadow-sm;
+  @apply py-3 px-3 sm:px-4 lg:px-6 box-border;
+}
+
+/* 自我评价部分样式 - 应用工作经历背景样式 */
+.evaluations {
+  @apply w-1/2 flex-1 sm:w-full;
+  @apply bg-white/50 backdrop-blur-sm rounded-lg shadow-sm;
+  @apply py-3 px-3 sm:px-4 lg:px-6 box-border;
+}
+
+/* 工作经验部分 */
+.resume-content > div#experience {
+  @apply order-2;
+  @apply bg-gradient-to-br from-gray-50/50 to-slate-50/50;
+  @apply rounded-lg p-4 sm:p-6;
+  @apply border border-gray-100;
 }

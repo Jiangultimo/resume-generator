@@ -1,37 +1,57 @@
+@reference "./globals.css";
+
 .wrapper {
-  @apply max-w-[37.5rem] mx-auto pt-4;
+  @apply max-w-full mx-auto pt-4;
 }
 
 .container{
-  @apply w-[100%] py-0 px-[1.25rem] box-border;
+  @apply w-full py-3 px-3 sm:px-4 lg:px-6 box-border;
+  @apply bg-white/50 backdrop-blur-sm rounded-lg shadow-sm;
 }
+
 .title{
-  @apply text-[1rem] font-bold pb-2;
+  @apply text-lg font-medium pb-1.5 text-gray-800;
+  @apply border-b border-gray-200 mb-3;
 }
 
 .content {
-  @apply w-[100%] border-b-[1px] border-solid border-[#e3e3e3] py-2;
+  @apply w-full py-3 last:pb-0;
+  @apply space-y-2;
 }
+
 .company{
-  @apply m-0 text-[0.875rem] mb-1;
+  @apply m-0 text-xs sm:text-sm font-semibold mb-1 text-gray-800;
 }
+
 .time{
-  @apply text-[0.875rem] mb-1;
+  @apply text-xs mb-1.5 text-gray-600;
 }
 
 .experience{
-  @apply pl-[1.125rem] list-disc;
+  @apply space-y-2;
 }
+
 .experience-item{
-  @apply text-[0.875rem] py-0.5;
+  @apply text-sm py-1.5 px-2.5 text-gray-700;
+  @apply hover:text-gray-900 transition-all duration-200;
+  @apply rounded-md border border-transparent;
+  @apply hover:border-emerald-200 hover:shadow-sm;
+  @apply !mb-0 list-none;
 }
+
 .experience-item a{
-  @apply text-[#59B2DC] underline;
+  @apply text-emerald-600 hover:text-emerald-800 underline hover:no-underline;
+  @apply transition-colors duration-200;
 }
 
 .skills-list {
-  @apply flex justify-start flex-wrap;
+  @apply flex justify-start flex-wrap gap-2 mt-3;
 }
+
 .label {
-  @apply mr-[0.625rem] mt-2 border-r-[0.25rem] p-[0.125rem] text-[0.875rem] border-[1px] border-transparent border-solid bg-[#5DAC81] text-[#fff] rounded-[2px] shadow-2xl;
+  @apply px-3 py-1 text-xs sm:text-sm font-medium;
+  @apply bg-emerald-500 hover:bg-emerald-600 text-white;
+  @apply rounded-full shadow-sm hover:shadow-md;
+  @apply transition-all duration-200 cursor-pointer;
+  @apply transform hover:scale-105;
 }

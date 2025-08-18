@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
+import { Loader2 } from 'lucide-react'
 import styles from '@/styles/Loading.module.css'
-import loadingImg from '@/public/source/loading.svg'
 
 export interface LoadingProps {
   style?: React.CSSProperties,
@@ -12,11 +12,7 @@ const Loading: React.FC<LoadingProps> = props => {
   const { style = nilStyle, className } = props
   return (
     <div className={`${styles.loading} ${className}`} style={style}>
-      <img
-        src={loadingImg.src}
-        className={styles['loading-icon']}
-        alt="loading"
-      />
+      <Loader2 className={`${styles['loading-icon']} animate-spin`} />
     </div>
   )
 }

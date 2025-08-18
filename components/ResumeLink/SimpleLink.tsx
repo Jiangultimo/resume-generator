@@ -13,8 +13,8 @@ const SimpleLink: React.FC<Props> = props => {
     <>
       {
         url ? (
-          <Link href={url}>
-            <a target="_blank" className={className} style={style}>{props.children}</a>
+          <Link href={url} className={className} style={style} target="_blank" rel="noopener noreferrer">
+            {props.children}
           </Link>
         ) : (
           <span style={style} className={className}>{props.children}</span>

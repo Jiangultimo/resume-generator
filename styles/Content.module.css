@@ -1,12 +1,44 @@
+@reference "./globals.css";
+
 .content {
-  @apply w-[100%] px-[1.25rem] py-[0.5rem] box-border;
+  @apply w-full box-border;
+  @apply transition-all duration-300;
 }
+
+/* 技能部分增强样式 */
+.skills-enhanced {
+  @apply bg-gradient-to-br from-emerald-50/80 to-teal-50/80;
+  @apply border-l-4 border-emerald-500;
+  @apply shadow-lg shadow-emerald-100/50;
+}
+
 .title{
-  @apply resume-title pb-1;
+  @apply pb-2 text-base sm:text-lg lg:text-xl font-medium text-gray-800;
+  @apply border-b border-gray-200 mb-3;
 }
+
+/* 技能标题增强样式 */
+.skills-title {
+  @apply text-emerald-800 border-b-2 border-emerald-300;
+  @apply font-semibold;
+}
+
 .list{
-  @apply pl-[1.125rem] list-disc;
+  @apply pl-5 space-y-2;
 }
+
 .list-item{
-  @apply text-[0.875rem] mt-1;
+  @apply text-sm py-1.5 px-2.5 text-gray-700;
+  @apply hover:text-gray-900 transition-all duration-200;
+  @apply rounded-md border border-transparent;
+  @apply hover:border-emerald-200 hover:shadow-sm;
+  @apply !mb-0 list-none;
+}
+
+/* 技能项目增强样式 */
+.skill-item {
+  @apply bg-white/60 border border-emerald-100;
+  @apply hover:border-emerald-300 hover:shadow-sm;
+  @apply transition-all duration-200;
+  @apply list-none;
 }

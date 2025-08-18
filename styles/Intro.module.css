@@ -1,42 +1,49 @@
+@reference "./globals.css";
+
 .wrapper{
   @apply flex flex-col justify-center items-center;
+  @apply py-4 px-4 sm:py-6 sm:px-6 lg:py-8 lg:px-8;
+  @apply max-w-full sm:max-w-2xl lg:max-w-4xl mx-auto;
   position: relative;
   width: 100%;
-  background-color: #5DAC81;
-  padding: 10px 0;
+  background-color: rgba(93, 172, 129, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 }
 
 .avatar {
+  @apply w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .intro {
-  @apply mt-[10px] relative z-10;
-  max-width: 400px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  @apply mt-4 sm:mt-6 lg:mt-8 relative z-10;
+  @apply w-full max-w-sm sm:max-w-md lg:max-w-2xl;
+  @apply px-4 sm:px-6;
 }
 
 .dl__group {
+  @apply space-y-2 sm:space-y-3;
   margin: 0;
   width: 100%;
 }
 
 .dd__item {
-  text-align: center;
-  font-size: 14px;
+  @apply text-center text-sm sm:text-base lg:text-lg;
   color: #FCFAF2;
   margin: 0;
 }
 
 .dd__item a {
-  text-decoration: underline;
+  @apply underline hover:no-underline transition-all duration-200;
   color: #fff;
-  /*text-shadow: 2px 0 #555555;*/
 }
 
 .image-wrapper{
   @apply relative cursor-pointer;
+  @apply transition-transform duration-300 hover:scale-105;
 }

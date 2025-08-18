@@ -1,3 +1,5 @@
+@reference "./globals.css";
+
 .loading{
   @apply w-[100%] h-[100vh] fixed top-0 left-0 flex justify-center bg-[rgba(0,0,0,.5)] z-20;
 }

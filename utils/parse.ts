@@ -13,6 +13,8 @@ const RESUME_SOURCE: {
 
 export const getContent = async (type: string): Promise<Resume> => {
   const resumeBuffer = await fs.readFile(`${root}/config/${RESUME_SOURCE[type]}`)
-  const resumeTable = toml.parse(resumeBuffer)
+  const resumeTable = toml.parse(
+    resumeBuffer.toString('utf-8')
+  )
   return resumeTable.resume as unknown as Resume
 }

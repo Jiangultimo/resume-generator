@@ -1,3 +1,5 @@
+@reference "./globals.css";
+
 .tool{
   @apply fixed left-[calc(50%-14px)] top-[0.5rem] bg-white w-auto h-auto animate-bounce;
 }
