@@ -1,5 +1,4 @@
 import React, { memo } from 'react'
-import { Loader2 } from 'lucide-react'
 import styles from '@/styles/Loading.module.css'
 
 export interface LoadingProps {
@@ -12,7 +11,19 @@ const Loading: React.FC<LoadingProps> = props => {
   const { style = nilStyle, className } = props
   return (
     <div className={`${styles.loading} ${className}`} style={style}>
-      <Loader2 className={`${styles['loading-icon']} animate-spin`} />
+      <div className={styles['loading-container']}>
+        <div className={styles['loading-spinner']}>
+          <div className={styles['spinner-ring']}></div>
+          <div className={styles['spinner-ring']}></div>
+          <div className={styles['spinner-ring']}></div>
+        </div>
+        <div className={styles['loading-text']}>Loading...</div>
+        <div className={styles['loading-dots']}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </div>
   )
 }

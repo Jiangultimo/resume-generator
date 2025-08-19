@@ -7,7 +7,7 @@ intros = [
     { email = "medianeras57@gmail.com" },
     # { phone = "18203096625" },
     { graduate = "重庆邮电大学，软件工程(2016年本科毕业)" },
-    { github = "github/Jiangultimo", url = "https://github.com/Jiangultimo" },
+    { github = "Github/Jiangultimo", url = "https://github.com/Jiangultimo" },
     { intro = "拥有9年前后端开发经验的全栈工程师，曾任AI创业公司技术负责人，擅长React与Node.js生态，具备从0到1打造产品与团队的实战能力。" }
     # { site = "https://starxx.me", url = "https://starxx.me/resume" }
 ]

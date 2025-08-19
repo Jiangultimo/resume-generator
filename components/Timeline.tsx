@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import { motion } from 'framer-motion'
 import { Briefcase, Calendar, MapPin, ChevronRight, TrendingUp } from 'lucide-react'
+import { useI18n } from '@/context/i18n'
 import { ContentLink } from '@/components/ResumeLink'
 import styles from '@/styles/Timeline.module.css'
 
@@ -11,6 +12,7 @@ interface Props {
 const Timeline: React.FC<Props> = (props) => {
   const { experience } = props
   const { data, title } = experience
+  const { t } = useI18n()
   
   const containerVariants = {
     hidden: { opacity: 0 },

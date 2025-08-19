@@ -1,0 +1,112 @@
+@reference "./globals.css";
+
+.languageSwitcher {
+  @apply relative;
+}
+
+.switcherContainer {
+  @apply relative flex items-center;
+  @apply bg-white/20 backdrop-blur-md;
+  @apply border border-white/30;
+  @apply rounded-full p-1;
+  @apply shadow-lg shadow-black/10;
+  min-width: 140px;
+  height: 44px;
+}
+
+.activeIndicator {
+  @apply absolute top-1 bottom-1 left-1;
+  @apply bg-gradient-to-r from-blue-500 to-purple-600;
+  @apply rounded-full;
+  @apply shadow-md shadow-blue-500/25;
+  width: calc(50% - 4px);
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+}
+
+.activeLeft {
+  transform: translateX(0) translateZ(0);
+}
+
+.activeRight {
+  transform: translateX(calc(100% + 4px)) translateZ(0);
+}
+
+.switcherButton {
+  @apply relative flex items-center justify-center gap-1;
+  @apply flex-1 h-full;
+  @apply text-sm font-medium;
+  @apply rounded-full;
+  @apply border-none outline-none;
+  @apply cursor-pointer;
+  background: transparent;
+  z-index: 2;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.switcherButton:hover {
+  @apply scale-105;
+}
+
+.switcherButton.active {
+  @apply text-white;
+  transform: scale(1.02);
+}
+
+.switcherButton:not(.active) {
+  @apply text-gray-600;
+}
+
+.switcherButton:not(.active):hover {
+  @apply text-gray-800;
+}
+
+.buttonIcon {
+  @apply text-xs;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.switcherButton:hover .buttonIcon {
+  @apply scale-110;
+}
+
+.buttonText {
+  @apply font-semibold tracking-wide;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.switcherButton.active .buttonText {
+  @apply drop-shadow-sm;
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+  .switcherContainer {
+    min-width: 120px;
+    height: 40px;
+  }
+  
+  .switcherButton {
+    @apply text-xs;
+  }
+  
+  .buttonIcon {
+    @apply text-xs;
+  }
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+  .switcherContainer {
+    @apply bg-gray-800/40 border-gray-600/30;
+  }
+  
+  .switcherButton:not(.active) {
+    @apply text-gray-300;
+  }
+  
+  .switcherButton:not(.active):hover {
+    @apply text-white;
+  }
+}

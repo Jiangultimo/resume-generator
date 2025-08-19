@@ -1,14 +1,18 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Award, Star, TrendingUp, ChevronRight } from 'lucide-react'
+import { useI18n } from '@/context/i18n'
 import styles from '@/styles/Content.module.css'
 
 const nilSkills: string[] = []
 
 const Skill: React.FC<StringContent> = props => {
   const { title, data = nilSkills } = props
-  const isSkillsSection = title && (title.toLowerCase().includes('技能') || title.toLowerCase().includes('skill'))
-  const isEvaluationSection = title && (title.toLowerCase().includes('评价') || title.toLowerCase().includes('evaluation'))
+  const { t } = useI18n()
+  
+  // Check if this is skills or evaluation section by comparing with translations
+  const isSkillsSection = title && (title === t.skills || title.toLowerCase().includes('技能') || title.toLowerCase().includes('skill'))
+  const isEvaluationSection = title && (title === t.evaluation || title.toLowerCase().includes('评价') || title.toLowerCase().includes('evaluation'))
   
   // 技能关键词列表
   const skillKeywords = [

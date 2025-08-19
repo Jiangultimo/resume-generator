@@ -1,0 +1,150 @@
+[resume]
+title = "What I've Been Doing Over the Past Few Years"
+
+# personal profile
+intros = [
+    { name = "Zhengxing Jiang" },
+    { email = "medianeras57@gmail.com" },
+    # { phone = "18203096625" },
+    { graduate = "Chongqing University of Posts and Telecommunications, Software Engineering (Bachelor's degree, graduated in 2016)" },
+    { github = "Github/Jiangultimo", url = "https://github.com/Jiangultimo" },
+    { intro = "Full-stack engineer with 9 years of front-end and back-end development experience, former technical lead at an AI startup, specializing in React and Node.js ecosystems, with hands-on experience in building products and teams from 0 to 1." }
+    # { site = "https://starxx.me", url = "https://starxx.me/resume" }
+]
+
+# personal skills
+[resume.skills]
+title = "Technical Skills"
+data = [
+    "Frontend: Proficient in HTML/CSS/JavaScript/TypeScript, familiar with React ecosystem (including but not limited to Next.js/Hooks/shadcn/ui) and Vue (Vue3/Nuxt) ecosystem",
+    "Backend: Skilled in Node.js (Express/Koa) and Python (Flask/FastAPI) development, familiar with Golang and Rust",
+    "Engineering: Familiar with Linux/Shell scripting, experienced in DevOps practices, capable of independently setting up CI/CD pipelines",
+    "Infrastructure: Experienced with Azure, Tencent Cloud and other cloud services, familiar with containerized deployment"
+]
+
+# self-evaluation
+[resume.evaluations]
+title = "Self-Evaluation"
+data = [
+    "Love exploring, believe the unknown world always has surprising discoveries",
+    "Continuous learning, maintaining synchronized growth in both breadth and depth of technology",
+    "Embrace cutting-edge technologies, new technologies often contain unexpected innovation opportunities",
+]
+
+
+[resume.experience]
+title = 'Work Experience'
+# ------work experience------
+
+[[resume.experience.data]]
+company = "Suzhou Laplace Artificial Intelligence Technology Co., Ltd."
+time = "November 2022 - Present"
+position = "Technical Lead"
+companyDes = "A technology company focused on enterprise-level AI solution development and implementation, committed to empowering enterprise digital transformation through AI technology"
+labels = ["LLM", "RAG", "Agentic", "Langchain", "OpenAI", "React", "Nodejs", "TypeScript", "Nextjs", "tailwindcss", "Shell", "Python", "Golang", "Vue", "Rust", "shadcn/ui", "..."]
+projects = [
+    { content = "Technical Strategy & Team Management: Formulated technical development roadmap, led team to complete technical architecture upgrades. Established standardized development processes, optimized team collaboration efficiency, and improved product delivery quality" },
+    { content = "AI Product Architecture Design: Led the technical architecture design of enterprise-level AI solutions, including planning and implementation of core systems such as large language model applications, intelligent process automation, and data analysis platforms" },
+    { content = "Full-Stack Technical Practice: Coordinated technical domains including web frontend, backend services, and cloud-native architecture, established a complete technical system to ensure high availability and scalability of products" },
+]
+
+[[resume.experience.data]]
+company = "Deeper Network, Inc."
+time = "May 2021 - November 2022"
+position = "JavaScript Full-Stack Engineer (Full-time Remote)"
+companyDes = "Committed to building WEB3.0, using blockchain technology through hardware devices to achieve truly private, secure, and fair distributed networks"
+labels = ["React", "Nodejs", "TypeScript", "Nextjs", "antd", "tailwindcss", "Shell", "React Native", "Web3js", "wordpress"]
+projects = [
+    { content = "Maintained/refactored main website: {links.0}", links = [
+        { name = "deeper.network", url = "https://deeper.network" }
+    ]},
+    { content = "Independently built product sales site: {links.0}", links = [
+        { name = "shop.deeper.network", url = "https://shop.deeper.network" }
+    ]},
+    { content = "Maintained order backend built with WordPress" },
+    { content = "Independently maintained device backend management system, while optimizing/refactoring/extracting utility functions and components from legacy code" },
+    { content = "Collaborated with hardware engineers to complete hardware-related web requirements (Bluetooth and WiFi), while writing necessary scripts (shell tools)" },
+    { content = "Joined {links.0} (Helium Network is a blockchain powered by a decentralized global device network), independently completed web requirements for interaction with company devices, including but not limited to UI and interfaces", links = [
+        { name = "Helium", url = "https://www.helium.com" }
+    ]},
+    { content = "Joined {links.0}, independently debugged and compiled {links.0}/{links.1}, analyzed onboarding protocols and requirements, submitted onboarding PR", links = [
+        { name = 'Helium App', url = "https://github.com/helium/hotspot-app" },
+        { name = 'maker-start-app', url = "https://github.com/helium/maker-starter-app" }
+    ]}
+]
+
+# ------work experience------
+[[resume.experience.data]]
+company = "Meijian"
+time = "July 2019 - November 2020"
+position = "Frontend Engineer"
+companyDes = "Hangzhou Meijian Technology Co., Ltd. - Creative content cloud design tool under Kujiale"
+labels = ["React", "React Hooks", "Nodejs", "TypeScript", "fabricjs", "bulljs"]
+projects = [
+    { content = "Developed and maintained main website {links.0} using React, including but not limited to daily requirements and common component development", links = [
+        { name = "Meijian Official Website", url = "https://www.meijian.io" }
+    ]},
+    { content = "Developed and maintained {links.0} for interior designers", links = [
+        { name = "tool project", url = "https://www.meijian.io/board/5fe5428be4b022446d24a3f8" }
+    ]},
+    { content = "Developed main website common components using React + TypeScript: notification functionality in the upper right corner after main website login; refactoring of common edit popup components, etc." },
+    { content = "Led the development of internal prerender service using Node.js, based on prerender.js library, and using {links.0}, interfacing with Java, secondary development and self-built company internal prerender service, optimizing search engine crawling and improving SEO", links = [
+        { name = "bulljs", url = "https://starxx.me/article/1PIkVyzL_SokcSYS1LKutG3cpoBI0tYzm" }
+    ]}
+]
+
+# ------work experience------
+[[resume.experience.data]]
+company = "Hunliji (Hangzhou Huoshaoyun Technology Co., Ltd.)"
+position = "Frontend Engineer"
+time = "May 2018 - June 2019"
+labels = ["React", "mobx", "Vue", "Nodejs", "Nuxtjs", "Nextjs"]
+projects = [
+    { content = "Maintained and developed company backend management system using React + mobx and antd" },
+    { content = "Developed user-facing {links.0} using React + mobx", links = [
+        { name = "merchant backend", url = "https://www.hunliji.com/p/wedding/Public/admin/local_merchant_react/dist/index.html#/localMerchant/home" }
+    ]},
+    { content = "Developed merchant-facing {links.0} using React + mobx", links = [
+        { name = "Water Mirror System: Visual configuration interface", url = "https://www.hunliji.com/p/wedding/Public/admin/desktop_app_set/dist/index.html#/index" }
+    ]},
+    { content = "Refactored {links.0}, {links.1}, {links.2} related pages using Next.js, extracted reusable common components", links = [
+        { name = "merchants", url = "https://www.hunliji.com/merchant/list_2/" },
+        { name = "cases", url = "https://www.hunliji.com/example/list_2/" },
+        { name = "packages", url = "https://www.hunliji.com/package/list_2/" }
+    ]},
+    { content = "Developed and maintained App embedded pages using Vue, refactored mobile homepage using Nuxt.js" },
+    { content = "When refactoring mobile homepage, developed scaffold wap_vue using Nuxt.js, universal for mobile SSR or compiling static pages" },
+    { content = "Set up internal private npm repository using verdaccio" }
+]
+
+# ------work experience------
+[[resume.experience.data]]
+company = "You Look Great Today APP (Hangzhou Yixi Internet Technology Co., Ltd.)"
+position = "Frontend Engineer"
+time = "June 2017 - March 2018"
+labels = ["Nodejs", "React", "Nextjs", "Vue", "jQuery"]
+projects = [
+    { content = "Built {links.0} extracted from APP using Vue", links = [
+        { name = "face detection functionality", url = "https://open.c2h4.org/c2h42baidu/#/" }
+    ]},
+    { content = "Refactored APP embedded {links.0} using Next.js", links =[
+        { name = "article pages", url = "https://api.c2h4.org/show/article/579" }
+    ]},
+    { content = "Refactored company backend management system using Element UI" },
+    { content = "To meet company operations staff's article editing needs, secondary encapsulated and developed wangEditor rich text editor" }
+]
+
+# ------work experience------
+[[resume.experience.data]]
+company = "Zhubajie.com (Zhubajie Co., Ltd.)"
+position = "Frontend Engineer"
+time = "June 2016 - June 2017"
+labels = ["Nodejs", "Vue", "nunjucks", "lite", "jQuery", "smarty"]
+projects = [
+    { content = "Developed advertising tools for merchants to place ads within the site: {links.0}, {links.1}, using Node.js as middleware layer, interfacing with Java APIs", links = [
+        { name = "Bajie Xianwei", url = "https://xw.zbj.com" },
+        { name = "Brand Bao", url = "https://ppb.zbj.com" }
+    ]},
+    { content = "Participated in development and maintenance of department system common components, as well as department backend management system development" },
+    { content = "Advertising campaign special page development and legacy page maintenance" }
+]

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Download, User, Briefcase, Award } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useI18n } from '@/context/i18n'
 
 interface MobileMenuProps {
   onPrint?: () => void
@@ -11,11 +12,12 @@ interface MobileMenuProps {
 
 const MobileMenu = ({ onPrint }: MobileMenuProps) => {
   const [isOpen, setIsOpen] = useState(false)
+  const { t } = useI18n()
 
   const menuItems = [
-    { icon: User, label: '个人信息', href: '#intro' },
-    { icon: Briefcase, label: '工作经验', href: '#experience' },
-    { icon: Award, label: '技能评价', href: '#skills' },
+    { icon: User, label: t.personalInfo, href: '#intro' },
+    { icon: Briefcase, label: t.workExperience, href: '#experience' },
+    { icon: Award, label: t.skillsEvaluation, href: '#skills' },
   ]
 
   const scrollToSection = (href: string) => {
@@ -66,7 +68,7 @@ const MobileMenu = ({ onPrint }: MobileMenuProps) => {
             >
               <div className="p-6 space-y-6">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-semibold text-gray-800">菜单</h2>
+                  <h2 className="text-lg font-semibold text-gray-800">{t.menu}</h2>
                   <Button
                     variant="ghost"
                     size="sm"
@@ -107,7 +109,7 @@ const MobileMenu = ({ onPrint }: MobileMenuProps) => {
                     size="sm"
                   >
                     <Download className="w-4 h-4 mr-2" />
-                    打印简历
+                    {t.printResume}
                   </Button>
                 </div>
               </div>

@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Mail, Phone, MapPin, Globe, User, GraduationCap, Github, ExternalLink } from 'lucide-react'
+import { useI18n } from '@/context/i18n'
 import avatar from '@/public/avatar.jpg'
 import { SimpleLink } from '@/components/ResumeLink'
 import UploadAvatar from '@/components/pages/index/UploadAvatar'
@@ -19,6 +20,7 @@ const nilInfos: Intro = {}
 
 const Header: React.FC<Props> = (props) => {
   const { intros = nilIntros, infos = nilInfos } = props
+  const { t } = useI18n()
 
   const getIcon = (key: string) => {
     switch (key) {

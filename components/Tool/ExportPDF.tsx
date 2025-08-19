@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import LoadingContext from '@/context/loading'
 import { Button } from '@/components/ui/button'
 import { Download, CheckCircle, AlertCircle } from 'lucide-react'
+import { useI18n } from '@/context/i18n'
 // Removed PDF export functionality for Vercel deployment compatibility
 
 interface Props {
@@ -19,6 +20,7 @@ const Tool:React.FC<Props> = props => {
   const { infos = nilInfos } = props
   const loadingContext = useContext(LoadingContext)
   const [exportStatus, setExportStatus] = useState<ExportStatus>('idle')
+  const { t } = useI18n()
   const handlePrint = () => {
     try {
       setExportStatus('exporting')
@@ -56,28 +58,28 @@ const Tool:React.FC<Props> = props => {
             >
               <Download className="mr-2 h-4 w-4" />
             </motion.div>
-            导出中...
+            {t.exporting}
           </>
         )
       case 'success':
         return (
           <>
             <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-            导出成功
+            {t.exportSuccess}
           </>
         )
       case 'error':
         return (
           <>
             <AlertCircle className="mr-2 h-4 w-4 text-red-500" />
-            导出失败
+            {t.exportFailed}
           </>
         )
       default:
         return (
           <>
             <Download className="mr-2 h-4 w-4" />
-            打印简历
+            {t.printResume}
           </>
         )
     }
