@@ -18,23 +18,72 @@ type Props = {
 const nilIntros: Intro[] = []
 const nilInfos: Intro = {}
 
+const getIcon = (key: string) => {
+  switch (key) {
+    case 'name': return <User className="h-4 w-4" />
+    case 'email': return <Mail className="h-4 w-4" />
+    case 'phone': return <Phone className="h-4 w-4" />
+    case 'address': return <MapPin className="h-4 w-4" />
+    case 'graduate': return <GraduationCap className="h-4 w-4" />
+    case 'github': return <Github className="h-4 w-4" />
+    case 'site': return <Globe className="h-4 w-4" />
+    case 'website': return <Globe className="h-4 w-4" />
+    default: return <ExternalLink className="h-4 w-4" />
+  }
+}
+
+// 提取为独立组件以避免重复渲染
+const IntroItem = memo(({ item, index }: { item: Intro; index: number }) => {
+  const [key] = Object.keys(item)
+
+  // 为 email 添加 mailto 链接
+  const itemWithUrl = key === "email"
+    ? { ...item, url: `mailto:${item[key]}` }
+    : item
+
+  return (
+    <motion.div
+      key={key}
+      className="max-w-full min-w-0 flex-shrink"
+      initial={{ opacity: 0, scale: 0.8, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 1.2 + index * 0.1 }}
+      whileHover={{ scale: 1.05, y: -2 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <Badge
+        variant="secondary"
+        className="flex items-start gap-2 px-3 py-2 text-sm hover:bg-emerald-100 transition-colors cursor-pointer max-w-full min-w-0 min-h-fit"
+      >
+        <motion.div
+          className="flex-shrink-0"
+          initial={{ rotate: 0 }}
+          whileHover={{ rotate: 360 }}
+          transition={{ duration: 0.3 }}
+        >
+          {getIcon(key)}
+        </motion.div>
+        <div className="min-w-0 flex-1">
+          <SimpleLink {...itemWithUrl}>
+            <span className="inline-block text-xs sm:text-sm leading-relaxed break-words whitespace-normal">{item[key]}</span>
+          </SimpleLink>
+        </div>
+      </Badge>
+    </motion.div>
+  )
+})
+
+IntroItem.displayName = 'IntroItem'
+
 const Header: React.FC<Props> = (props) => {
   const { intros = nilIntros, infos = nilInfos } = props
   const { t } = useI18n()
 
-  const getIcon = (key: string) => {
-    switch (key) {
-      case 'name': return <User className="h-4 w-4" />
-      case 'email': return <Mail className="h-4 w-4" />
-      case 'phone': return <Phone className="h-4 w-4" />
-      case 'address': return <MapPin className="h-4 w-4" />
-      case 'graduate': return <GraduationCap className="h-4 w-4" />
-      case 'github': return <Github className="h-4 w-4" />
-      case 'site': return <Globe className="h-4 w-4" />
-      case 'website': return <Globe className="h-4 w-4" />
-      default: return <ExternalLink className="h-4 w-4" />
-    }
-  }
+  // 过滤掉 name 字段
+  const filteredIntros = intros.filter(item => {
+    const [key] = Object.keys(item)
+    return key !== 'name'
+  })
 
   return (
     <motion.header 
@@ -90,51 +139,15 @@ const Header: React.FC<Props> = (props) => {
                   >
                     {infos.name || '姓名'}
                   </motion.h1>
-                  <motion.div 
+                  <motion.div
                     className="flex flex-wrap gap-2 justify-center md:justify-start max-w-full"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 1 }}
                   >
-                    {intros.filter(item => {
-                      const [key] = Object.keys(item)
-                      return key !== 'name' // 过滤掉name字段，避免与标题重复
-                    }).map((item, index) => {
-                      const [key] = Object.keys(item)
-                      if (key === "email") {
-                        item.url = `mailto:${item[key]}`
-                      }
-                      return (
-                        <motion.div
-                          key={key}
-                          className="max-w-full min-w-0 flex-shrink"
-                          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                          animate={{ opacity: 1, scale: 1, y: 0 }}
-                          transition={{ duration: 0.4, delay: 1.2 + index * 0.1 }}
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <Badge 
-                            variant="secondary" 
-                            className="flex items-start gap-2 px-3 py-2 text-sm hover:bg-emerald-100 transition-colors cursor-pointer max-w-full min-w-0 min-h-fit"
-                          >
-                            <motion.div
-                              className="flex-shrink-0"
-                              initial={{ rotate: 0 }}
-                              whileHover={{ rotate: 360 }}
-                              transition={{ duration: 0.3 }}
-                            >
-                              {getIcon(key)}
-                            </motion.div>
-                            <div className="min-w-0 flex-1">
-                               <SimpleLink {...item}>
-                                 <span className="inline-block text-xs sm:text-sm leading-relaxed break-words whitespace-normal">{item[key]}</span>
-                               </SimpleLink>
-                             </div>
-                          </Badge>
-                        </motion.div>
-                      )
-                    })}
+                    {filteredIntros.map((item, index) => (
+                      <IntroItem key={Object.keys(item)[0]} item={item} index={index} />
+                    ))}
                   </motion.div>
                 </motion.div>
               </div>

@@ -3,30 +3,24 @@ import { motion } from 'framer-motion'
 import { Award, Star, TrendingUp, ChevronRight } from 'lucide-react'
 import { useI18n } from '@/context/i18n'
 import styles from '@/styles/Content.module.css'
+import skillKeywordsConfig from '@/config/skill-keywords.json'
 
 const nilSkills: string[] = []
 
 const Skill: React.FC<StringContent> = props => {
   const { title, data = nilSkills } = props
   const { t } = useI18n()
-  
+
   // Check if this is skills or evaluation section by comparing with translations
   const isSkillsSection = title && (title === t.skills || title.toLowerCase().includes('技能') || title.toLowerCase().includes('skill'))
   const isEvaluationSection = title && (title === t.evaluation || title.toLowerCase().includes('评价') || title.toLowerCase().includes('evaluation'))
-  
-  // 技能关键词列表
-  const skillKeywords = [
-    'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Hooks', 'shadcn/ui', 'Vue', 'Vue3', 'Nuxt',
-    'Node.js', 'Express', 'Koa', 'Python', 'Flask', 'FastAPI', 'Golang', 'Rust',
-    'Linux', 'Shell', 'DevOps', 'CI/CD', 'Azure', 'Docker', 'Kubernetes'
-  ]
-  
+
   // 高亮技能关键词的函数
   const highlightSkills = (text: string) => {
     if (!isSkillsSection) return text
-    
+
     let highlightedText = text
-    skillKeywords.forEach(keyword => {
+    skillKeywordsConfig.keywords.forEach(keyword => {
       const regex = new RegExp(`\\b${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi')
       highlightedText = highlightedText.replace(regex, `<span class="skill-highlight">${keyword}</span>`)
     })
