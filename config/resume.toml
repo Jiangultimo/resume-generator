@@ -8,7 +8,7 @@ intros = [
     # { phone = "18203096625" },
     { graduate = "重庆邮电大学，软件工程(2016年本科毕业)" },
     { github = "Github/Jiangultimo", url = "https://github.com/Jiangultimo" },
-    { intro = "拥有9年前后端开发经验的全栈工程师，曾任AI创业公司技术负责人，擅长React与Node.js生态，具备从0到1打造产品与团队的实战能力。" }
+    { intro = "9年全栈开发经验 | AI创业公司技术负责人 | 擅长从0到1搭建产品与技术团队 | 主导过多个企业级AI解决方案落地" }
     # { site = "https://starxx.me", url = "https://starxx.me/resume" }
 ]
 
@@ -16,19 +16,19 @@ intros = [
 [resume.skills]
 title = "掌握技能"
 data = [
-    "前端: 熟悉HTML/CSS/JavaScript/TypeScript，熟悉React生态(包括但不限于Next.js/Hooks/shadcn/ui)与Vue(Vue3/Nuxt)生态",
-    "后端: 熟练使用Node.js(Express/Koa)与Python(Flask/FastAPI)进行开发，了解Golang与Rust",
-    "工程化: 熟悉Linux/Shell脚本，具备DevOps实践经验，能独立搭建CI/CD流程",
-    "基础设施: 有Azure、腾讯云等云服务使用经验，熟悉容器化部署"
+    "AI/LLM: 熟悉大语言模型应用开发，包括RAG、Agent、Prompt Engineering，有Langchain, MCP等实战经验",
+    "前端: 熟悉React生态(Next.js/Hooks/shadcn/ui)，熟悉Vue(Vue3/Nuxt)，有大型SPA与SSR项目经验",
+    "后端: 熟练Node.js(Express/Koa)与Python(Flask/FastAPI)，了解Golang/Rust",
+    "工程化: Linux/Shell、Docker/K8s、CI/CD、云服务(Azure/腾讯云/AWS)部署与运维"
 ]
 
 # self-evaluation
 [resume.evaluations]
 title = "自我评价"
 data = [
-    "热爱探索，相信未知的世界总有令人惊喜的发现",
-    "持续学习，在技术的广度与深度上保持同步成长",
-    "拥抱前沿，新技术往往蕴含着意想不到的创新机遇",
+    "技术视野: 持续关注AI/LLM领域发展，实践过GPT、Claude等多个大模型在企业场景的落地应用",
+    "工程能力: 从前端到后端、从开发到运维，具备全栈问题解决能力，能快速响应业务需求",
+    "学习能力: 职业生涯覆盖React、Vue、Node.js、Python、Web3、AI等多个技术领域，适应能力强",
 ]
 
 
@@ -38,13 +38,31 @@ title = '工作经历'
 
 [[resume.experience.data]]
 company = "苏州拉普拉斯人工智能科技有限公司"
-time = "2022年11月 - 至今"
+time = "2022 年 11 月 - 2025 年 12 月"
 position = "技术负责人"
 companyDes = "专注于企业级AI解决方案研发与落地的科技公司，致力于通过AI技术赋能企业数字化转型"
-labels = ["LLM", "RAG", "Agentic", "Langchain", "OpenAI", "React", "Nodejs", "TypeScript", "Nextjs", "tailwindcss", "Shell", "Python", "Golang", "Vue", "Rust", "shadcn/ui", "..."]
+labels = ["LLM", "RAG", "Agentic", "Langchain", "LangGraph", "Qdrant", "Milvus", "OpenAI", "Python", "Golang", "Rust"]
 projects = [
-    { content = "技术战略与团队管理：制定技术发展路线图，带领团队完成技术架构升级。建立标准化开发流程，优化团队协作效率，提升产品交付质量" },
-    { content = "AI产品架构设计：主导企业级AI解决方案的技术架构设计，包括大语言模型应用、智能流程自动化、数据分析平台等核心系统的规划与落地" },
+    { content = "自研AI产品的设计与技术架构落地：{links.0}", links = [
+        { name = "拉普拉斯 AI 操作系统", url = "https://aios.laplacelab.cn" }
+    ]},
+    { content = "智能系统产品研发：<br />{links.0}<br /> {links.1} ", links = [
+            { name = "智能客服搭建系统", url = "https://kbot.laplacelab.tech" },
+            { name = "智能招聘系统", url = "https://ats-lui.laplacelab.cn" },
+    ]},
+    { content = "客户定制化AI解决方案（内部项目)：<br />{links.0}<br />{links.1}<br />{links.2}", links = [
+        { name = "EDI - 发票文件智能处理系统", url = "#" },
+        { name = "AI 赋能的DRG系统 - 医疗行业诊断相关组编码系统", url = "#" },
+        { name = "智能体搭建平台 - 某国企内部的智能体底座系统：支持多模态输入与复杂任务处理", url = "#" }
+    ]},
+    { content = "平台智能化建设：<br />{links.0}<br />{links.1}", links = [ 
+        { name = "基于飞书搭建的公司内部智能问答机器人", url = "#" },
+        { name = "基于企业微信的问答与信息收集机器人", url = "#" }
+    ]},
+    { content = "大模型的部署与优化：在客户算力有限的情况使用vLLM进行模型推理优化" },
+    { content = "技术团队建设：负责技术团队的组建和管理，建立完整的研发流程和技术规范" },
+    { content = "负责运维与优化公司AI产品的云端基础设施，确保系统的高可用性与安全性" },
+    { content = "研究与应用前沿AI技术：持续跟踪大语言模型及相关技术的发展，推动公司技术在行业内的领先地位" },
     { content = "全栈技术实践：统筹Web前端、后端服务、云原生架构等技术领域，建立完整的技术体系，确保产品的高可用性与可扩展性" },
 ]
 
@@ -99,59 +117,17 @@ company = "婚礼纪（杭州火烧云科技有限公司）"
 position = "前端工程师"
 time = "2018年5月-2019年6月"
 labels = ["React", "mobx", "Vue", "Nodejs", "Nuxtjs", "Nextjs"]
-projects = [
-    { content = "使用React + mobx和antd维护、开发公司后台管理系统" },
-    { content = "使用React + mobx开发面向用户的{links.0}", links = [
-        { name = "商家后台", url = "https://www.hunliji.com/p/wedding/Public/admin/local_merchant_react/dist/index.html#/localMerchant/home" }
-    ]},
-    { content = "使用React + mobx开发面向商家的{links.0}", links = [
-        { name = "水镜系统：可视化配置月面", url = "https://www.hunliji.com/p/wedding/Public/admin/desktop_app_set/dist/index.html#/index" }
-    ]},
-    { content = "使用Nextjs重构{links.0}，{links.1}，{links.2}相关页面，抽离可复用的相关的公共组件", links = [
-        { name = "商家", url = "https://www.hunliji.com/merchant/list_2/" },
-        { name = "案例", url = "https://www.hunliji.com/example/list_2/" },
-        { name = "套餐", url = "https://www.hunliji.com/package/list_2/" }
-    ]},
-    { content = "使用Vue开发维护App内嵌页面，使用Nuxtjs重构移动端首页" },
-    { content = "在重构移动端首页时，使用Nuxtjs开发脚手架wap_vue，通用于移动端SSR或编译静态页面" },
-    { content = "使用verdaccio搭建内部私有npm仓库" }
-]
+ projects = [
+      { content = "后台管理系统开发 | Next.js/Nuxt.js SSR重构 | 搭建npm私有仓库" }
+  ]
 
 # ------work experience------
 [[resume.experience.data]]
-company = "你今天真好看APP（杭州以息互联网科技有限公司）"
-position = "前端工程师"
-time = "2017年6月-2018年3月"
-labels = ["Nodejs", "React", "Nextjs", "Vue", "jQuery"]
-projects = [
-    { content = "使用Vue构建从APP中抽离的{links.0}", links = [
-        { name = "人脸检测功能", url = "https://open.c2h4.org/c2h42baidu/#/" }
-    ]},
-    { content = "使用Nextjs重构APP内嵌{links.0}", links =[
-        { name = "文章页面", url = "https://api.c2h4.org/show/article/579" }
-    ]},
-    { content = "使用Element UI重构公司后台管理系统" },
-    { content = "为满足公司运营人员文章编辑的需求，二次封装开发wangEditor富文本编辑器" }
-]
-
-# ------work experience------
-[[resume.experience.data]]
-company = "猪八戒网（猪八戒股份有限公司）"
-position = "前端工程师"
-time = "2016年6月-2017年6月"
-labels = ["Nodejs", "Vue", "nunjucks", "lite", "jQuery", "smarty"]
-projects = [
-    { content = "面向商家向站内投放广告的工具开发: {links.0}, {links.1}，使用Nodejs作为中间层，与Java接口对接", links = [
-        { name = "八戒仙位", url = "https://xw.zbj.com" },
-        { name = "品牌宝", url = "https://ppb.zbj.com" }
-    ]},
-    { content = "参与部门系统公共组件的开发和维护，以及部门后台管理系统开发" },
-    { content = "广告活动专题页面开发以及老页面维护" }
-]
-
-
-
-
-
-
-
+  company = "早期工作经历（2016-2018）"
+  time = "2016年6月 - 2018年3月"
+  position = "前端工程师"
+  companyDes = "你今天真好看APP & 猪八戒网"
+  labels = ["React", "Vue", "Node.js"]
+  projects = [
+      { content = "Vue/React项目开发 | Node.js中间层服务 | 后台管理系统" }
+  ]

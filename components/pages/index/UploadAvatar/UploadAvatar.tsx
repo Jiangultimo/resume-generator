@@ -10,11 +10,49 @@ export interface UploadAvatarProps {
 type UploadStatus = 'idle' | 'uploading' | 'success' | 'error'
 
 const nilStyle: React.CSSProperties = {}
+const isProduction = process.env.NODE_ENV === 'production'
+
 const UploadAvatar: React.FC<UploadAvatarProps> = (props) => {
   const { style = nilStyle } = props
   const [imageFile, setImageFile] = useState<File>()
   const [uploadStatus, setUploadStatus] = useState<UploadStatus>('idle')
   const [isDragOver, setIsDragOver] = useState(false)
+
+  useEffect(() => {
+    // 生产环境跳过上传逻辑
+    if (isProduction) return
+
+    if (uploadStatus === 'uploading' && imageFile) {
+      const formData = new FormData()
+      formData.append("avatar", imageFile)
+      fetch("/api/upload-avatar", {
+        method: "POST",
+        body: formData,
+      })
+        .then(async (res) => {
+          if (res.ok) {
+            const response = await res.json()
+            console.log(`upload avatar result: ${response.success}`)
+            setUploadStatus('success')
+            // Reset to idle after 2 seconds
+            setTimeout(() => setUploadStatus('idle'), 2000)
+          } else {
+            setUploadStatus('error')
+            setTimeout(() => setUploadStatus('idle'), 3000)
+          }
+        })
+        .catch((err) => {
+          console.error(`upload avatar failed: ${err}`)
+          setUploadStatus('error')
+          setTimeout(() => setUploadStatus('idle'), 3000)
+        })
+    }
+  }, [uploadStatus, imageFile])
+
+  // 生产环境不渲染上传组件
+  if (isProduction) {
+    return null
+  }
 
   const handleFileSelect = (file: File) => {
     if (file && file.type.startsWith('image/')) {
@@ -44,39 +82,11 @@ const UploadAvatar: React.FC<UploadAvatarProps> = (props) => {
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault()
     setIsDragOver(false)
-    
+
     const files = e.dataTransfer.files
     const file = files[0]
     handleFileSelect(file)
   }
-
-  useEffect(() => {
-    if (uploadStatus === 'uploading' && imageFile) {
-      const formData = new FormData()
-      formData.append("avatar", imageFile)
-      fetch("/api/upload-avatar", {
-        method: "POST",
-        body: formData,
-      })
-        .then(async (res) => {
-          if (res.ok) {
-            const response = await res.json()
-            console.log(`upload avatar result: ${response.success}`)
-            setUploadStatus('success')
-            // Reset to idle after 2 seconds
-            setTimeout(() => setUploadStatus('idle'), 2000)
-          } else {
-            setUploadStatus('error')
-            setTimeout(() => setUploadStatus('idle'), 3000)
-          }
-        })
-        .catch((err) => {
-          console.error(`upload avatar failed: ${err}`)
-          setUploadStatus('error')
-          setTimeout(() => setUploadStatus('idle'), 3000)
-        })
-    }
-  }, [uploadStatus, imageFile])
 
   const getStatusIcon = () => {
     switch (uploadStatus) {

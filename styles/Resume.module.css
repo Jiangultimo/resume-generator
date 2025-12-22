@@ -8,7 +8,7 @@
 }
 
 .resume-wrapper{
-  @apply w-full box-border overflow-hidden flex justify-center flex-col max-w-4xl xl:max-w-6xl mx-auto;
+  @apply w-full box-border overflow-hidden flex justify-center flex-col max-w-6xl xl:max-w-6xl mx-auto;
   @apply space-y-4 sm:space-y-5 lg:space-y-6;
 }
 
@@ -28,7 +28,7 @@
 /* 技能和评价容器 - 桌面端并排，移动端上下 */
 .skills-evaluations-container {
   @apply flex flex-col lg:flex-row gap-3 sm:gap-4 lg:gap-5;
-  @apply max-w-full sm:max-w-2xl lg:max-w-4xl mx-auto;
+  @apply w-full max-w-full sm:max-w-2xl lg:max-w-4xl mx-auto;
   @apply px-2 sm:px-4 lg:px-0;
 }
 

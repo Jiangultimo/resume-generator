@@ -3,6 +3,14 @@ import path from 'path'
 import fs from 'fs'
 
 export async function POST(request: NextRequest) {
+  // 生产环境禁用头像上传
+  if (process.env.NODE_ENV === 'production') {
+    return NextResponse.json(
+      { success: false, msg: 'Upload disabled in production' },
+      { status: 403 }
+    )
+  }
+
   try {
     const formData = await request.formData()
     
