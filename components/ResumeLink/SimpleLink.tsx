@@ -1,4 +1,5 @@
 import React, { memo } from 'react'
+import { cn } from '@/lib/utils'
 import Link from 'next/link'
 interface Props {
   children: React.ReactNode
@@ -13,7 +14,7 @@ const SimpleLink: React.FC<Props> = props => {
     <>
       {
         url ? (
-          <Link href={url} className={className} style={style} target="_blank" rel="noopener noreferrer">
+          <Link href={url} className={cn(className, 'underline decoration-1')} style={style} target="_blank" rel="noopener noreferrer">
             {props.children}
           </Link>
         ) : (

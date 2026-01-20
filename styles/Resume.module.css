@@ -30,6 +30,7 @@
   @apply flex flex-col lg:flex-row gap-3 sm:gap-4 lg:gap-5;
   @apply w-full max-w-full sm:max-w-2xl lg:max-w-4xl mx-auto;
   @apply px-2 sm:px-4 lg:px-0;
+  @apply mb-12;
 }
 
 /* 技能部分样式 - 应用工作经历背景样式 */

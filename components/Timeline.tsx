@@ -60,7 +60,6 @@ const Timeline: React.FC<Props> = (props) => {
           <div className="flex items-center gap-2">
             <Briefcase className="w-5 h-5 text-gray-700" />
             <span>{title}</span>
-            <TrendingUp className="w-4 h-4 text-green-600 ml-1" />
           </div>
         </motion.h4>
         

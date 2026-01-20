@@ -4,7 +4,12 @@ declare interface ContentUrl {
 }
 
 declare interface Intro {
-  [key: string]: string
+  label?: string
+  value: string
+  icon?: string
+  link?: string
+  // 兼容旧格式
+  [key: string]: string | undefined
 }
 
 declare interface StringContent {

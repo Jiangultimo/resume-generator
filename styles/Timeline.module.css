@@ -16,7 +16,7 @@
 }
 
 .title {
-  @apply text-lg font-semibold text-gray-800 mb-10 pb-4 border-b-2 border-emerald-200;
+  @apply text-lg font-semibold text-gray-800 pb-6;
 }
 
 /* Timeline Structure */

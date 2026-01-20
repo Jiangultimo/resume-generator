@@ -3,17 +3,30 @@
 title = ""
 
 # personal profile
-# you can add anything you want here,
-# but must keep `{ key = value, [url] = url value }` format, up to two fields
-# if there are two fields, one of them must be the `url`
-# this part is the header of the resume
+# NEW FORMAT (recommended): Dynamic fields with custom icons and HTML support
+# Available fields: label (optional, supports HTML), value (required, supports HTML), icon (optional, Lucide icon name), link (optional, URL)
+# Common Lucide icon names: User, Mail, Phone, MapPin, Globe, Github, Linkedin, Twitter, Calendar, Briefcase, GraduationCap, etc.
+# Full icon list: https://lucide.dev/icons/
 intros = [
-    { name = "" },
-    { email = "" },
-    { graduate = "" },
-    { github = "", url = "" },
-    { site = "", url = "" }
+    { label = "姓名", value = "Your Name", icon = "User" },
+    { label = "邮箱", value = "your.email@example.com", icon = "Mail", link = "mailto:your.email@example.com" },
+    { label = "毕业院校", value = "Your University", icon = "GraduationCap" },
+    { label = "Github", value = "github.com/username", icon = "Github", link = "https://github.com/username" },
+    { label = "个人网站", value = "yoursite.com", icon = "Globe", link = "https://yoursite.com" }
 ]
+
+# OLD FORMAT (still supported for backward compatibility):
+# intros = [
+#     { name = "Your Name" },
+#     { email = "your.email@example.com" },
+#     { graduate = "Your University" },
+#     { github = "github.com/username", url = "https://github.com/username" },
+#     { site = "yoursite.com", url = "https://yoursite.com" }
+# ]
+
+# HTML support examples:
+# { label = "<em>位置</em>", value = "北京 <small>(海淀区)</small>", icon = "MapPin" }
+# { label = "邮箱", value = "<strong>admin</strong>@example.com", icon = "Mail" }
 
 # personal skills
 # only simple string arrays with `title` field which is to descrip the `data` field,
@@ -54,10 +67,3 @@ projects = [
         { name = "url name", url = "https://www.something.com" }
     ]},
 ]
-
-
-
-
-
-
-

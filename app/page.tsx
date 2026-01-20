@@ -61,12 +61,13 @@ const Resume = () => {
 
   useEffect(() => {
     if (resumeData && resumeData.intros && resumeData.intros.length !== 0) {
-      setFormattedInfos(resumeData.intros.reduce((prev, cur) => {
-        return {
-          ...prev,
-          ...cur
-        }
-      }, {}))
+      // 从 intros 数组中提取姓名项作为 formattedInfos
+      const nameItem = resumeData.intros.find(item =>
+        item.label?.toLowerCase() === 'name' || item.label === '姓名'
+      )
+      if (nameItem) {
+        setFormattedInfos({ value: nameItem.value, name: nameItem.value })
+      }
     }
   }, [resumeData])
 

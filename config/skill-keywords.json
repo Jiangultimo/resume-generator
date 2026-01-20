@@ -25,6 +25,14 @@
     "CI/CD",
     "Azure",
     "Docker",
-    "Kubernetes"
+    "Kubernetes",
+    "RAG",
+    "LangGraph",
+    "LangChain",
+    "MCP",
+    "Agent",
+    "SSR",
+    "AWS",
+    "Compose"
   ]
 }

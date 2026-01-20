@@ -10,63 +10,65 @@ interface Props {
 
 const nilLinks: ContentUrl[] = []
 
+// 生成唯一占位符，避免与内容冲突
+const generatePlaceholder = (index: number) => `__LINK_PLACEHOLDER_${index}__`
+
 const ContentLink: React.FC<Props> = props => {
   const { links = nilLinks, content } = props
 
-  // 解析 HTML 标签(特别是 <br />)并将 {links.0} 替换为链接组件
+  // 解析内容：将 {links.N} 替换为链接组件，同时支持 HTML 渲染
   const renderedContent = useMemo(() => {
-    // 辅助函数:解析 HTML 标签并添加到 parts
-    const parseHtmlAndAddParts = (text: string, parts: React.ReactNode[], startIndex: number) => {
-      // 分割 <br /> 和 <br> 标签
-      const brRegex = /<br\s*\/?>/gi
-      const segments = text.split(brRegex)
-
-      segments.forEach((segment, index) => {
-        if (segment) {
-          parts.push(<span key={`text-${startIndex}-${index}`}>{segment}</span>)
-        }
-        // 在每个段落之间添加换行,除了最后一个
-        if (index < segments.length - 1) {
-          parts.push(<br key={`br-${startIndex}-${index}`} />)
-        }
-      })
-    }
-
     const linkReg = /{links\.(\d+)}/g
-    const parts: React.ReactNode[] = []
-    let globalIndex = 0
+    const linkMatches: { index: number; link: ContentUrl }[] = []
 
-    // 先处理链接占位符
+    // 收集所有链接占位符
     let match
-    linkReg.lastIndex = 0
     while ((match = linkReg.exec(content)) !== null) {
-      const beforeText = content.substring(globalIndex, match.index)
-
-      // 处理链接前的文本(可能包含 HTML)
-      if (beforeText) {
-        parseHtmlAndAddParts(beforeText, parts, globalIndex)
-      }
-
-      // 添加链接组件
       const linkIndex = parseInt(match[1], 10)
       if (links[linkIndex]) {
-        const link = links[linkIndex]
-        parts.push(
-          <LinkPreview key={`link-${linkIndex}-${match.index}`} href={link.url}>
-            {link.name}
-          </LinkPreview>
-        )
+        linkMatches.push({ index: linkIndex, link: links[linkIndex] })
       }
-
-      globalIndex = linkReg.lastIndex
     }
 
-    // 处理剩余的文本
-    if (globalIndex < content.length) {
-      parseHtmlAndAddParts(content.substring(globalIndex), parts, globalIndex)
+    // 如果没有链接，直接使用 dangerouslySetInnerHTML 渲染 HTML
+    if (linkMatches.length === 0) {
+      return <span dangerouslySetInnerHTML={{ __html: content }} />
     }
 
-    return parts.length > 0 ? parts : [content]
+    // 有链接时，需要将内容分割成 HTML 片段和链接组件
+    // 先将 {links.N} 替换为唯一占位符
+    let processedContent = content
+    linkMatches.forEach((_, idx) => {
+      processedContent = processedContent.replace(/{links\.\d+}/, generatePlaceholder(idx))
+    })
+
+    // 按占位符分割内容
+    const parts: React.ReactNode[] = []
+    const segments = processedContent.split(/__LINK_PLACEHOLDER_(\d+)__/)
+
+    segments.forEach((segment, idx) => {
+      if (idx % 2 === 0) {
+        // 偶数索引是 HTML 文本片段
+        if (segment) {
+          parts.push(
+            <span key={`html-${idx}`} dangerouslySetInnerHTML={{ __html: segment }} />
+          )
+        }
+      } else {
+        // 奇数索引是链接索引
+        const linkIdx = parseInt(segment, 10)
+        const linkData = linkMatches[linkIdx]
+        if (linkData) {
+          parts.push(
+            <LinkPreview key={`link-${idx}`} href={linkData.link.url}>
+              {linkData.link.name}
+            </LinkPreview>
+          )
+        }
+      }
+    })
+
+    return parts
   }, [links, content])
 
   return (

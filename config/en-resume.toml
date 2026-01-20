@@ -2,31 +2,37 @@
 title = "What I've Been Doing Over the Past Few Years"
 
 # personal profile
+# New format: supports dynamic fields, custom icons and HTML tags
+# Icon names reference: https://lucide.dev/icons/
 intros = [
-    { name = "Zhengxing Jiang" },
-    { email = "medianeras57@gmail.com" },
-    # { phone = "18203096625" },
-    { graduate = "Chongqing University of Posts and Telecommunications, Software Engineering (Bachelor's degree, graduated in 2016)" },
-    { github = "Github/Jiangultimo", url = "https://github.com/Jiangultimo" },
-    { intro = "9 years of full-stack development experience | Technical Lead at AI startup | Expert in building products and teams from 0 to 1 | Led multiple enterprise-level AI solution implementations" }
-    # { site = "https://starxx.me", url = "https://starxx.me/resume" }
+    { label = "Name", value = "Zhengxing Jiang", icon = "User" },
+    { label = "Email", value = "medianeras57@gmail.com", icon = "Mail", link = "mailto:medianeras57@gmail.com" },
+    # { label = "Phone", value = "18203096625", icon = "Phone" },
+    { label = "Education", value = "Chongqing University of Posts and Telecommunications, Software Engineering (Bachelor's, 2016)", icon = "GraduationCap" },
+    { label = "GitHub", value = "Jiangultimo", icon = "Github", link = "https://github.com/Jiangultimo" },
+    { label = "Location", value = "Chongqing, China", icon = "MapPin" },
+    { label = "Timezone", value = "UTC+8 (Beijing Time)", icon = "Clock" },
+    { label = "Target Role", value = "Full-Stack Developer (AI preferred) / AI Product Tech Lead", icon = "Target" },
+    { label = "Work Mode", value = "Full-time / Remote-first", icon = "Handshake" },
+    { label = "", value = "9 years of development experience | Full-Stack Engineer | Former Tech Lead at AI startup | Expert in AI product delivery & team management", icon = "Briefcase" }
+    # { label = "Website", value = "starxx.me", icon = "Globe", link = "https://starxx.me/resume" }
 ]
 
 # personal skills
 [resume.skills]
 title = "Technical Skills"
 data = [
-    "AI/LLM: Proficient in large language model application development, including RAG, Agent, Prompt Engineering, with hands-on experience in Langchain, MCP, etc.",
-    "Frontend: Proficient in React ecosystem (Next.js/Hooks/shadcn/ui), familiar with Vue (Vue3/Nuxt), with experience in large-scale SPA and SSR projects",
-    "Backend: Proficient in Node.js (Express/Koa) and Python (Flask/FastAPI), familiar with Golang/Rust",
-    "Engineering: Linux/Shell, Docker/K8s, CI/CD, cloud services (Azure/Tencent Cloud/AWS) deployment and operations"
+    "AI/LLM: Deep practice in LLM application development, proficient in RAG architecture (vector/hybrid retrieval/Rerank), Agent orchestration (LangGraph/multi-turn dialogue), hands-on experience with LangChain, MCP inference optimization",
+    "Frontend: Proficient in React ecosystem (Next.js/Hooks/shadcn/ui) and Vue (Vue3/Nuxt), experience in complex interactive systems and SSR performance optimization",
+    "Backend: Proficient in Node.js and Python (Flask/FastAPI), practical experience with Golang/Rust projects",
+    "DevOps: Linux/Shell scripting, Docker (Compose)/Kubernetes orchestration, CI/CD setup & automation, multi-cloud deployment & operations (Azure/Tencent Cloud/AWS)",
 ]
 
 # self-evaluation
 [resume.evaluations]
 title = "Self-Evaluation"
 data = [
-    "Technical Vision: Continuously following AI/LLM field developments, with hands-on experience implementing GPT, Claude and other large models in enterprise scenarios",
+    "Technical Vision: Continuously following AI/LLM field developments, hands-on experience implementing GPT, Claude and other LLMs in enterprise scenarios",
     "Engineering Capability: From frontend to backend, from development to operations, possessing full-stack problem-solving skills and able to respond quickly to business needs",
     "Learning Ability: Career spans multiple technical domains including React, Vue, Node.js, Python, Web3, AI, with strong adaptability",
 ]
@@ -37,57 +43,63 @@ title = 'Work Experience'
 # ------work experience------
 
 [[resume.experience.data]]
-company = "Suzhou Laplace Artificial Intelligence Technology Co., Ltd."
+company = "Suzhou Laplace AI Technology Co., Ltd."
 time = "November 2022 - December 2025"
 position = "Technical Lead"
 companyDes = "A technology company focused on enterprise-level AI solution R&D and implementation, committed to empowering enterprise digital transformation through AI technology"
-labels = ["LLM", "RAG", "Agentic", "Langchain", "LangGraph", "Qdrant", "Milvus", "OpenAI", "Python", "Golang", "Rust"]
+labels = ["LLM", "Agentic", "LangChain", "LangGraph", "Qdrant", "Milvus", "OpenAI", "Python", "Golang", "Rust"]
 projects = [
-    { content = "Self-developed AI product design and technical architecture implementation: {links.0}", links = [
-        { name = "Laplace AI Operating System", url = "https://aios.laplacelab.cn" }
+    { content = "Role & Impact: Led the company's AI applications from 0→1 architecture and delivery (requirements breakdown → solution design → development → deployment → operations)." },
+
+    { content = "Core Competency: Designed and implemented the full Agentic RAG knowledge engine pipeline (import/parse/chunk → retrieval → rerank → citation tracing → evaluation regression), introducing <b>KU (Knowledge Unit)</b> as knowledge unit abstraction to unify content structure and metadata governance, significantly improving retrieval accuracy and recall efficiency while enhancing system modularity, scalability, and cross-storage/vector-db migration capabilities." },
+
+    { content = "Team & Process: Established R&D processes and standards (code standards, CI/CD, release/rollback, technical documentation/ADR templates), leading a 10-person team for stable delivery." },
+
+    { content = "<b>[Project]</b> Laplace AI Operating System: {links.0} (Agents/Workflows/Multi-model integration & management). Responsible for [Architecture Design/Core Modules/Deployment & Operations], enabling users to create Agents/Workflows independently and convert them into lightweight intelligent applications with one click.", links = [
+      { name = "aios.laplacelab.cn", url = "https://aios.laplacelab.cn" }
     ]},
-    { content = "Intelligent system product development:<br />{links.0}<br /> {links.1} ", links = [
-            { name = "Intelligent Customer Service Building System", url = "https://kbot.laplacelab.tech" },
-            { name = "Intelligent Recruitment System", url = "https://ats-lui.laplacelab.cn" },
+
+    { content = "<b>[Project]</b> Intelligent Customer Service Builder: {links.0}. Designed and built a universal RAG infrastructure for customer service scenarios, including knowledge base management, citation tracing, evaluation regression - modular and plug-and-play.", links = [
+      { name = "kbot.laplacelab.tech", url = "https://kbot.laplacelab.tech" }
     ]},
-    { content = "Customized AI solutions for clients (internal projects):<br />{links.0}<br />{links.1}<br />{links.2}", links = [
-        { name = "EDI - Intelligent Invoice Processing System", url = "#" },
-        { name = "AI-powered DRG System - Diagnostic Related Groups Coding System for Healthcare Industry", url = "#" },
-        { name = "Agent Building Platform - Internal agent infrastructure system for a state-owned enterprise: supports multimodal input and complex task processing", url = "#" }
+
+    { content = "<b>[Project]</b> Intelligent Recruitment System: {links.0}. Responsible for [ATS/HR integration module] and AI resume parsing/matching/Q&A capabilities, solving multi-position resume collection and evaluation challenges for multiple clients.", links = [
+      { name = "ats-lui.laplacelab.cn", url = "https://ats-lui.laplacelab.cn" }
     ]},
-    { content = "Platform intelligence construction:<br />{links.0}<br />{links.1}", links = [
-        { name = "Company internal intelligent Q&A bot based on Feishu", url = "#" },
-        { name = "Q&A and information collection bot based on Enterprise WeChat", url = "#" }
-    ]},
-    { content = "Large model deployment and optimization: Using vLLM for model inference optimization in scenarios with limited client computing resources" },
-    { content = "Technical team building: Responsible for assembling and managing the technical team, establishing complete R&D processes and technical standards" },
-    { content = "Responsible for maintaining and optimizing the cloud infrastructure for company AI products, ensuring system high availability and security" },
-    { content = "Research and application of cutting-edge AI technologies: Continuously tracking large language model and related technology developments, driving the company's technical leadership in the industry" },
-    { content = "Full-stack technical practice: Coordinating technical domains including web frontend, backend services, cloud-native architecture, establishing a complete technical system to ensure product high availability and scalability" },
+
+    { content = "[Client Delivery (Internal Projects)] Healthcare DRG Coding / Invoice EDI / State-owned Enterprise Agent Platform: Responsible for <b>requirements communication / solution design / core pipeline / deployment & acceptance</b>." }
 ]
 
 [[resume.experience.data]]
 company = "Deeper Network, Inc."
 time = "May 2021 - November 2022"
 position = "JavaScript Full-Stack Engineer (Full-time Remote)"
-companyDes = "Committed to building WEB3.0, using blockchain technology through hardware devices to achieve truly private, secure, and fair distributed networks"
-labels = ["React", "Nodejs", "TypeScript", "Nextjs", "antd", "tailwindcss", "Shell", "React Native", "Web3js", "wordpress"]
+companyDes = "Committed to building Web 3.0, using blockchain technology through hardware devices to achieve truly private, secure, and fair distributed networks"
+labels = ["TypeScript", "React", "Next.js", "Node.js", "Tailwind CSS", "Shell", "WordPress", "web3.js"]
 projects = [
-    { content = "Maintained/refactored main website: {links.0}", links = [
-        { name = "deeper.network", url = "https://deeper.network" }
+    { content = "Remote-first cross-timezone async collaboration (PT/UTC+8): PR/Issue-driven delivery covering requirements breakdown, solution design, development & debugging, deployment & maintenance, and troubleshooting." },
+
+    { content = "Main Site Development & Evolution: Responsible for {links.0} feature iteration and structural refactoring, establishing reusable components and page templates to ensure continuous delivery and maintainability.", links = [
+      { name = "deeper.network", url = "https://deeper.network" }
     ]},
-    { content = "Independently built product sales site: {links.0}", links = [
-        { name = "shop.deeper.network", url = "https://shop.deeper.network" }
+
+    { content = "E-commerce Site Delivery: Independently completed {links.0} core pages and API integration, covering product display, order flow, and basic operations, with ongoing iteration maintenance.", links = [
+      { name = "shop.deeper.network", url = "https://shop.deeper.network" }
     ]},
-    { content = "Maintained order backend built with WordPress" },
-    { content = "Independently maintained device backend management system, while optimizing/refactoring/extracting utility functions and components from legacy code" },
-    { content = "Collaborated with hardware engineers to complete hardware-related web requirements (Bluetooth and WiFi), while writing necessary scripts (shell tools)" },
-    { content = "Joined {links.0} (Helium Network is a blockchain powered by a decentralized global device network), independently completed web requirements for interaction with company devices, including but not limited to UI and interfaces", links = [
-        { name = "Helium", url = "https://www.helium.com" }
+
+    { content = "Order & Operations Backend: Maintained and extended WordPress-based order backend, completing business process adaptation and daily operations support." },
+
+    { content = "Device Management Backend: Independently maintained device management system, performing modular refactoring and common utility/component abstraction to improve code consistency and iteration efficiency." },
+
+    { content = "Hardware Integration: Collaborated with hardware engineers on Bluetooth/Wi-Fi provisioning and debugging web capabilities, writing Shell tools to improve debugging and troubleshooting efficiency." },
+
+    { content = "Web3 Ecosystem Integration: Completed device interaction capability integration with {links.0} ecosystem (UI + API) and drove compliance onboarding process.", links = [
+      { name = "Helium", url = "https://www.helium.com" }
     ]},
-    { content = "Joined {links.0}, independently debugged and compiled {links.0}/{links.1}, analyzed onboarding protocols and requirements, submitted onboarding PR", links = [
-        { name = 'Helium App', url = "https://github.com/helium/hotspot-app" },
-        { name = 'maker-start-app', url = "https://github.com/helium/maker-starter-app" }
+
+    { content = "Open Source Contribution: Debugged and compiled {links.0}/{links.1}, documented onboarding requirements and submitted PR to support ecosystem integration.", links = [
+      { name = "helium/hotspot-app", url = "https://github.com/helium/hotspot-app" },
+      { name = "helium/maker-starter-app", url = "https://github.com/helium/maker-starter-app" }
     ]}
 ]
 
@@ -96,38 +108,35 @@ projects = [
 company = "Meijian"
 time = "July 2019 - November 2020"
 position = "Frontend Engineer"
-companyDes = "Hangzhou Meijian Technology Co., Ltd. - Creative content cloud design tool under Kujiale"
-labels = ["React", "React Hooks", "Nodejs", "TypeScript", "fabricjs", "bulljs"]
+companyDes = "Creative content cloud design tool under Kujiale"
+labels = ["TypeScript", "React", "Node.js", "Fabric.js", "Bull", "SSR/SEO"]
+
 projects = [
-    { content = "Developed and maintained main website {links.0} using React, including but not limited to daily requirements and common component development", links = [
-        { name = "Meijian Official Website", url = "https://www.meijian.io" }
+    { content = "{links.0} Iteration & Engineering: Core business iteration based on React + TypeScript, establishing common components and interaction patterns to ensure optimal performance and user experience.", links = [
+      { name = "Meijian Main Site", url = "https://www.meijian.io" }
     ]},
-    { content = "Developed and maintained {links.0} for interior designers", links = [
-        { name = "tool project", url = "https://www.meijian.io/board/5fe5428be4b022446d24a3f8" }
+
+    { content = "Online Design Tool: Participated in {links.0} feature development and maintenance for interior designers, focusing on componentization and performance optimization for complex interaction and editing scenarios (including {links.1} capabilities).", links = [
+      { name = "Tool", url = "https://www.meijian.io/board/5fe5428be4b022446d24a3f8" },
+      { name = "Fabric.js", url = "https://fabricjs.com/" }
     ]},
-    { content = "Developed main website common components using React + TypeScript: notification functionality in the upper right corner after main website login; refactoring of common edit popup components, etc." },
-    { content = "Led the development of internal prerender service using Node.js, based on prerender.js library, and using {links.0}, interfacing with Java, secondary development and self-built company internal prerender service, optimizing search engine crawling and improving SEO", links = [
-        { name = "bulljs", url = "https://starxx.me/article/1PIkVyzL_SokcSYS1LKutG3cpoBI0tYzm" }
+
+    { content = "Common Capability Development: Developed and refactored key common components (site notifications, general modals/edit modals), unifying interaction and state management patterns to improve reusability and iteration efficiency." },
+
+    { content = "SEO/Prerender Service: Led prerender service development based on prerender.js, designing task scheduling and retry mechanisms via {links.0} queue, integrating with Java services for internal deployment, improving search engine crawling and indexing.", links = [
+      { name = "Bull", url = "https://github.com/OptimalBits/bull" }
     ]}
 ]
 
 # ------work experience------
 [[resume.experience.data]]
-company = "Hunliji (Hangzhou Huoshaoyun Technology Co., Ltd.)"
+company = "Early Career (2016-2019)"
+time = "June 2016 - June 2019"
 position = "Frontend Engineer"
-time = "May 2018-June 2019"
-labels = ["React", "mobx", "Vue", "Nodejs", "Nuxtjs", "Nextjs"]
- projects = [
-      { content = "Backend management system development | Next.js/Nuxt.js SSR refactoring | Building npm private repository" }
-  ]
-
-# ------work experience------
-[[resume.experience.data]]
-  company = "Early Career (2016-2018)"
-  time = "June 2016 - March 2018"
-  position = "Frontend Engineer"
-  companyDes = "You Look Great Today APP & Zhubajie.com"
-  labels = ["React", "Vue", "Node.js"]
-  projects = [
-      { content = "Vue/React project development | Node.js middleware services | Backend management systems" }
-  ]
+companyDes = "You Look Great Today APP / Zhubajie.com / Hunliji (Huoshaoyun Tech)"
+labels = ["React", "Vue", "Node.js", "Nuxt.js", "Next.js", "SSR", "MobX"]
+projects = [
+    { content = "Participated in Web product development and iteration across multiple business lines, covering C-end pages and admin systems, establishing componentization and general frontend engineering practices." },
+    { content = "Led/participated in SSR transformation (Next.js / Nuxt.js), optimizing first-screen rendering and SEO capabilities to improve page loading experience." },
+    { content = "Built and maintained frontend engineering infrastructure: private npm registry, dependency management and standardized release processes, supporting Node.js middleware API integration." }
+]

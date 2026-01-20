@@ -2,24 +2,30 @@
 title = "过去几年我都干了什么"
 
 # personal profile
+# 新格式: 支持动态字段、自定义icon和HTML标签
+# icon可用名称参考: https://lucide.dev/icons/
 intros = [
-    { name = "蒋正兴" },
-    { email = "medianeras57@gmail.com" },
-    # { phone = "18203096625" },
-    { graduate = "重庆邮电大学，软件工程(2016年本科毕业)" },
-    { github = "Github/Jiangultimo", url = "https://github.com/Jiangultimo" },
-    { intro = "9年全栈开发经验 | AI创业公司技术负责人 | 擅长从0到1搭建产品与技术团队 | 主导过多个企业级AI解决方案落地" }
-    # { site = "https://starxx.me", url = "https://starxx.me/resume" }
+    { label = "姓名", value = "蒋正兴", icon = "User" },
+    { label = "邮箱", value = "medianeras57@gmail.com", icon = "Mail", link = "mailto:medianeras57@gmail.com" },
+    # { label = "电话", value = "18203096625", icon = "Phone" },
+    { label = "毕业院校", value = "重庆邮电大学，软件工程(2016年本科毕业)", icon = "GraduationCap" },
+    { label = "GitHub", value = "Jiangultimo", icon = "Github", link = "https://github.com/Jiangultimo" },
+    { label = "现居地", value = "重庆", icon = "MapPin" },
+    { label = "时区", value = "UTC+8 (北京时间)", icon = "Clock" },
+    { label = "求职意向", value = "全栈开发(AI方向也可） / AI产品技术负责人", icon = "Target" },
+    { label = "期望合作方式", value = "全职 / 远程优先", icon = "Handshake" },
+    { label = "", value = "9年开发经验 | 全栈工程师 | 曾任AI创业公司技术负责人 | 擅长AI产品落地与团队管理", icon = "Briefcase" }
+    # { label = "个人网站", value = "starxx.me", icon = "Globe", link = "https://starxx.me/resume" }
 ]
 
 # personal skills
 [resume.skills]
 title = "掌握技能"
 data = [
-    "AI/LLM: 熟悉大语言模型应用开发，包括RAG、Agent、Prompt Engineering，有Langchain, MCP等实战经验",
-    "前端: 熟悉React生态(Next.js/Hooks/shadcn/ui)，熟悉Vue(Vue3/Nuxt)，有大型SPA与SSR项目经验",
-    "后端: 熟练Node.js(Express/Koa)与Python(Flask/FastAPI)，了解Golang/Rust",
-    "工程化: Linux/Shell、Docker/K8s、CI/CD、云服务(Azure/腾讯云/AWS)部署与运维"
+    "AI/LLM: 深度实践大模型应用开发，熟悉RAG架构设计(向量检索/混合检索/Rerank)、Agent编排(LangGraph/多轮对话)，有LangChain、MCP推理优化等实战经验",
+    "前端: 熟悉React生态(Next.js/Hooks/shadcn/ui)及Vue(Vue3/Nuxt)，有复杂交互系统与SSR性能优化经验",
+    "后端: 熟练Node.js与Python(Flask/FastAPI)，有Golang/Rust项目实践",
+    "工程化: Linux/Shell脚本、Docker (Compose)/Kubernetes容器编排、CI/CD搭建与自动化、多云部署与运维(Azure/腾讯云/AWS)",
 ]
 
 # self-evaluation
@@ -41,53 +47,80 @@ company = "苏州拉普拉斯人工智能科技有限公司"
 time = "2022 年 11 月 - 2025 年 12 月"
 position = "技术负责人"
 companyDes = "专注于企业级AI解决方案研发与落地的科技公司，致力于通过AI技术赋能企业数字化转型"
-labels = ["LLM", "RAG", "Agentic", "Langchain", "LangGraph", "Qdrant", "Milvus", "OpenAI", "Python", "Golang", "Rust"]
+labels = ["LLM", "Agentic", "LangChain", "LangGraph", "Qdrant", "Milvus", "OpenAI", "Python", "Golang", "Rust"]
 projects = [
-    { content = "自研AI产品的设计与技术架构落地：{links.0}", links = [
-        { name = "拉普拉斯 AI 操作系统", url = "https://aios.laplacelab.cn" }
+    # { content = "自研AI产品的设计与技术架构落地：{links.0}", links = [
+    #     { name = "拉普拉斯 AI 操作系统", url = "https://aios.laplacelab.cn" }
+    # ]},
+    # { content = "智能系统产品研发：<br />{links.0}<br /> {links.1} ", links = [
+    #         { name = "智能客服搭建系统", url = "https://kbot.laplacelab.tech" },
+    #         { name = "智能招聘系统", url = "https://ats-lui.laplacelab.cn" },
+    # ]},
+    # { content = "客户定制化AI解决方案（内部项目)：<br />{links.0}<br />{links.1}<br />{links.2}", links = [
+    #     { name = "EDI - 发票文件智能处理系统", url = "#" },
+    #     { name = "AI 赋能的DRG系统 - 医疗行业诊断相关组编码系统", url = "#" },
+    #     { name = "智能体搭建平台 - 某国企内部的智能体底座系统：支持多模态输入与复杂任务处理", url = "#" }
+    # ]},
+    # { content = "平台智能化建设：<br />{links.0}<br />{links.1}", links = [
+    #     { name = "基于飞书搭建的公司内部智能问答机器人", url = "#" },
+    #     { name = "基于企业微信的问答与信息收集机器人", url = "#" }
+    # ]},
+    # { content = "大模型的部署与优化：在客户算力有限的情况使用vLLM进行模型推理优化" },
+    # { content = "技术团队建设：负责技术团队的组建和管理，建立完整的研发流程和技术规范" },
+    # { content = "负责运维与优化公司AI产品的云端基础设施，确保系统的高可用性与安全性" },
+    # { content = "研究与应用前沿AI技术：持续跟踪大语言模型及相关技术的发展，推动公司技术在行业内的领先地位" },
+    # { content = "全栈技术实践：统筹Web前端、后端服务、云原生架构等技术领域，建立完整的技术体系，确保产品的高可用性与可扩展性" },
+    { content = "职责与影响：主导公司 AI 应用从 0→1 的架构与交付（需求拆解→方案→研发→上线→运维）。" },
+
+    { content = "核心能力：设计并落地 Agentic RAG 知识引擎全链路（导入/解析/切片 → 检索 → 重排 → 引用溯源 → 评估回归），并引入 <b>KU（Knowledge Unit）</b>作为知识单元抽象，统一内容结构与元数据治理，显著提升检索准确率与召回效率，同时增强系统的模块化可扩展性与跨存储/向量库的迁移能力。" },
+
+    { content = "团队与流程：搭建研发流程与规范（代码规范、CI/CD、发布回滚、技术文档/ADR 模板），带领10人团队稳定交付。" },
+
+    { content = "<b>【项目】</b>拉普拉斯 AI 操作系统：{links.0}（智能体/工作流/多模型接入与管理）。负责【架构设计/核心模块/上线运维】，支持用户自主创建Agent/工作流，并且支持一键将 Agent/工作流 转换为智能轻应用", links = [
+      { name = "aios.laplacelab.cn", url = "https://aios.laplacelab.cn" }
     ]},
-    { content = "智能系统产品研发：<br />{links.0}<br /> {links.1} ", links = [
-            { name = "智能客服搭建系统", url = "https://kbot.laplacelab.tech" },
-            { name = "智能招聘系统", url = "https://ats-lui.laplacelab.cn" },
+
+    { content = "<b>【项目】</b>智能客服搭建系统：{links.0}。基于客服的场景，负责设计/搭建通用 RAG 底座服务，知识库管理、引用溯源、评估回归，通用模块，即插即用。", links = [
+      { name = "kbot.laplacelab.tech", url = "https://kbot.laplacelab.tech" }
     ]},
-    { content = "客户定制化AI解决方案（内部项目)：<br />{links.0}<br />{links.1}<br />{links.2}", links = [
-        { name = "EDI - 发票文件智能处理系统", url = "#" },
-        { name = "AI 赋能的DRG系统 - 医疗行业诊断相关组编码系统", url = "#" },
-        { name = "智能体搭建平台 - 某国企内部的智能体底座系统：支持多模态输入与复杂任务处理", url = "#" }
+
+    { content = "<b>【项目】</b>智能招聘系统：{links.0}。负责【ATS/HR 融合模块】与 AI 简历解析/匹配/问答能力，为多个客户解决多岗位简历难收集，难评估的问题。", links = [
+      { name = "ats-lui.laplacelab.cn", url = "https://ats-lui.laplacelab.cn" }
     ]},
-    { content = "平台智能化建设：<br />{links.0}<br />{links.1}", links = [ 
-        { name = "基于飞书搭建的公司内部智能问答机器人", url = "#" },
-        { name = "基于企业微信的问答与信息收集机器人", url = "#" }
-    ]},
-    { content = "大模型的部署与优化：在客户算力有限的情况使用vLLM进行模型推理优化" },
-    { content = "技术团队建设：负责技术团队的组建和管理，建立完整的研发流程和技术规范" },
-    { content = "负责运维与优化公司AI产品的云端基础设施，确保系统的高可用性与安全性" },
-    { content = "研究与应用前沿AI技术：持续跟踪大语言模型及相关技术的发展，推动公司技术在行业内的领先地位" },
-    { content = "全栈技术实践：统筹Web前端、后端服务、云原生架构等技术领域，建立完整的技术体系，确保产品的高可用性与可扩展性" },
+
+    { content = "【客户交付（企业内部项目）】医疗 DRG 编码/发票 EDI/国企智能体平台：负责<b>需求沟通/方案设计/核心链路/上线验收</b>。" }
 ]
 
 [[resume.experience.data]]
 company = "Deeper Network, Inc."
 time = "2021年5月 - 2022年11月"
 position = "JavaScript全栈工程师(全职远程)"
-companyDes = "致力构建WEB3.0，使用区块链技术通过硬件设备实现真正私有，安全，公平的分布式网络"
-labels = ["React", "Nodejs", "TypeScript", "Nextjs", "antd", "tailwindcss", "Shell", "React Native", "Web3js", "wordpress"]
+companyDes = "致力构建 Web 3.0，使用区块链技术通过硬件设备实现真正私有、安全、公平的分布式网络"
+labels = ["TypeScript", "React", "Next.js", "Node.js", "Tailwind CSS", "Shell", "WordPress", "web3.js"]
 projects = [
-    { content = "维护/重构主站: {links.0}", links = [
-        { name = "deeper.network", url = "https://deeper.network" }
+    { content = "Remote-first 跨时区异步协作（PT/UTC+8）：以 PR/Issue 驱动推进交付，覆盖需求拆解、方案设计、开发联调、上线维护与问题排查。" },
+
+    { content = "主站建设与演进：负责 {links.0} 的功能迭代与结构性重构，沉淀可复用组件与页面模板，保障持续交付与可维护性。", links = [
+      { name = "deeper.network", url = "https://deeper.network" }
     ]},
-    { content = "独立构建产品售卖站点：{links.0}", links = [
-        { name = "shop.deeper.network", url = "https://shop.deeper.network" }
+
+    { content = "电商站点交付：独立完成 {links.0} 的核心页面与接口对接，覆盖商品展示、下单流程与基础运营能力，并负责后续迭代维护。", links = [
+      { name = "shop.deeper.network", url = "https://shop.deeper.network" }
     ]},
-    { content = "维护由wordpress搭建的订单后台" },
-    { content = "独立维护设备的后台管理系统，同时对老代码进行优化/重构/抽离工具函数、组件" },
-    { content = "与硬件工程师协作，完成与硬件相关的网页需求（蓝牙和wifi），同时编写一些必要的脚本（shell工具）" },
-    { content = "入驻{links.0}(Helium 网络是由去中心化的全球设备网络提供支持的区块链)，独立完成与公司设备交互的web需求，包括但不限于UI与接口", links = [
-        { name = "Helium", url = "https://www.helium.com" }
+
+    { content = "订单与运营后台：维护并扩展基于 WordPress 的订单后台，完成业务流程适配与日常运维支持。" },
+
+    { content = "设备管理后台：独立维护设备管理系统，进行模块化重构与公共工具/组件抽象，提升代码一致性与迭代效率。" },
+
+    { content = "硬件联动能力：与硬件工程师协作完成蓝牙/Wi-Fi 配网与调试相关 Web 能力接入，配套编写 Shell 工具提升联调与排障效率。" },
+
+    { content = "Web3 生态集成：完成与 {links.0} 生态的设备交互能力接入（UI + 接口），并推进合规接入流程。", links = [
+      { name = "Helium", url = "https://www.helium.com" }
     ]},
-    { content = "入驻{links.0}，独立调试编译{links.0}/{links.1}，分析入驻协议与要求，提交入驻PR", links = [
-        { name = 'Helium App', url = "https://github.com/helium/hotspot-app" },
-        { name = 'maker-start-app', url = "https://github.com/helium/maker-starter-app" }
+
+    { content = "开源接入贡献：调试编译 {links.0}/{links.1}，梳理接入要求并提交 PR 支持生态接入。", links = [
+      { name = "helium/hotspot-app", url = "https://github.com/helium/hotspot-app" },
+      { name = "helium/maker-starter-app", url = "https://github.com/helium/maker-starter-app" }
     ]}
 ]
 
@@ -96,38 +129,35 @@ projects = [
 company = "美间"
 time = "2019年7月 - 2020年11月"
 position = "前端工程师"
-companyDes = "杭州美间科技有限公司 - 酷家乐旗下创意内容云设计工具"
-labels = ["React", "React Hooks", "Nodejs", "TypeScript", "fabricjs", "bulljs"]
+companyDes = "酷家乐旗下创意内容云设计工具"
+labels = ["TypeScript", "React", "Node.js", "Fabric.js", "Bull", "SSR/SEO"]
+
 projects = [
-    { content = "使用React开发维护主站{links.0}，包括但不限于日常需求以及公共组件的开发", links = [
-        { name = "美间官网", url = "https://www.meijian.io" }
-    ]},
-    { content = "开发并维护面向软装设计师使用的{links.0}", links = [
-        { name = "工具项目", url = "https://www.meijian.io/board/5fe5428be4b022446d24a3f8" }
-    ]},
-    { content = "使用React + TypeScript开发主站公共组件：主站登录后右上角通知功能；公共编辑弹窗组件重构等" },
-    { content = "主导使用Nodejs，基于prerender.js库，并使用{links.0}，对接Java，二次开发并自建公司内部使用的prerender服务，优化搜索引擎的爬去，提升SEO", links = [
-        { name = "bulljs", url = "https://starxx.me/article/1PIkVyzL_SokcSYS1LKutG3cpoBI0tYzm" }
-    ]}
+  { content = "{links.0}的迭代与工程化：基于 React + TypeScript 进行核心业务迭代，沉淀公共组件与交互模式，确保极致的性能和友好的用户体验。", links = [
+      { name = "美间主站", url = "https://www.meijian.io" }
+  ]},
+
+  { content = "在线设计工具：参与软装设计师{links.0}的功能开发与维护，围绕复杂交互与编辑场景进行组件化与性能优化（含 {links.1} 相关能力）。", links = [
+      { name = "工具", url = "https://www.meijian.io/board/5fe5428be4b022446d24a3f8" },
+      { name = "Fabric.js", url = "https://fabricjs.com/" }
+  ]},
+
+  { content = "公共能力建设：开发并重构关键公共组件（如站内通知、通用弹窗/编辑弹窗），统一交互与状态管理方式，提升复用性与迭代效率。" },
+
+  { content = "SEO/预渲染服务：主导基于 prerender.js 搭建预渲染服务，通过 {links.0} 队列进行任务调度与重试机制设计，并与 Java 服务对接完成内部落地，提升搜索引擎抓取与收录效果。", links = [
+      { name = "Bull", url = "https://github.com/OptimalBits/bull" }
+  ]}
 ]
 
 # ------work experience------
 [[resume.experience.data]]
-company = "婚礼纪（杭州火烧云科技有限公司）"
+company = "早期工作经历（2016-2019）"
+time = "2016年6月 - 2019年6月"
 position = "前端工程师"
-time = "2018年5月-2019年6月"
-labels = ["React", "mobx", "Vue", "Nodejs", "Nuxtjs", "Nextjs"]
- projects = [
-      { content = "后台管理系统开发 | Next.js/Nuxt.js SSR重构 | 搭建npm私有仓库" }
-  ]
-
-# ------work experience------
-[[resume.experience.data]]
-  company = "早期工作经历（2016-2018）"
-  time = "2016年6月 - 2018年3月"
-  position = "前端工程师"
-  companyDes = "你今天真好看APP & 猪八戒网"
-  labels = ["React", "Vue", "Node.js"]
-  projects = [
-      { content = "Vue/React项目开发 | Node.js中间层服务 | 后台管理系统" }
-  ]
+companyDes = "你今天真好看APP / 猪八戒网 / 婚礼纪（火烧云科技）"
+labels = ["React", "Vue", "Node.js", "Nuxt.js", "Next.js", "SSR", "MobX"]
+projects = [
+  { content = "参与多个业务线的 Web 产品开发与迭代，覆盖 C 端页面与后台管理系统，沉淀组件化与通用前端工程实践。" },
+  { content = "负责/参与 SSR 改造（Next.js / Nuxt.js），优化首屏渲染与 SEO 相关能力，提升页面加载体验。" },
+  { content = "搭建与维护前端工程化基础：私有 npm 仓库、依赖管理与规范化发布流程，并支持 Node.js 中间层接口对接。" }
+]

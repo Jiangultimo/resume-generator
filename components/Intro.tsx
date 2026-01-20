@@ -1,11 +1,9 @@
 import React, { memo } from 'react'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
-import { Mail, Phone, MapPin, Globe, User, GraduationCap, Github, ExternalLink } from 'lucide-react'
-import { useI18n } from '@/context/i18n'
+import * as LucideIcons from 'lucide-react'
 import avatar from '@/public/avatar.jpg'
 import { SimpleLink } from '@/components/ResumeLink'
 import UploadAvatar from '@/components/pages/index/UploadAvatar'
@@ -16,44 +14,39 @@ type Props = {
 }
 
 const nilIntros: Intro[] = []
-const nilInfos: Intro = {}
+const nilInfos: Intro = { value: '' }
 
-const getIcon = (key: string) => {
-  switch (key) {
-    case 'name': return <User className="h-4 w-4" />
-    case 'email': return <Mail className="h-4 w-4" />
-    case 'phone': return <Phone className="h-4 w-4" />
-    case 'address': return <MapPin className="h-4 w-4" />
-    case 'graduate': return <GraduationCap className="h-4 w-4" />
-    case 'github': return <Github className="h-4 w-4" />
-    case 'site': return <Globe className="h-4 w-4" />
-    case 'website': return <Globe className="h-4 w-4" />
-    default: return <ExternalLink className="h-4 w-4" />
+// 动态获取 Lucide 图标组件
+const getDynamicIcon = (iconName?: string) => {
+  if (!iconName) {
+    const HelpCircle = LucideIcons.HelpCircle
+    return <HelpCircle className="h-4 w-4" />
   }
+
+  // @ts-ignore - 动态访问图标
+  const IconComponent = LucideIcons[iconName] || LucideIcons.ExternalLink
+  return <IconComponent className="h-4 w-4" />
 }
 
 // 提取为独立组件以避免重复渲染
 const IntroItem = memo(({ item, index }: { item: Intro; index: number }) => {
-  const [key] = Object.keys(item)
-
-  // 为 email 添加 mailto 链接
-  const itemWithUrl = key === "email"
-    ? { ...item, url: `mailto:${item[key]}` }
-    : item
+  const displayLabel = item.label
+  const displayValue = item.value
+  const iconComponent = getDynamicIcon(item.icon)
+  const itemWithUrl = item.link ? { url: item.link } : {}
 
   return (
     <motion.div
-      key={key}
       className="max-w-full min-w-0 flex-shrink"
       initial={{ opacity: 0, scale: 0.8, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 1.2 + index * 0.1 }}
+      transition={{ duration: 0.4, delay: 0.1 }}
       whileHover={{ scale: 1.05, y: -2 }}
       whileTap={{ scale: 0.95 }}
     >
       <Badge
         variant="secondary"
-        className="flex items-start gap-2 px-3 py-2 text-sm hover:bg-emerald-100 transition-colors cursor-pointer max-w-full min-w-0 min-h-fit"
+        className="flex items-center gap-2 px-3 py-2 text-sm hover:bg-gray-200 transition-colors cursor-pointer max-w-full min-w-0 min-h-fit"
       >
         <motion.div
           className="flex-shrink-0"
@@ -61,11 +54,20 @@ const IntroItem = memo(({ item, index }: { item: Intro; index: number }) => {
           whileHover={{ rotate: 360 }}
           transition={{ duration: 0.3 }}
         >
-          {getIcon(key)}
+          {iconComponent}
         </motion.div>
         <div className="min-w-0 flex-1">
           <SimpleLink {...itemWithUrl}>
-            <span className="inline-block text-xs sm:text-sm leading-relaxed break-words whitespace-normal">{item[key]}</span>
+            {displayLabel && (
+              <span
+                className="inline text-xs opacity-70 mr-1"
+                dangerouslySetInnerHTML={{ __html: displayLabel }}
+              />
+            )}
+            <span
+              className="inline text-xs sm:text-sm leading-relaxed break-words whitespace-normal"
+              dangerouslySetInnerHTML={{ __html: displayValue }}
+            />
           </SimpleLink>
         </div>
       </Badge>
@@ -77,13 +79,19 @@ IntroItem.displayName = 'IntroItem'
 
 const Header: React.FC<Props> = (props) => {
   const { intros = nilIntros, infos = nilInfos } = props
-  const { t } = useI18n()
 
-  // 过滤掉 name 字段
-  const filteredIntros = intros.filter(item => {
-    const [key] = Object.keys(item)
-    return key !== 'name'
-  })
+  // 从 intros 中提取姓名(label 为 "姓名" 或 "name")
+  const nameItem = intros.find(item =>
+    item.label?.toLowerCase() === 'name' || item.label === '姓名'
+  )
+
+  // 获取姓名值
+  const displayName = nameItem?.value || infos.name || '姓名'
+
+  // 过滤掉姓名字段,只显示其他信息
+  const filteredIntros = intros.filter(item =>
+    item.label?.toLowerCase() !== 'name' && item.label !== '姓名'
+  )
 
   return (
     <motion.header 
@@ -106,17 +114,17 @@ const Header: React.FC<Props> = (props) => {
                   className="relative group"
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4, type: "spring", stiffness: 100 }}
+                  transition={{ duration: 0.8, delay: 0.1, type: "spring", stiffness: 100 }}
                   whileHover={{ scale: 1.05 }}
                 >
                   <Avatar className="w-40 h-40 border-4 border-white shadow-lg">
-                    <AvatarImage 
-                      src={avatar.src} 
-                      alt={infos.name as string ?? ''}
+                    <AvatarImage
+                      src={avatar.src}
+                      alt={displayName}
                       className="object-cover"
                     />
                     <AvatarFallback className="text-2xl font-bold bg-gradient-to-br from-emerald-400 to-teal-500 text-white">
-                      {infos.name ? (infos.name as string).charAt(0).toUpperCase() : 'U'}
+                      {displayName ? displayName.charAt(0).toUpperCase() : 'U'}
                     </AvatarFallback>
                   </Avatar>
                   <div className="absolute inset-0 rounded-full">
@@ -129,24 +137,24 @@ const Header: React.FC<Props> = (props) => {
                   className="flex-1 text-center md:text-left w-full md:w-auto min-w-0"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                  <motion.h1 
+                  <motion.h1
                     className="text-3xl md:text-4xl font-bold text-white mb-2"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.8 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
                   >
-                    {infos.name || '姓名'}
+                    {displayName}
                   </motion.h1>
                   <motion.div
                     className="flex flex-wrap gap-2 justify-center md:justify-start max-w-full"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 1 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
                   >
                     {filteredIntros.map((item, index) => (
-                      <IntroItem key={Object.keys(item)[0]} item={item} index={index} />
+                      <IntroItem key={item.icon} item={item} index={index} />
                     ))}
                   </motion.div>
                 </motion.div>

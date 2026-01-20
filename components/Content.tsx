@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Award, Star, TrendingUp, ChevronRight } from 'lucide-react'
+import { Award, Star, TrendingUp, Circle } from 'lucide-react'
 import { useI18n } from '@/context/i18n'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -63,17 +63,17 @@ const Skill: React.FC<StringContent> = props => {
     >
       <Card className={cn(
         "transition-all duration-300",
+        "bg-transparent border-0 shadow-none",
+        "py-4"
       )}>
-        <CardContent className="p-6">
+        <CardContent className="py-0 px-4">
           <motion.h4
-            className="pb-3 text-lg font-semibold text-emerald-800 border-emerald-300 mb-4"
+            className="pb-3 text-lg font-semibold"
             variants={containerVariants}
           >
             <div className="flex items-center gap-2">
-              {isSkillsSection && <Award className="w-5 h-5 text-emerald-700" />}
-              {isEvaluationSection && <Star className="w-5 h-5 text-emerald-700" />}
+              {isSkillsSection && <Award className="w-5 h-5" />}
               <span>{title}</span>
-              {(isSkillsSection || isEvaluationSection) && <TrendingUp className="w-4 h-4 text-green-600 ml-1" />}
             </div>
           </motion.h4>
 
@@ -98,7 +98,7 @@ const Skill: React.FC<StringContent> = props => {
                       "hover:border-emerald-300 hover:shadow-sm",
                       "transition-all duration-200"
                     )}>
-                      <ChevronRight className="w-3 h-3 text-emerald-500 flex-shrink-0" />
+                      <Circle className="w-2 h-2 text-emerald-500 fill-emerald-500 flex-shrink-0" />
                       <span
                         dangerouslySetInnerHTML={{ __html: highlightSkills(val) }}
                         className="text-sm text-gray-700 skill-text"
