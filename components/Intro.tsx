@@ -117,7 +117,7 @@ const Header: React.FC<Props> = (props) => {
                   transition={{ duration: 0.8, delay: 0.1, type: "spring", stiffness: 100 }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <Avatar className="w-40 h-40 border-4 border-white shadow-lg">
+                  <Avatar className="w-40 h-40 border-4 border-white shadow-lg" data-avatar>
                     <AvatarImage
                       src={avatar.src}
                       alt={displayName}

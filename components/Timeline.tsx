@@ -80,9 +80,10 @@ const Timeline: React.FC<Props> = (props) => {
                 )}
                 
                 {/* Timeline Node */}
-                <motion.div 
+                <motion.div
                   className={styles['timeline-node']}
                   variants={nodeVariants}
+                  data-timeline-node
                 >
                   <div className={styles['node-inner']} />
                 </motion.div>

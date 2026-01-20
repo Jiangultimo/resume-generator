@@ -107,11 +107,12 @@ const UploadAvatar: React.FC<UploadAvatarProps> = (props) => {
   }
 
   return (
-    <div 
+    <div
       className={`${styles["image-input-group"]} ${
         isDragOver ? styles["drag-over"] || 'ring-2 ring-white/50' : ''
-      }`} 
+      }`}
       style={style}
+      data-upload-avatar
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}

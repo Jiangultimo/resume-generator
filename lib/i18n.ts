@@ -31,6 +31,7 @@ export interface Translations {
   
   // Export PDF
   printResume: string;
+  exportPDF: string;
   exporting: string;
   exportSuccess: string;
   exportFailed: string;
@@ -72,6 +73,7 @@ export const translations: Record<Language, Translations> = {
     
     // Export PDF
     printResume: "Print Resume",
+    exportPDF: "Export PDF",
     exporting: "Exporting...",
     exportSuccess: "Export Success",
     exportFailed: "Export Failed",
@@ -111,6 +113,7 @@ export const translations: Record<Language, Translations> = {
     
     // Export PDF
     printResume: "打印简历",
+    exportPDF: "导出 PDF",
     exporting: "导出中...",
     exportSuccess: "导出成功",
     exportFailed: "导出失败",

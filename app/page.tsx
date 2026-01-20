@@ -12,7 +12,6 @@ import Experience from '@/components/Experience'
 import { ExportPDF } from '@/components/Tool/'
 import Loading from '@/components/Loading'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
-// Removed MobileMenu import
 
 const Resume = () => {
   const [formattedInfos, setFormattedInfos] = useState<Intro>()
@@ -79,8 +78,9 @@ const Resume = () => {
 
   return (
     <div className={styles['resume']} id="resume">
-      {/* Language Switcher */}
-      <div className="fixed top-4 right-4 z-50">
+      {/* 右上角工具栏：语言切换 + 导出 PDF */}
+      <div className="fixed top-4 right-4 z-50 flex items-center gap-3" data-hide-on-print>
+        <ExportPDF />
         <LanguageSwitcher />
       </div>
       <AnimatePresence mode="wait">
@@ -99,7 +99,6 @@ const Resume = () => {
           }}>
             { loading && <Loading /> }
 
-            {/* <ExportPDF infos={formattedInfos} /> */}
             <div id="intro" className={styles['content-section']}>
               <Intro key={`intro-${dataLanguage}`} intros={dataIntros} infos={formattedInfos} />
             </div>
