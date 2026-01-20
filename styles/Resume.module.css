@@ -34,8 +34,8 @@
 
 /* 技能部分样式 - 应用工作经历背景样式 */
 .skills {
-  @apply w-full flex-1 bg-white/50 backdrop-blur-sm rounded-lg shadow-sm;
-  @apply py-3 px-3 sm:px-4 lg:px-6 box-border;
+  @apply w-full flex-1 backdrop-blur-sm rounded-lg;
+  @apply box-border;
 }
 
 /* 自我评价部分样式 - 应用工作经历背景样式 */

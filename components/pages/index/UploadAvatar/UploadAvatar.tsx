@@ -32,7 +32,6 @@ const UploadAvatar: React.FC<UploadAvatarProps> = (props) => {
         .then(async (res) => {
           if (res.ok) {
             const response = await res.json()
-            console.log(`upload avatar result: ${response.success}`)
             setUploadStatus('success')
             // Reset to idle after 2 seconds
             setTimeout(() => setUploadStatus('idle'), 2000)

@@ -2,6 +2,9 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Award, Star, TrendingUp, ChevronRight } from 'lucide-react'
 import { useI18n } from '@/context/i18n'
+import { Card, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { cn } from '@/lib/utils'
 import styles from '@/styles/Content.module.css'
 import skillKeywordsConfig from '@/config/skill-keywords.json'
 
@@ -51,51 +54,63 @@ const Skill: React.FC<StringContent> = props => {
 
 
   return (
-    <motion.div 
-      className={styles['content']}
+    <motion.div
+      className="w-full"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
     >
-      <motion.h4 
-        className={styles['title']}
-        variants={containerVariants}
-      >
-        <div className="flex items-center gap-2">
-          {isSkillsSection && <Award className="w-5 h-5 text-gray-700" />}
-          {isEvaluationSection && <Star className="w-5 h-5 text-gray-700" />}
-          <span>{title}</span>
-          {(isSkillsSection || isEvaluationSection) && <TrendingUp className="w-4 h-4 text-green-600 ml-1" />}
-        </div>
-      </motion.h4>
-      <motion.ul 
-        className={styles['list']}
-        variants={containerVariants}
-      >
-        {
-          data.map((val: string, index: number) => {
-            return (
-              <motion.li 
-                className={styles['list-item']}
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, x: -20 },
-                  visible: { opacity: 1, x: 0 }
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  <ChevronRight className="w-3 h-3 text-emerald-500 flex-shrink-0" />
-                  <span 
-                    dangerouslySetInnerHTML={{ __html: highlightSkills(val) }}
-                    className="skill-text"
-                  />
-                </div>
-              </motion.li>
-            )
-          })
-        }
-      </motion.ul>
+      <Card className={cn(
+        "transition-all duration-300",
+      )}>
+        <CardContent className="p-6">
+          <motion.h4
+            className="pb-3 text-lg font-semibold text-emerald-800 border-emerald-300 mb-4"
+            variants={containerVariants}
+          >
+            <div className="flex items-center gap-2">
+              {isSkillsSection && <Award className="w-5 h-5 text-emerald-700" />}
+              {isEvaluationSection && <Star className="w-5 h-5 text-emerald-700" />}
+              <span>{title}</span>
+              {(isSkillsSection || isEvaluationSection) && <TrendingUp className="w-4 h-4 text-green-600 ml-1" />}
+            </div>
+          </motion.h4>
+
+          <motion.ul
+            className="space-y-2"
+            variants={containerVariants}
+          >
+            {
+              data.map((val: string, index: number) => {
+                return (
+                  <motion.li
+                    className="list-none"
+                    key={index}
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: { opacity: 1, x: 0 }
+                    }}
+                  >
+                    <div className={cn(
+                      "flex items-center gap-2 p-2.5 rounded-md",
+                      "bg-white/60 border border-emerald-100",
+                      "hover:border-emerald-300 hover:shadow-sm",
+                      "transition-all duration-200"
+                    )}>
+                      <ChevronRight className="w-3 h-3 text-emerald-500 flex-shrink-0" />
+                      <span
+                        dangerouslySetInnerHTML={{ __html: highlightSkills(val) }}
+                        className="text-sm text-gray-700 skill-text"
+                      />
+                    </div>
+                  </motion.li>
+                )
+              })
+            }
+          </motion.ul>
+        </CardContent>
+      </Card>
     </motion.div>
   )
 }

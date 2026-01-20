@@ -36,7 +36,7 @@
 
 /* Timeline Node */
 .timeline-node {
-  @apply absolute left-2 top-2 w-4 h-4 bg-white border-4 border-emerald-500 rounded-full shadow-lg z-10;
+  @apply absolute left-0 top-2 w-4 h-4 bg-white border-4 border-emerald-500 rounded-full shadow-lg z-10;
   transform: translateX(-50%);
   transition: all 0.3s ease;
 }
