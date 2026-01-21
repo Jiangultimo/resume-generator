@@ -55,11 +55,11 @@ export async function GET(request: NextRequest) {
     const pageUrl = `${baseUrl}?lang=${lang}`
     await page.goto(pageUrl, {
       waitUntil: 'networkidle0',
-      timeout: 30000,
+      timeout: 60000, // 增加超时时间到 60 秒
     })
 
     // 等待页面内容加载完成
-    await page.waitForSelector('#resume', { timeout: 10000 })
+    await page.waitForSelector('#resume', { timeout: 20000 }) // 增加等待时间到 20 秒
 
     // 等待所有动画完成（framer-motion 动画通常在 2-3 秒内完成）
     await new Promise(resolve => setTimeout(resolve, 3000))

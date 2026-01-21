@@ -13,15 +13,15 @@ const quicksand = Quicksand({
 export const metadata: Metadata = {
   metadataBase: new URL('https://hi.sparkify.me'),
   title: {
-    default: 'Zhengxing Jiang (蒋正兴) - Full-Stack Engineer | AI Expert',
+    default: 'Zhengxing Jiang (蒋正兴) - Full-Stack Engineer',
     template: '%s | Zhengxing Jiang'
   },
-  description: '9 years of full-stack development experience. Former Tech Lead at AI startup. Expert in AI/LLM applications, React, Next.js, Node.js, Python. Available for full-time/remote opportunities.',
+  description: '9 years of full-stack development experience. Former Tech Lead at AI startup. Specialized in AI/LLM applications, React, Next.js, Node.js, Python. Available for full-time/remote opportunities.',
   keywords: [
     'Zhengxing Jiang',
     '蒋正兴',
     'Full-Stack Developer',
-    'AI Engineer',
+    'Software Engineer',
     'LLM',
     'React',
     'Next.js',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     'Tech Lead',
     'RAG',
     'LangChain',
-    'Software Engineer',
+    'AI Applications',
     'Chongqing',
     'China'
   ],
@@ -49,8 +49,8 @@ export const metadata: Metadata = {
     alternateLocale: ['zh_CN'],
     url: 'https://hi.sparkify.me',
     siteName: 'Zhengxing Jiang - Resume',
-    title: 'Zhengxing Jiang - Full-Stack Engineer | AI Expert',
-    description: '9 years of full-stack development experience. Expert in AI/LLM applications, React, Next.js, Node.js, Python.',
+    title: 'Zhengxing Jiang - Full-Stack Engineer',
+    description: '9 years of full-stack development experience. Specialized in AI/LLM applications, React, Next.js, Node.js, Python.',
     images: [
       {
         url: '/avatar.jpg',
@@ -62,8 +62,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Zhengxing Jiang - Full-Stack Engineer | AI Expert',
-    description: '9 years of full-stack development experience. Expert in AI/LLM applications.',
+    title: 'Zhengxing Jiang - Full-Stack Engineer',
+    description: '9 years of full-stack development experience. Specialized in AI/LLM applications.',
     images: ['/avatar.jpg'],
   },
   robots: {

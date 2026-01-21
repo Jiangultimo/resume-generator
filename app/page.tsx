@@ -51,7 +51,7 @@ export async function generateMetadata({
 
   if (isZh) {
     return {
-      title: '蒋正兴 - 全栈工程师 | AI专家 | 个人简历',
+      title: '蒋正兴 - 全栈工程师 | AI应用开发 | 个人简历',
       description: '9年全栈开发经验，曾任AI创业公司技术负责人。擅长AI/LLM应用开发、React、Next.js、Node.js、Python。求职意向：全职/远程优先。',
       keywords: [
         '蒋正兴',
@@ -70,7 +70,7 @@ export async function generateMetadata({
         '个人简历'
       ],
       openGraph: {
-        title: '蒋正兴 - 全栈工程师 | AI专家',
+        title: '蒋正兴 - 全栈工程师 | AI应用开发',
         description: '9年全栈开发经验，擅长AI/LLM应用开发、React、Next.js、Node.js、Python',
         locale: 'zh_CN',
       },
@@ -85,7 +85,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: 'Zhengxing Jiang - Full-Stack Engineer | AI Expert | Resume',
+    title: 'Zhengxing Jiang - Full-Stack Engineer | AI Application Developer | Resume',
     description: '9 years of full-stack development experience. Former Tech Lead at AI startup. Expert in AI/LLM applications, React, Next.js, Node.js, Python. Available for full-time/remote opportunities.',
     keywords: [
       'Zhengxing Jiang',
@@ -104,8 +104,8 @@ export async function generateMetadata({
       'Resume'
     ],
     openGraph: {
-      title: 'Zhengxing Jiang - Full-Stack Engineer | AI Expert',
-      description: '9 years of full-stack development experience. Expert in AI/LLM applications, React, Next.js, Node.js, Python.',
+      title: 'Zhengxing Jiang - Full-Stack Engineer | AI Application Developer',
+      description: '9 years of full-stack development experience. Specialized in AI/LLM applications, React, Next.js, Node.js, Python.',
       locale: 'en_US',
     },
     alternates: {
