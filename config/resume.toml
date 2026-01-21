@@ -7,15 +7,13 @@ title = "过去几年我都干了什么"
 intros = [
     { label = "姓名", value = "蒋正兴", icon = "User" },
     { label = "邮箱", value = "medianeras57@gmail.com", icon = "Mail", link = "mailto:medianeras57@gmail.com" },
-    # { label = "电话", value = "18203096625", icon = "Phone" },
     { label = "毕业院校", value = "重庆邮电大学，软件工程(2016年本科毕业)", icon = "GraduationCap" },
     { label = "GitHub", value = "Jiangultimo", icon = "Github", link = "https://github.com/Jiangultimo" },
     { label = "现居地", value = "重庆", icon = "MapPin" },
     { label = "时区", value = "UTC+8 (北京时间)", icon = "Clock" },
-    { label = "求职意向", value = "全栈开发(AI方向也可） / AI产品技术负责人", icon = "Target" },
+    { label = "求职意向", value = "全栈工程师", icon = "Target" },
     { label = "期望合作方式", value = "全职 / 远程优先", icon = "Handshake" },
     { label = "", value = "9年开发经验 | 全栈工程师 | 曾任AI创业公司技术负责人 | 擅长AI产品落地与团队管理", icon = "Briefcase" }
-    # { label = "个人网站", value = "starxx.me", icon = "Globe", link = "https://starxx.me/resume" }
 ]
 
 # personal skills

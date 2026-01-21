@@ -7,15 +7,13 @@ title = "What I've Been Doing Over the Past Few Years"
 intros = [
     { label = "Name", value = "Zhengxing Jiang", icon = "User" },
     { label = "Email", value = "medianeras57@gmail.com", icon = "Mail", link = "mailto:medianeras57@gmail.com" },
-    # { label = "Phone", value = "18203096625", icon = "Phone" },
     { label = "Education", value = "Chongqing University of Posts and Telecommunications, Software Engineering (Bachelor's, 2016)", icon = "GraduationCap" },
     { label = "GitHub", value = "Jiangultimo", icon = "Github", link = "https://github.com/Jiangultimo" },
     { label = "Location", value = "Chongqing, China", icon = "MapPin" },
     { label = "Timezone", value = "UTC+8 (Beijing Time)", icon = "Clock" },
-    { label = "Target Role", value = "Full-Stack Developer (AI preferred) / AI Product Tech Lead", icon = "Target" },
+    { label = "Target Role", value = "Full-Stack Developer", icon = "Target" },
     { label = "Work Mode", value = "Full-time / Remote-first", icon = "Handshake" },
     { label = "", value = "9 years of development experience | Full-Stack Engineer | Former Tech Lead at AI startup | Expert in AI product delivery & team management", icon = "Briefcase" }
-    # { label = "Website", value = "starxx.me", icon = "Globe", link = "https://starxx.me/resume" }
 ]
 
 # personal skills
