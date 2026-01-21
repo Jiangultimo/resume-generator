@@ -14,14 +14,20 @@ const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
 interface I18nProviderProps {
   children: ReactNode;
+  initialLanguage?: Language; // Optional prop for server-side hydration
 }
 
-export function I18nProvider({ children }: I18nProviderProps) {
-  const [language, setLanguage] = useState<Language>('en'); // Default to English
+export function I18nProvider({ children, initialLanguage }: I18nProviderProps) {
+  const [language, setLanguage] = useState<Language>('en');
   const [t, setT] = useState<Translations>(getTranslation('en'));
   const [isInitialized, setIsInitialized] = useState(false);
+  const hasInitialized = React.useRef(false);
 
   useEffect(() => {
+    // Prevent double initialization in StrictMode
+    if (hasInitialized.current) return;
+    hasInitialized.current = true;
+
     // Check URL parameter first (for PDF export)
     const urlParams = new URLSearchParams(window.location.search);
     const urlLang = urlParams.get('lang');
@@ -43,7 +49,11 @@ export function I18nProvider({ children }: I18nProviderProps) {
     if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'zh')) {
       setLanguage(savedLanguage);
       setT(getTranslation(savedLanguage));
+      setIsInitialized(true);
+      return;
     }
+
+    // No URL param or localStorage, just mark as initialized
     setIsInitialized(true);
   }, []);
 

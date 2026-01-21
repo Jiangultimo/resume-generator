@@ -183,13 +183,31 @@ export const useChatLogic = ({ language, isInitialized }: UseChatLogicProps) => 
         const langParam = language === 'zh' ? 'cn' : 'en'
         const response = await fetch(`/api/chat?lang=${langParam}`)
 
+        // 处理 429 配额超限错误
+        if (response.status === 429) {
+          const errorData = await response.json()
+          setIsWaitingResponse(false)
+          setMessages([{
+            id: introMsgId,
+            role: 'assistant',
+            content: errorData.message || (language === 'zh' ? 'AI 服务暂时不可用，请稍后再试' : 'AI service is temporarily unavailable, please try again later')
+          }])
+          return
+        }
+
         const contentType = response.headers.get('content-type')
         if (contentType?.includes('text/event-stream')) {
           await handleStreamResponse(response, introMsgId, true)
         } else {
           setIsWaitingResponse(false)
           const data = await response.json()
-          if (data.success && data.message) {
+          if (data.error === 'QUOTA_EXCEEDED') {
+            setMessages([{
+              id: introMsgId,
+              role: 'assistant',
+              content: data.message || (language === 'zh' ? 'AI 服务暂时不可用，请稍后再试' : 'AI service is temporarily unavailable, please try again later')
+            }])
+          } else if (data.success && data.message) {
             setMessages([{ id: introMsgId, role: 'assistant', content: data.message }])
           }
         }
@@ -242,7 +260,44 @@ export const useChatLogic = ({ language, isInitialized }: UseChatLogicProps) => 
         })
       })
 
-      if (!response.ok) throw new Error('Failed to send message')
+      // 处理 429 配额超限错误
+      if (response.status === 429) {
+        const errorData = await response.json()
+        setIsWaitingResponse(false)
+        setIsLoading(false)
+        const quotaMessage = errorData.message || (language === 'zh'
+          ? 'AI 服务暂时不可用，请稍后再试'
+          : 'AI service is temporarily unavailable, please try again later')
+        setMessages(prev => {
+          const newMessages = [...prev]
+          newMessages[newMessages.length - 1] = { id: aiMsgId, role: 'assistant', content: quotaMessage }
+          return newMessages
+        })
+        return
+      }
+
+      if (!response.ok) {
+        // 尝试解析错误消息
+        try {
+          const errorData = await response.json()
+          if (errorData.error === 'QUOTA_EXCEEDED') {
+            setIsWaitingResponse(false)
+            setIsLoading(false)
+            const quotaMessage = errorData.message || (language === 'zh'
+              ? 'AI 服务暂时不可用，请稍后再试'
+              : 'AI service is temporarily unavailable, please try again later')
+            setMessages(prev => {
+              const newMessages = [...prev]
+              newMessages[newMessages.length - 1] = { id: aiMsgId, role: 'assistant', content: quotaMessage }
+              return newMessages
+            })
+            return
+          }
+        } catch {
+          // 如果无法解析为 JSON，使用通用错误处理
+        }
+        throw new Error('Failed to send message')
+      }
 
       await handleStreamResponse(response, aiMsgId, false)
     } catch (error) {
@@ -251,7 +306,11 @@ export const useChatLogic = ({ language, isInitialized }: UseChatLogicProps) => 
       const errorMessage = language === 'zh'
         ? '抱歉，发送消息失败，请稍后再试。'
         : 'Sorry, failed to send message. Please try again later.'
-      setMessages(prev => [...prev, { id: generateMessageId(), role: 'assistant', content: errorMessage }])
+      setMessages(prev => {
+        const newMessages = [...prev]
+        newMessages[newMessages.length - 1] = { id: aiMsgId, role: 'assistant', content: errorMessage }
+        return newMessages
+      })
       setIsLoading(false)
     }
   }, [input, isLoading, isWaitingResponse, language, messages, fetchSuggestions, handleStreamResponse])

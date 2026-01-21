@@ -93,8 +93,37 @@ export async function GET(request: NextRequest) {
         'Connection': 'keep-alive',
       },
     })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Failed to generate intro:', error)
+    console.error('Error details:', {
+      status: error?.status,
+      statusCode: error?.statusCode,
+      response: error?.response,
+      message: error?.message
+    })
+
+    // 检查多种可能的 429 错误格式
+    const is429 =
+      error?.status === 429 ||
+      error?.statusCode === 429 ||
+      error?.response?.status === 429 ||
+      error?.response?.statusCode === 429 ||
+      (error?.message && error.message.includes('429')) ||
+      (error?.message && error.message.toLowerCase().includes('rate limit'))
+
+    if (is429) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'QUOTA_EXCEEDED',
+          message: lang === 'cn'
+            ? 'AI 服务暂时不可用，请稍后再试'
+            : 'AI service is temporarily unavailable, please try again later'
+        },
+        { status: 429 }
+      )
+    }
+
     return NextResponse.json(
       { success: false, error: 'Failed to generate intro' },
       { status: 500 }
@@ -157,8 +186,35 @@ export async function POST(request: NextRequest) {
         'Connection': 'keep-alive',
       },
     })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Chat API error:', error)
+    console.error('Error details:', {
+      status: error?.status,
+      statusCode: error?.statusCode,
+      response: error?.response,
+      message: error?.message
+    })
+
+    // 检查多种可能的 429 错误格式
+    const is429 =
+      error?.status === 429 ||
+      error?.statusCode === 429 ||
+      error?.response?.status === 429 ||
+      error?.response?.statusCode === 429 ||
+      (error?.message && error.message.includes('429')) ||
+      (error?.message && error.message.toLowerCase().includes('rate limit'))
+
+    if (is429) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'QUOTA_EXCEEDED',
+          message: 'AI 服务暂时不可用，请稍后再试'
+        },
+        { status: 429 }
+      )
+    }
+
     return NextResponse.json(
       { success: false, error: 'Internal server error' },
       { status: 500 }
