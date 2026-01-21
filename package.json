@@ -1,12 +1,14 @@
 {
-  "name": "generate-resume",
+  "name": "interactive-resume",
   "version": "0.0.1",
-  "description": "a resume generator",
+  "description": "An AI-powered interactive resume with chat capabilities",
   "keywords": [
-    "generate",
-    "generator",
+    "interactive",
+    "ai-chat",
     "resume",
-    "nextjs"
+    "nextjs",
+    "openrouter",
+    "chatbot"
   ],
   "scripts": {
     "dev": "next dev",
@@ -17,7 +19,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/EtaJx/generate-resume"
+    "url": "https://github.com/EtaJx/interactive-resume"
   },
   "dependencies": {
     "@ai-sdk/react": "^3.0.45",

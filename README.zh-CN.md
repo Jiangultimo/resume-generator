@@ -1,8 +1,8 @@
-# 简历生成器
+# 交互式简历
 
 [English](./README.md)
 
-一个现代化的交互式在线简历生成器，基于 Next.js 构建。通过简单的 TOML 配置文件，创建精美、响应式的个人简历，并配备 AI 聊天助手。
+一个现代化的交互式在线简历平台，基于 Next.js 构建。通过简单的 TOML 配置文件展示你的职业资料，并配备 AI 聊天助手帮助访客了解你的工作经验。
 
 [![在线演示](https://img.shields.io/badge/preview-online-brightgreen)](https://hi.sparkify.me)
 

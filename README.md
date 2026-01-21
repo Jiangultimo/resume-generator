@@ -1,8 +1,8 @@
-# Resume Generator
+# Interactive Resume
 
 [中文文档](./README.zh-CN.md)
 
-A modern, interactive online resume generator built with Next.js. Create beautiful, responsive resumes with AI-powered chat assistant through simple TOML configuration files.
+A modern, interactive online resume platform built with Next.js. Showcase your professional profile with an AI-powered chat assistant that answers questions about your experience through simple TOML configuration files.
 
 [![Live Demo](https://img.shields.io/badge/preview-online-brightgreen)](https://hi.sparkify.me)
 
