@@ -10,9 +10,10 @@ const THROTTLE_INTERVAL = 50
 
 interface UseChatLogicProps {
   language: string
+  isInitialized: boolean
 }
 
-export const useChatLogic = ({ language }: UseChatLogicProps) => {
+export const useChatLogic = ({ language, isInitialized }: UseChatLogicProps) => {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -162,9 +163,13 @@ export const useChatLogic = ({ language }: UseChatLogicProps) => {
     setIsLoading(false)
   }, [throttledUpdateMessage])
 
-  // 获取 AI 自我介绍
+  // 获取 AI 自我介绍 - 仅在 i18n 初始化完成时执行一次
   useEffect(() => {
+    // 等待 i18n 初始化完成
+    if (!isInitialized) return
     if (fetchedRef.current) return
+
+    // 标记已获取
     fetchedRef.current = true
 
     const introMsgId = generateMessageId()
@@ -198,9 +203,11 @@ export const useChatLogic = ({ language }: UseChatLogicProps) => {
         }])
       }
     }
+
     fetchIntro()
+  // 只在 isInitialized 变为 true 时执行一次，不监听 language 变化
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [language])
+  }, [isInitialized])
 
   // 发送消息
   const sendMessage = useCallback(async (messageText?: string) => {

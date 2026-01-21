@@ -42,7 +42,7 @@ const ChatHeader = memo(({
         </motion.div>
         <div className={styles.headerText}>
           <span className={styles.headerTitle}>
-            {language === 'zh' ? 'AI 简历助手' : 'AI Resume Assistant'}
+            {language === 'zh' ? 'Hi! 蒋正兴' : 'Hey! Zhengxing'}
           </span>
           <AnimatePresence mode="wait">
             {!isExpanded && (

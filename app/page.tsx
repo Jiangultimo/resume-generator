@@ -6,13 +6,14 @@ import ResumeClient from '@/components/ResumeClient'
 export default async function HomePage({
   searchParams,
 }: {
-  searchParams: { lang?: string }
+  searchParams: Promise<{ lang?: string }>
 }) {
   // 1. 优先使用 URL 参数
   // 2. 其次使用 cookie
   // 3. 默认使用英文
   const cookieStore = await cookies()
-  const urlLang = searchParams.lang
+  const params = await searchParams
+  const urlLang = params.lang
   const cookieLang = cookieStore.get('language')?.value
 
   let language = 'en'
@@ -43,9 +44,10 @@ export default async function HomePage({
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: { lang?: string }
+  searchParams: Promise<{ lang?: string }>
 }) {
-  const isZh = searchParams.lang === 'cn' || searchParams.lang === 'zh'
+  const params = await searchParams
+  const isZh = params.lang === 'cn' || params.lang === 'zh'
 
   if (isZh) {
     return {

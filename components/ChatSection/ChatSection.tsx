@@ -14,7 +14,7 @@ import styles from '@/styles/ChatSection.module.css'
 const ChatSection = () => {
   const [isExpanded, setIsExpanded] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
-  const { language } = useI18n()
+  const { language, isInitialized } = useI18n()
 
   const {
     messages,
@@ -26,7 +26,7 @@ const ChatSection = () => {
     messageListRef,
     setInput,
     sendMessage
-  } = useChatLogic({ language })
+  } = useChatLogic({ language, isInitialized })
 
   const loadingText = language === 'zh' ? '思考中...' : 'Thinking...'
 

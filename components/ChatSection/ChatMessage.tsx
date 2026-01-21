@@ -4,6 +4,22 @@ import ReactMarkdown from 'react-markdown'
 import Image from 'next/image'
 import styles from '@/styles/ChatSection.module.css'
 
+// 自定义链接渲染器，支持 mailto 链接
+const CustomLink = memo(({ href, children }: any) => {
+  // mailto 链接直接使用 href，让浏览器原生处理
+  return (
+    <a
+      href={href}
+      target={href?.startsWith('mailto:') ? undefined : '_blank'}
+      rel={href?.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+      style={{ color: '#3b82f6', textDecoration: 'underline', cursor: 'pointer' }}
+    >
+      {children}
+    </a>
+  )
+})
+CustomLink.displayName = 'CustomLink'
+
 export interface Message {
   id: string
   role: 'assistant' | 'user'
@@ -34,7 +50,13 @@ LoadingIndicator.displayName = 'LoadingIndicator'
 // Markdown 渲染组件
 export const MarkdownRenderer = memo(({ content, isStreaming }: { content: string; isStreaming?: boolean }) => (
   <div className={`${styles.markdownContent} ${isStreaming ? styles.streaming : ''}`}>
-    <ReactMarkdown>{content}</ReactMarkdown>
+    <ReactMarkdown
+      components={{
+        a: CustomLink as any,
+      }}
+    >
+      {content}
+    </ReactMarkdown>
     {isStreaming && <span className={styles.streamingCursor} />}
   </div>
 ))
