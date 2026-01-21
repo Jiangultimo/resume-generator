@@ -1,129 +1,117 @@
-'use client'
+import { cookies } from 'next/headers'
+import { getContent } from '@/utils/parse'
+import ResumeClient from '@/components/ResumeClient'
 
-import { useEffect, useState, memo, useContext } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { getEnv } from '@/utils/env'
-import LoadingContext from '@/context/loading'
-import { useI18n } from '@/context/i18n'
-import styles from '@/styles/Resume.module.css'
-import Intro from '@/components/Intro'
-import Content from '@/components/Content'
-import Experience from '@/components/Experience'
-import { ExportPDF } from '@/components/Tool/'
-import Loading from '@/components/Loading'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
+// 这是一个 Server Component
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: { lang?: string }
+}) {
+  // 1. 优先使用 URL 参数
+  // 2. 其次使用 cookie
+  // 3. 默认使用英文
+  const cookieStore = await cookies()
+  const urlLang = searchParams.lang
+  const cookieLang = cookieStore.get('language')?.value
 
-const Resume = () => {
-  const [formattedInfos, setFormattedInfos] = useState<Intro>()
-  const loadingContext = useContext(LoadingContext)
-  const [loading, setLoading] = useState<boolean>(loadingContext.loading)
-  const [resumeData, setResumeData] = useState<Resume | null>(null)
-  const [dataLanguage, setDataLanguage] = useState<string>('') // 追踪数据的语言
-  const [isTransitioning, setIsTransitioning] = useState<boolean>(false)
-  const { t, language, isInitialized } = useI18n()
+  let language = 'en'
+  let langParam = 'en'
 
-  // 安全解构,避免undefined错误
-  const { intros, skills, experience, evaluations, title } = resumeData || {}
-
-  useEffect(() => {
-    if (!isInitialized) return
-
-    // 在客户端获取数据
-    const fetchResume = async () => {
-      try {
-        // 开始过渡动画
-        setIsTransitioning(true)
-
-        // 根据当前语言获取数据
-        const langParam = language === 'zh' ? 'cn' : 'en'
-        const res = await fetch(`/api/resume?lang=${langParam}`)
-        const data = await res.json()
-
-        // 立即更新数据和数据语言标记,让 AnimatePresence 处理过渡
-        setResumeData(data)
-        setDataLanguage(language)
-      } catch (error) {
-        console.error('Failed to fetch resume data:', error)
-        setIsTransitioning(false)
-      }
-    }
-
-    fetchResume()
-  }, [language, isInitialized])
-
-  // 处理动画完成
-  const handleAnimationComplete = () => {
-    if (isTransitioning) {
-      setIsTransitioning(false)
-    }
+  if (urlLang === 'cn' || urlLang === 'zh') {
+    language = 'zh'
+    langParam = 'cn'
+  } else if (urlLang === 'en') {
+    language = 'en'
+    langParam = 'en'
+  } else if (cookieLang === 'zh' || cookieLang === 'cn') {
+    language = 'zh'
+    langParam = 'cn'
+  } else if (cookieLang === 'en') {
+    language = 'en'
+    langParam = 'en'
   }
 
-  useEffect(() => {
-    if (resumeData && resumeData.intros && resumeData.intros.length !== 0) {
-      // 从 intros 数组中提取姓名项作为 formattedInfos
-      const nameItem = resumeData.intros.find(item =>
-        item.label?.toLowerCase() === 'name' || item.label === '姓名'
-      )
-      if (nameItem) {
-        setFormattedInfos({ value: nameItem.value, name: nameItem.value })
-      }
-    }
-  }, [resumeData])
+  // 在服务端获取简历数据
+  const resumeData = await getContent(langParam)
 
-  if (!resumeData) {
-    return <Loading />
-  }
-
-  const { intros: dataIntros, skills: dataSkills, experience: dataExperience, evaluations: dataEvaluations } = resumeData
-
-  return (
-    <div className={styles['resume']} id="resume">
-      {/* 右上角工具栏：语言切换 + 导出 PDF */}
-      <div className="fixed top-4 right-4 z-50 flex items-center gap-3" data-hide-on-print>
-        <ExportPDF />
-        <LanguageSwitcher />
-      </div>
-      <AnimatePresence mode="wait">
-        <motion.main
-          key={dataLanguage}
-          className={styles['resume-wrapper']}
-          initial={{ opacity: 1 }}
-          animate={{ opacity: isTransitioning ? 0.3 : 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-          onAnimationComplete={handleAnimationComplete}
-        >
-          <LoadingContext.Provider value={{
-            loading,
-            setLoading
-          }}>
-            { loading && <Loading /> }
-
-            <div id="intro" className={styles['content-section']}>
-              <Intro key={`intro-${dataLanguage}`} intros={dataIntros} infos={formattedInfos} />
-            </div>
-            {/* 技能和评价容器 - 桌面端并排,移动端上下 */}
-            <div className={`${styles['skills-evaluations-container']} ${styles['content-section']}`}>
-              {/* 技能部分 - 提升优先级 */}
-              <div id="skills" className={styles['skills']}>
-                <Content key={`skills-${dataLanguage}`} {...dataSkills} />
-              </div>
-              {/* 自我评价部分 - 移到技能部分之后 */}
-              {/* <div id="evaluations" className={styles['evaluations']}>
-                <Content key={`evaluations-${dataLanguage}`} {...dataEvaluations} />
-              </div> */}
-            </div>
-            <div className={`${styles['resume-content']} ${styles['content-section']}`}>
-              {/* 工作经验部分 */}
-              <div id="experience">
-                <Experience key={`experience-${dataLanguage}`} experience={dataExperience} />
-              </div>
-            </div>
-          </LoadingContext.Provider>
-        </motion.main>
-      </AnimatePresence>
-    </div>
-  )
+  // 将数据传递给客户端组件
+  return <ResumeClient initialData={resumeData} initialLanguage={language} />
 }
 
-export default memo(Resume)
+// 可选：添加元数据以改善 SEO
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: { lang?: string }
+}) {
+  const isZh = searchParams.lang === 'cn' || searchParams.lang === 'zh'
+
+  if (isZh) {
+    return {
+      title: '蒋正兴 - 全栈工程师 | AI专家 | 个人简历',
+      description: '9年全栈开发经验，曾任AI创业公司技术负责人。擅长AI/LLM应用开发、React、Next.js、Node.js、Python。求职意向：全职/远程优先。',
+      keywords: [
+        '蒋正兴',
+        '全栈工程师',
+        'AI工程师',
+        'LLM',
+        'React开发',
+        'Next.js',
+        'Node.js',
+        'Python',
+        '远程工作',
+        '技术负责人',
+        'RAG',
+        'LangChain',
+        '重庆',
+        '个人简历'
+      ],
+      openGraph: {
+        title: '蒋正兴 - 全栈工程师 | AI专家',
+        description: '9年全栈开发经验，擅长AI/LLM应用开发、React、Next.js、Node.js、Python',
+        locale: 'zh_CN',
+      },
+      alternates: {
+        canonical: 'https://hi.sparkify.me?lang=cn',
+        languages: {
+          'en': 'https://hi.sparkify.me?lang=en',
+          'zh-CN': 'https://hi.sparkify.me?lang=cn',
+        },
+      },
+    }
+  }
+
+  return {
+    title: 'Zhengxing Jiang - Full-Stack Engineer | AI Expert | Resume',
+    description: '9 years of full-stack development experience. Former Tech Lead at AI startup. Expert in AI/LLM applications, React, Next.js, Node.js, Python. Available for full-time/remote opportunities.',
+    keywords: [
+      'Zhengxing Jiang',
+      'Full-Stack Developer',
+      'AI Engineer',
+      'LLM',
+      'React Developer',
+      'Next.js',
+      'Node.js',
+      'Python',
+      'Remote Work',
+      'Tech Lead',
+      'RAG',
+      'LangChain',
+      'Chongqing',
+      'Resume'
+    ],
+    openGraph: {
+      title: 'Zhengxing Jiang - Full-Stack Engineer | AI Expert',
+      description: '9 years of full-stack development experience. Expert in AI/LLM applications, React, Next.js, Node.js, Python.',
+      locale: 'en_US',
+    },
+    alternates: {
+      canonical: 'https://hi.sparkify.me?lang=en',
+      languages: {
+        'en': 'https://hi.sparkify.me?lang=en',
+        'zh-CN': 'https://hi.sparkify.me?lang=cn',
+      },
+    },
+  }
+}

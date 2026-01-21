@@ -13,7 +13,8 @@ intros = [
     { label = "时区", value = "UTC+8 (北京时间)", icon = "Clock" },
     { label = "求职意向", value = "全栈工程师", icon = "Target" },
     { label = "期望合作方式", value = "全职 / 远程优先", icon = "Handshake" },
-    { label = "", value = "9年开发经验 | 全栈工程师 | 曾任AI创业公司技术负责人 | 擅长AI产品落地与团队管理", icon = "Briefcase" }
+    { label = "", value = "9年开发经验 | 全栈工程师 | 曾任AI创业公司技术负责人 | 擅长AI产品落地与团队管理", icon = "Briefcase" },
+    { label = "", value = "互动式在线简历：https://hi.sparkify.me - 配备AI助手，快速了解我的项目经验与技术栈", link = "https://hi.sparkify.me", icon = "Link" },
 ]
 
 # personal skills
@@ -86,7 +87,7 @@ projects = [
       { name = "ats-lui.laplacelab.cn", url = "https://ats-lui.laplacelab.cn" }
     ]},
 
-    { content = "【客户交付（企业内部项目）】医疗 DRG 编码/发票 EDI/国企智能体平台：负责<b>需求沟通/方案设计/核心链路/上线验收</b>。" }
+    { content = "<b>【客户交付（企业内部项目）】</b>医疗 DRG 编码/发票 EDI/国企智能体平台：负责<b>需求沟通/方案设计/核心链路/上线验收</b>。" }
 ]
 
 [[resume.experience.data]]

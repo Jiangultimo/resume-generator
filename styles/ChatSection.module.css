@@ -1,0 +1,534 @@
+@reference "./globals.css";
+
+/* 聊天组件容器 */
+.chatWrapper {
+  @apply w-full max-w-4xl mx-auto;
+}
+
+/* 全屏模式 - 覆盖整个页面 */
+.fullscreenWrapper {
+  @apply fixed inset-0;
+  @apply w-screen h-screen;
+  @apply max-w-none mx-0;
+  @apply bg-black/20;
+  @apply backdrop-blur-sm;
+  z-index: 9999;
+}
+
+/* 主卡片 - 与 Intro 卡片风格一致 */
+.chatCard {
+  @apply relative overflow-hidden;
+  @apply bg-[var(--chart-2)] backdrop-blur-sm;
+  @apply rounded-2xl shadow-lg;
+  @apply border-0;
+  @apply transition-shadow duration-500;
+}
+
+.chatCard:hover {
+  @apply shadow-xl;
+}
+
+/* 全屏模式的卡片样式 */
+.fullscreenCard {
+  @apply mx-auto my-4 sm:my-8;
+  @apply w-full max-w-4xl;
+  @apply h-[calc(100vh-2rem)] sm:h-[calc(100vh-4rem)];
+  @apply rounded-2xl;
+  @apply flex flex-col;
+  @apply shadow-2xl;
+}
+
+/* 装饰性背景元素 - 渐变光晕 */
+.decorativeOrb {
+  @apply absolute -top-20 -right-20 w-40 h-40;
+  @apply rounded-full opacity-30 pointer-events-none;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+  filter: blur(20px);
+}
+
+.decorativeOrb2 {
+  @apply absolute -bottom-10 -left-10 w-32 h-32;
+  @apply rounded-full opacity-20 pointer-events-none;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  filter: blur(15px);
+}
+
+/* 头部区域 */
+.chatHeader {
+  @apply relative z-10;
+  @apply flex items-center justify-between;
+  @apply px-5 py-4 sm:px-6 sm:py-5;
+  @apply cursor-pointer select-none;
+  @apply transition-all duration-300;
+}
+
+.headerContent {
+  @apply flex items-center gap-3;
+}
+
+.headerIcon {
+  @apply flex items-center justify-center;
+  @apply w-10 h-10 rounded-full;
+  @apply bg-white/20 backdrop-blur-sm;
+  @apply text-white;
+  @apply shadow-sm;
+  @apply transition-all duration-300;
+  @apply overflow-hidden;
+}
+
+.chatHeader:hover .headerIcon {
+  @apply bg-white/30 scale-105;
+}
+
+/* 头部头像样式 */
+.headerAvatar {
+  @apply w-full h-full object-cover rounded-full;
+}
+
+.headerText {
+  @apply flex flex-col;
+}
+
+.headerTitle {
+  @apply text-white font-semibold text-base sm:text-lg;
+  @apply tracking-wide;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.headerHint {
+  @apply text-white/70 text-xs sm:text-sm;
+  @apply mt-0.5;
+}
+
+/* 头部按钮组 */
+.headerButtons {
+  @apply flex items-center gap-2;
+  @apply flex-shrink-0;
+}
+
+.toggleButton {
+  @apply flex items-center justify-center;
+  @apply w-9 h-9 rounded-full;
+  @apply flex-shrink-0;
+  @apply bg-white/15 hover:bg-white/25;
+  @apply text-white;
+  @apply border-0 outline-none;
+  @apply transition-all duration-300;
+  @apply cursor-pointer;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  max-width: 2.25rem;
+  max-height: 2.25rem;
+}
+
+/* 聊天内容区域 */
+.chatBody {
+  @apply overflow-hidden;
+  @apply bg-white/95 backdrop-blur-md;
+  @apply border-t border-white/20;
+  @apply flex flex-col flex-1;
+}
+
+.fullscreenCard .chatBody {
+  @apply flex-1;
+}
+
+/* 消息列表 */
+.messageList {
+  @apply max-h-[320px] overflow-y-auto;
+  @apply p-4 sm:p-5 space-y-4;
+  @apply bg-gradient-to-b from-slate-50/80 to-white/90;
+  overscroll-behavior: contain;
+}
+
+.fullscreenCard .messageList {
+  @apply max-h-none;
+  @apply flex-1;
+}
+
+/* 消息容器 */
+.message {
+  @apply flex gap-3 items-end;
+}
+
+.userMessage {
+  @apply flex-row-reverse;
+}
+
+.assistantMessage {
+  @apply flex-row;
+}
+
+/* 消息头像 */
+.messageAvatar {
+  @apply flex-shrink-0;
+  @apply w-8 h-8 rounded-full;
+  @apply flex items-center justify-center;
+  @apply shadow-md;
+  @apply transition-transform duration-300;
+  @apply overflow-hidden;
+}
+
+.userMessage .messageAvatar {
+  @apply bg-gradient-to-br from-slate-600 to-slate-700;
+  @apply text-white;
+}
+
+.assistantMessage .messageAvatar {
+  @apply bg-transparent;
+}
+
+/* 消息中的头像图片 */
+.avatarImage {
+  @apply w-full h-full object-cover rounded-full;
+}
+
+.message:hover .messageAvatar {
+  @apply scale-110;
+}
+
+/* 消息气泡 */
+.messageBubble {
+  @apply max-w-[80%] px-4 py-3;
+  @apply text-sm leading-relaxed;
+  @apply shadow-sm;
+  @apply transition-all duration-300;
+}
+
+.userMessage .messageBubble {
+  @apply bg-gradient-to-br from-slate-700 to-slate-800;
+  @apply text-white;
+  @apply rounded-2xl rounded-br-md;
+}
+
+.assistantMessage .messageBubble {
+  @apply bg-white;
+  @apply text-slate-700;
+  @apply rounded-2xl rounded-bl-md;
+  @apply border border-slate-100;
+}
+
+.message:hover .messageBubble {
+  @apply shadow-md;
+  transform: translateY(-1px);
+}
+
+/* 打字指示器 - 使用 CSS 动画 */
+.typingIndicator {
+  @apply flex items-center gap-1.5 py-1;
+}
+
+.typingDot {
+  @apply w-2 h-2 rounded-full;
+  @apply bg-teal-500;
+  animation: typingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes typingPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* 旋转加载动画 - 使用 CSS 替代 Framer Motion */
+.spinningLoader {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 输入区域 */
+.inputArea {
+  @apply p-4 sm:p-5;
+  @apply bg-white/80 backdrop-blur-sm;
+  @apply border-t border-slate-100;
+}
+
+/* 推荐问题 */
+.suggestedQuestions {
+  @apply flex flex-wrap gap-2 mb-3;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.suggestedQuestions::-webkit-scrollbar {
+  display: none;
+}
+
+.suggestedQuestion {
+  @apply px-2 py-1 sm:px-3 sm:py-1.5;
+  @apply text-xs sm:text-sm;
+  @apply bg-slate-100/80 hover:bg-teal-50;
+  @apply text-slate-600 hover:text-teal-700;
+  @apply rounded-full;
+  @apply border border-slate-200/60 hover:border-teal-300;
+  @apply transition-all duration-200;
+  @apply whitespace-nowrap;
+  @apply cursor-pointer;
+  @apply flex-shrink-0;
+  height: fit-content;
+}
+
+.suggestedQuestion:hover {
+  @apply shadow-sm;
+  transform: translateY(-1px);
+}
+
+.suggestionsLoading {
+  @apply text-xs text-slate-400;
+  @apply px-3 py-1.5;
+}
+
+.inputWrapper {
+  @apply flex items-end gap-3;
+  @apply bg-slate-50/80 rounded-2xl;
+  @apply p-2 pr-2;
+  @apply border border-slate-200/80;
+  @apply transition-all duration-300;
+  @apply shadow-sm;
+}
+
+.inputWrapper:focus-within {
+  @apply border-teal-400/50 bg-white;
+  @apply shadow-md;
+  @apply ring-4 ring-teal-500/10;
+}
+
+.inputField {
+  @apply flex-1 resize-none;
+  @apply bg-transparent border-0;
+  @apply px-3 py-2;
+  @apply text-sm text-slate-700 leading-relaxed;
+  @apply placeholder:text-slate-400;
+  @apply focus:outline-none;
+  @apply min-h-[40px] max-h-[120px];
+}
+
+.sendButton {
+  @apply flex items-center justify-center;
+  @apply w-10 h-10 rounded-xl;
+  @apply flex-shrink-0;
+  @apply bg-gradient-to-br from-teal-500 to-emerald-500;
+  @apply text-white;
+  @apply border-0 outline-none cursor-pointer;
+  @apply shadow-md;
+  @apply transition-all duration-300;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  max-width: 2.5rem;
+  max-height: 2.5rem;
+}
+
+.sendButton:hover:not(:disabled) {
+  @apply shadow-lg;
+  @apply from-teal-600 to-emerald-600;
+}
+
+.sendButton:disabled {
+  @apply opacity-40 cursor-not-allowed;
+  @apply shadow-none;
+}
+
+.inputHint {
+  @apply text-xs text-slate-400;
+  @apply mt-2 text-center;
+  @apply select-none;
+}
+
+/* 滚动条样式 */
+.messageList::-webkit-scrollbar {
+  @apply w-1.5;
+}
+
+.messageList::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.messageList::-webkit-scrollbar-thumb {
+  @apply bg-slate-300/60 rounded-full;
+  @apply transition-colors duration-200;
+}
+
+.messageList::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400/60;
+}
+
+/* 移动端适配 */
+@media (max-width: 640px) {
+  .chatWrapper {
+    @apply px-2;
+  }
+
+  .chatHeader {
+    @apply px-4 py-3;
+  }
+
+  .headerIcon {
+    @apply w-9 h-9;
+  }
+
+  .messageList {
+    @apply max-h-[280px] p-3 space-y-3;
+  }
+
+  .messageAvatar {
+    @apply w-7 h-7;
+  }
+
+  .messageBubble {
+    @apply max-w-[85%] px-3 py-2.5 text-sm;
+  }
+
+  .inputArea {
+    @apply p-3;
+  }
+
+  .inputWrapper {
+    @apply p-1.5;
+  }
+
+  .sendButton {
+    @apply w-9 h-9;
+  }
+
+  .inputHint {
+    @apply hidden;
+  }
+}
+
+/* 消息内 loading 状态 */
+.messageLoading {
+  @apply flex items-center gap-2 text-slate-500;
+}
+
+.messageLoading span {
+  @apply text-sm;
+}
+
+/* Markdown 内容样式 */
+.markdownContent {
+  @apply text-sm leading-relaxed;
+}
+
+/* 流式传输时的样式 */
+.markdownContent.streaming {
+  @apply relative;
+}
+
+/* 流式传输光标 */
+.streamingCursor {
+  @apply inline-block w-0.5 h-4 bg-teal-500 ml-0.5;
+  @apply align-middle;
+  animation: cursorBlink 1s ease-in-out infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.markdownContent p {
+  @apply mb-2 last:mb-0;
+}
+
+.markdownContent strong {
+  @apply font-semibold;
+}
+
+.markdownContent em {
+  @apply italic;
+}
+
+.markdownContent ul,
+.markdownContent ol {
+  @apply pl-4 mb-2 last:mb-0;
+}
+
+.markdownContent ul {
+  @apply list-disc;
+}
+
+.markdownContent ol {
+  @apply list-decimal;
+}
+
+.markdownContent li {
+  @apply mb-1 last:mb-0;
+}
+
+.markdownContent code {
+  @apply bg-slate-100 px-1.5 py-0.5 rounded text-xs font-mono;
+}
+
+.userMessage .markdownContent code {
+  @apply bg-white/20;
+}
+
+.markdownContent pre {
+  @apply bg-slate-100 p-3 rounded-lg mb-2 last:mb-0 overflow-x-auto;
+}
+
+.userMessage .markdownContent pre {
+  @apply bg-white/10;
+}
+
+.markdownContent pre code {
+  @apply bg-transparent p-0;
+}
+
+.markdownContent blockquote {
+  @apply border-l-2 border-slate-300 pl-3 italic text-slate-600 mb-2 last:mb-0;
+}
+
+.userMessage .markdownContent blockquote {
+  @apply border-white/50 text-white/80;
+}
+
+.markdownContent a {
+  @apply text-teal-600 underline hover:text-teal-700;
+}
+
+.userMessage .markdownContent a {
+  @apply text-white underline;
+}
+
+.markdownContent h1,
+.markdownContent h2,
+.markdownContent h3,
+.markdownContent h4,
+.markdownContent h5,
+.markdownContent h6 {
+  @apply font-semibold mb-2 first:mt-0;
+}
+
+.markdownContent h1 {
+  @apply text-lg;
+}
+
+.markdownContent h2 {
+  @apply text-base;
+}
+
+.markdownContent h3,
+.markdownContent h4,
+.markdownContent h5,
+.markdownContent h6 {
+  @apply text-sm;
+}
+
+.markdownContent hr {
+  @apply border-slate-200 my-3;
+}
+
+.userMessage .markdownContent hr {
+  @apply border-white/30;
+}
+
+/* 打印时隐藏 */
+@media print {
+  .chatWrapper {
+    @apply hidden;
+  }
+}

@@ -2,17 +2,19 @@
 
 [English](./README.md)
 
-一个基于 Next.js 的数据驱动在线简历生成器。通过简单的 TOML 配置文件，创建精美、响应式的个人简历。
+一个现代化的交互式在线简历生成器，基于 Next.js 构建。通过简单的 TOML 配置文件，创建精美、响应式的个人简历，并配备 AI 聊天助手。
 
 [![在线演示](https://img.shields.io/badge/preview-online-brightgreen)](https://hi.sparkify.me)
 
 ## 特性
 
+- **AI 聊天助手**: 内置 ChatBot，帮助访客了解你的简历和工作经验
 - **数据驱动**: 所有简历内容通过 TOML 文件配置，无需修改代码
 - **双语支持**: 内置中英文切换，支持独立的配置文件
+- **现代化 UI**: 精美的玻璃态设计和流畅动画
 - **项目预览**: 集成 [Microlink](https://microlink.io/)，悬停链接时展示项目的富文本预览
 - **响应式设计**: 在桌面端和移动端都有良好的展示效果
-- **流畅动画**: 基于 Framer Motion 实现的细腻交互动画
+- **服务端渲染**: 针对性能和 SEO 进行了优化
 
 ### 开发环境功能
 
@@ -29,9 +31,24 @@
 npm install
 # 或
 yarn install
+# 或
+pnpm install
 ```
 
-### 2. 配置简历
+### 2. 配置环境变量
+
+在根目录创建 `.env.development` 文件：
+
+```bash
+# AI 聊天配置
+OPENROUTER_API_KEY="你的-openrouter-api-密钥"
+OPENROUTER_MODEL="openai/gpt-4o-mini"
+SITE_URL="http://localhost:3000"
+```
+
+从 [OpenRouter](https://openrouter.ai/keys) 获取你的 API 密钥。
+
+### 3. 配置简历
 
 ```bash
 # 创建中文简历配置
@@ -41,7 +58,9 @@ cp config/resume.example.toml config/resume.toml
 cp config/resume.example.toml config/en-resume.toml
 ```
 
-### 3. 启动开发服务器
+在 `config/` 目录下编辑 TOML 文件，填写你的信息。
+
+### 4. 启动开发服务器
 
 ```bash
 npm run dev
@@ -104,6 +123,20 @@ projects = [
 
 当用户悬停在链接上时，会看到包含页面标题、描述和缩略图的预览卡片。
 
+## AI 聊天助手
+
+AI 聊天助手帮助访客通过自然对话了解你的工作经验。
+
+**功能特性:**
+- 基于简历内容的上下文回答
+- 自动生成相关的后续问题
+- 双语支持（中文和英文）
+- 实时流式响应
+- 全屏模式支持长对话
+
+**工作原理:**
+AI 从 TOML 文件读取你的简历数据，仅基于你的实际简历内容回答问题。
+
 ## PDF 导出
 
 PDF 导出使用 Puppeteer 进行高质量渲染。此功能仅在开发模式下可用。
@@ -120,13 +153,25 @@ sudo apt-get install gconf-service libasound2 libatk1.0-0 libatk-bridge2.0-0 lib
 
 ## 技术栈
 
-- **框架**: [Next.js](https://nextjs.org/) 16
+### 核心
+- **框架**: [Next.js](https://nextjs.org/) 16 (App Router)
+- **运行时**: React 19 with Server Components
+- **语言**: TypeScript
 - **样式**: [Tailwind CSS](https://tailwindcss.com/) 4
+
+### UI 与交互
 - **UI 组件**: [shadcn/ui](https://ui.shadcn.com/) + [Radix UI](https://www.radix-ui.com/)
 - **动画**: [Framer Motion](https://www.framer.com/motion/)
-- **配置**: [TOML](https://toml.io/) via [@ltd/j-toml](https://github.com/nickyc975/j-toml)
+- **图标**: [Lucide Icons](https://lucide.dev/)
+
+### AI 与内容
+- **AI 提供商**: [OpenRouter](https://openrouter.ai/)
+- **Markdown 渲染**: [react-markdown](https://github.com/remarkjs/react-markdown)
+- **配置**: [TOML](https://toml.io/) via [@ltd/j-toml](https://github.com/LongTengDao/j-toml)
+
+### 功能特性
 - **链接预览**: [Microlink](https://microlink.io/)
-- **PDF 生成**: [Puppeteer](https://pptr.dev/)
+- **PDF 生成**: [Puppeteer](https://pptr.dev/) (仅开发环境)
 
 ## 脚本命令
 
@@ -137,6 +182,22 @@ npm run start    # 启动生产服务器
 npm run lint     # 运行 ESLint
 ```
 
+## 部署
+
+### 生产环境变量
+
+创建 `.env.production` 文件：
+
+```bash
+OPENROUTER_API_KEY="你的-api-密钥"
+OPENROUTER_MODEL="openai/gpt-4o-mini"
+SITE_URL="https://your-domain.com"
+```
+
 ## 许可证
 
 [MIT](./LICENSE)
+
+## 贡献
+
+欢迎贡献！随时提交 issues 和 pull requests。

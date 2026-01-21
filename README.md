@@ -2,23 +2,25 @@
 
 [中文文档](./README.zh-CN.md)
 
-A data-driven online resume generator built with Next.js. Create beautiful, responsive resumes through simple TOML configuration files.
+A modern, interactive online resume generator built with Next.js. Create beautiful, responsive resumes with AI-powered chat assistant through simple TOML configuration files.
 
 [![Live Demo](https://img.shields.io/badge/preview-online-brightgreen)](https://hi.sparkify.me)
 
 ## Features
 
-- **Data-Driven**: All resume content is configured through TOML files - no code changes needed
+- **AI Chat Assistant**: Built-in ChatBot to answer questions about your resume and experience
+- **Data-Driven**: All resume content configured through TOML files - no code changes needed
 - **Bilingual Support**: Built-in Chinese/English switching with separate configuration files
-- **Project Preview**: Integrated with [Microlink](https://microlink.io/) for rich link previews of your projects
+- **Modern UI**: Beautiful glassmorphism design with smooth animations
+- **Project Preview**: Integrated with [Microlink](https://microlink.io/) for rich link previews
 - **Responsive Design**: Looks great on desktop and mobile devices
-- **Smooth Animations**: Powered by Framer Motion for delightful user experience
+- **Server-Side Rendering**: Optimized for performance and SEO
 
 ### Development Features
 
 The following features are available in local development environment only:
 
-- **Avatar Upload**: click to upload your avatar image
+- **Avatar Upload**: Click to upload your avatar image
 - **PDF Export**: One-click export your resume to PDF using Puppeteer
 
 ## Quick Start
@@ -29,9 +31,24 @@ The following features are available in local development environment only:
 npm install
 # or
 yarn install
+# or
+pnpm install
 ```
 
-### 2. Configure Your Resume
+### 2. Configure Environment Variables
+
+Create a `.env.development` file in the root directory:
+
+```bash
+# AI Chat Configuration
+OPENROUTER_API_KEY="your-openrouter-api-key"
+OPENROUTER_MODEL="openai/gpt-4o-mini"
+SITE_URL="http://localhost:3000"
+```
+
+Get your OpenRouter API key from [OpenRouter](https://openrouter.ai/keys).
+
+### 3. Configure Your Resume
 
 ```bash
 # Create Chinese resume config
@@ -41,7 +58,9 @@ cp config/resume.example.toml config/resume.toml
 cp config/resume.example.toml config/en-resume.toml
 ```
 
-### 3. Run Development Server
+Edit the TOML files in `config/` directory with your information.
+
+### 4. Run Development Server
 
 ```bash
 npm run dev
@@ -104,6 +123,20 @@ projects = [
 
 When users hover over the link, they'll see a preview card with the page's title, description, and thumbnail.
 
+## AI Chat Assistant
+
+The AI chat assistant helps visitors learn more about your experience through natural conversation.
+
+**Features:**
+- Contextual answers based on your resume content
+- Automatically generates relevant follow-up questions
+- Bilingual support (English and Chinese)
+- Real-time streaming responses
+- Fullscreen mode for longer conversations
+
+**How it works:**
+The AI reads your resume data from TOML files and responds to questions based only on your actual resume content.
+
 ## PDF Export
 
 PDF export uses Puppeteer for high-quality rendering. This feature is only available in development mode.
@@ -120,13 +153,25 @@ For more details, see this [Puppeteer issue](https://github.com/puppeteer/puppet
 
 ## Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/) 16
+### Core
+- **Framework**: [Next.js](https://nextjs.org/) 16 (App Router)
+- **Runtime**: React 19 with Server Components
+- **Language**: TypeScript
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) 4
+
+### UI & Interaction
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/) + [Radix UI](https://www.radix-ui.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Configuration**: [TOML](https://toml.io/) via [@ltd/j-toml](https://github.com/nickyc975/j-toml)
+- **Icons**: [Lucide Icons](https://lucide.dev/)
+
+### AI & Content
+- **AI Provider**: [OpenRouter](https://openrouter.ai/)
+- **Markdown Rendering**: [react-markdown](https://github.com/remarkjs/react-markdown)
+- **Configuration**: [TOML](https://toml.io/) via [@ltd/j-toml](https://github.com/LongTengDao/j-toml)
+
+### Features
 - **Link Previews**: [Microlink](https://microlink.io/)
-- **PDF Generation**: [Puppeteer](https://pptr.dev/)
+- **PDF Generation**: [Puppeteer](https://pptr.dev/) (dev only)
 
 ## Scripts
 
@@ -137,6 +182,22 @@ npm run start    # Start production server
 npm run lint     # Run ESLint
 ```
 
+## Deployment
+
+### Environment Variables for Production
+
+Create a `.env.production` file:
+
+```bash
+OPENROUTER_API_KEY="your-api-key-here"
+OPENROUTER_MODEL="openai/gpt-4o-mini"
+SITE_URL="https://your-domain.com"
+```
+
 ## License
 
 [MIT](./LICENSE)
+
+## Contributing
+
+Contributions are welcome! Feel free to submit issues and pull requests.

@@ -22,6 +22,22 @@ export function I18nProvider({ children }: I18nProviderProps) {
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
+    // Check URL parameter first (for PDF export)
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+
+    if (urlLang === 'cn' || urlLang === 'zh') {
+      setLanguage('zh');
+      setT(getTranslation('zh'));
+      setIsInitialized(true);
+      return;
+    } else if (urlLang === 'en') {
+      setLanguage('en');
+      setT(getTranslation('en'));
+      setIsInitialized(true);
+      return;
+    }
+
     // Load language preference from localStorage
     const savedLanguage = localStorage.getItem('language') as Language;
     if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'zh')) {

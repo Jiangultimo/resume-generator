@@ -13,7 +13,8 @@ intros = [
     { label = "Timezone", value = "UTC+8 (Beijing Time)", icon = "Clock" },
     { label = "Target Role", value = "Full-Stack Developer", icon = "Target" },
     { label = "Work Mode", value = "Full-time / Remote-first", icon = "Handshake" },
-    { label = "", value = "9 years of development experience | Full-Stack Engineer | Former Tech Lead at AI startup | Expert in AI product delivery & team management", icon = "Briefcase" }
+    { label = "", value = "9 years of development experience | Full-Stack Engineer | Former Tech Lead at AI startup | Expert in AI product delivery & team management", icon = "Briefcase" },
+    { label = "", value = "Interactive resume: https://hi.sparkify.me - AI assistant available to explore my projects and tech stack", link = "https://hi.sparkify.me", icon = "Link" }
 ]
 
 # personal skills
@@ -65,7 +66,7 @@ projects = [
       { name = "ats-lui.laplacelab.cn", url = "https://ats-lui.laplacelab.cn" }
     ]},
 
-    { content = "[Client Delivery (Internal Projects)] Healthcare DRG Coding / Invoice EDI / State-owned Enterprise Agent Platform: Responsible for <b>requirements communication / solution design / core pipeline / deployment & acceptance</b>." }
+    { content = "<b>[Client Delivery (Internal Projects)]</b> Healthcare DRG Coding / Invoice EDI / State-owned Enterprise Agent Platform: Responsible for <b>requirements communication / solution design / core pipeline / deployment & acceptance</b>." }
 ]
 
 [[resume.experience.data]]

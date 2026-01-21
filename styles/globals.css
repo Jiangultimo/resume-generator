@@ -61,7 +61,7 @@ body {
   input,
   select,
   textarea {
-    min-height: 44px;
+    min-height: fit-content;
   }
   
   /* Better text rendering on mobile */

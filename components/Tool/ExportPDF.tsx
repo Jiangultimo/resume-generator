@@ -1,7 +1,7 @@
 'use client'
 
 import React, { memo, useContext, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import LoadingContext from '@/context/loading'
 import { Download, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 import { useI18n } from '@/context/i18n'
@@ -14,7 +14,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 const Tool: React.FC = () => {
   const loadingContext = useContext(LoadingContext)
   const [exportStatus, setExportStatus] = useState<ExportStatus>('idle')
-  const { t, language } = useI18n()
+  const { language } = useI18n()
 
   // 生产环境不渲染导出按钮
   if (isProduction) {
@@ -76,72 +76,48 @@ const Tool: React.FC = () => {
     }
   }
 
-  const getIconAndText = () => {
+  const getIcon = () => {
     switch (exportStatus) {
       case 'exporting':
-        return {
-          icon: <Loader2 className="w-3.5 h-3.5 animate-spin" />,
-          text: t.exporting
-        }
+        return <Loader2 className="w-4 h-4 animate-spin" />
       case 'success':
-        return {
-          icon: <CheckCircle className="w-3.5 h-3.5" />,
-          text: t.exportSuccess
-        }
+        return <CheckCircle className="w-4 h-4" />
       case 'error':
-        return {
-          icon: <AlertCircle className="w-3.5 h-3.5" />,
-          text: t.exportFailed
-        }
+        return <AlertCircle className="w-4 h-4" />
       default:
-        return {
-          icon: <Download className="w-3.5 h-3.5" />,
-          text: t.exportPDF || 'PDF'
-        }
+        return <Download className="w-4 h-4" />
     }
   }
 
-  const { icon, text } = getIconAndText()
+  const icon = getIcon()
   const isDisabled = loadingContext.loading || exportStatus !== 'idle'
 
   return (
-    <motion.div
+    <motion.button
       data-hide-on-print
       initial={{ opacity: 0, scale: 0.8, y: -20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 1.5 }}
-      className="relative"
+      onClick={handleExportPDF}
+      disabled={isDisabled}
+      data-export-pdf
+      className={cn(
+        'flex items-center justify-center',
+        'w-8 h-8 rounded-full',
+        'bg-white/20 backdrop-blur-md border border-white/30',
+        'shadow-lg shadow-black/10',
+        'transition-all duration-300',
+        'dark:bg-gray-800/40 dark:border-gray-600/30',
+        'hover:scale-110',
+        exportStatus === 'idle' && 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white',
+        exportStatus === 'success' && 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-md shadow-green-500/25',
+        exportStatus === 'error' && 'bg-gradient-to-r from-red-500 to-rose-600 text-white shadow-md shadow-red-500/25',
+        exportStatus === 'exporting' && 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md shadow-blue-500/25',
+        isDisabled && 'cursor-not-allowed opacity-70'
+      )}
     >
-      <AnimatePresence mode="wait">
-        <motion.button
-          key={exportStatus}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.2 }}
-          onClick={handleExportPDF}
-          disabled={isDisabled}
-          data-export-pdf
-          className={cn(
-            'flex items-center justify-center gap-1.5',
-            'bg-white/20 backdrop-blur-md border border-white/30',
-            'rounded-full px-4 h-[44px]',
-            'shadow-lg shadow-black/10',
-            'text-sm font-medium transition-all duration-300',
-            'dark:bg-gray-800/40 dark:border-gray-600/30',
-            'hover:scale-105',
-            exportStatus === 'idle' && 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white',
-            exportStatus === 'success' && 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-md shadow-green-500/25',
-            exportStatus === 'error' && 'bg-gradient-to-r from-red-500 to-rose-600 text-white shadow-md shadow-red-500/25',
-            exportStatus === 'exporting' && 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md shadow-blue-500/25',
-            isDisabled && 'cursor-not-allowed opacity-70'
-          )}
-        >
-          <span className="transition-transform duration-300">{icon}</span>
-          <span className="font-semibold tracking-wide">{text}</span>
-        </motion.button>
-      </AnimatePresence>
-    </motion.div>
+      {icon}
+    </motion.button>
   )
 }
 

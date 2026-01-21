@@ -11,9 +11,84 @@ const quicksand = Quicksand({
 })
 
 export const metadata: Metadata = {
-  title: 'Hing Chiang - About My Previous Years',
-  description: 'What I have done in the past years (What built me)',
-  keywords: ['Hing Chiang', 'Previous years', 'Work experience', 'Education', 'Skills', 'Resume'],
+  metadataBase: new URL('https://hi.sparkify.me'),
+  title: {
+    default: 'Zhengxing Jiang (蒋正兴) - Full-Stack Engineer | AI Expert',
+    template: '%s | Zhengxing Jiang'
+  },
+  description: '9 years of full-stack development experience. Former Tech Lead at AI startup. Expert in AI/LLM applications, React, Next.js, Node.js, Python. Available for full-time/remote opportunities.',
+  keywords: [
+    'Zhengxing Jiang',
+    '蒋正兴',
+    'Full-Stack Developer',
+    'AI Engineer',
+    'LLM',
+    'React',
+    'Next.js',
+    'Node.js',
+    'Python',
+    'Remote Work',
+    'Tech Lead',
+    'RAG',
+    'LangChain',
+    'Software Engineer',
+    'Chongqing',
+    'China'
+  ],
+  authors: [{ name: 'Zhengxing Jiang', url: 'https://hi.sparkify.me' }],
+  creator: 'Zhengxing Jiang',
+  publisher: 'Zhengxing Jiang',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: 'profile',
+    locale: 'en_US',
+    alternateLocale: ['zh_CN'],
+    url: 'https://hi.sparkify.me',
+    siteName: 'Zhengxing Jiang - Resume',
+    title: 'Zhengxing Jiang - Full-Stack Engineer | AI Expert',
+    description: '9 years of full-stack development experience. Expert in AI/LLM applications, React, Next.js, Node.js, Python.',
+    images: [
+      {
+        url: '/avatar.jpg',
+        width: 400,
+        height: 400,
+        alt: 'Zhengxing Jiang',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Zhengxing Jiang - Full-Stack Engineer | AI Expert',
+    description: '9 years of full-stack development experience. Expert in AI/LLM applications.',
+    images: ['/avatar.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    // google: 'your-google-verification-code', // 添加 Google Search Console 验证码
+    // yandex: 'your-yandex-verification-code',
+    // bing: 'your-bing-verification-code',
+  },
+  alternates: {
+    canonical: 'https://hi.sparkify.me',
+    languages: {
+      'en': 'https://hi.sparkify.me?lang=en',
+      'zh-CN': 'https://hi.sparkify.me?lang=cn',
+    },
+  },
 }
 
 export default function RootLayout({
